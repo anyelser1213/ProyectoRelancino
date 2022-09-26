@@ -1,0 +1,130 @@
+<!doctype html>
+{% load static %}
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {% block EnlacesBootstrap5 %}
+    <!-- Bootstrap CSS -->
+
+    
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap-5.2.1-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'principal/css/estilo.css' %}">
+  
+  <!-- Icono de la pagina -->
+  <link id="iconPagWeb" rel="shortcut icon" href="{% static 'principal/img/loteria.jpg' %}" type="image/x-icon">
+
+    {% endblock %}
+
+    {% block EnlacesPlantilla_Base %}
+
+    <link rel="stylesheet" href="{% static 'vendor/plantilla_base/css/styles.css' %}">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="{% static 'vendor/plantilla_base/js/fontawesome6-1-0-all.js' %}" crossorigin="anonymous"></script>
+          
+
+    
+
+
+    {% endblock %}
+
+    {% block EnlacesPlantillas %}
+
+    
+
+
+    {% endblock %}
+
+    {% block EnlacesPersonalizados %}
+
+    
+
+    
+
+    {% endblock %}
+    
+    <title>{% block titulo %}BASE {% endblock %}</title> 
+
+  </head>
+
+  <body class="sb-nav-fixed">
+    {% block menu_superior %}
+      <!--Aqui se incluye el menu superior-->
+      {% include "menu_superior.html" %}
+    
+      {% endblock%}
+
+    {% block menu_dashboar %}
+      <!--Aqui se incluye el menu lateral-->
+    {% include "menu_dashboar.html" with tema="tablero" subtema=""   %}
+
+    {% endblock%}
+
+    
+    
+    
+
+    
+    {% block contenedor %} 
+
+
+
+
+
+            
+          
+    {% endblock %}
+
+
+    {% block footer %}
+
+
+
+        
+
+
+    {% endblock %}
+  
+
+    
+    
+
+    
+    
+
+    {% block EnlacesGraficas_js %}
+
+      
+    
+    {% endblock %}
+
+
+    {% block EnlacesListado_js %}
+
+       
+
+    {% endblock %}
+
+
+    {% block EnlacesBootstrap5js %}
+
+
+          
+
+          <!-- JavaScript Bundle with Popper -->
+          <script src="{% static 'vendor/bootstrap-5.2.1-dist/js/bootstrap.bundle.min.js' %}" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+          
+  
+          
+
+          
+
+          
+    {% endblock %}
+
+    
+  </body>
+</html>
