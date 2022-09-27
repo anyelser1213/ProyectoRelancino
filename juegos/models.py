@@ -7,6 +7,8 @@ class TipoJugadas(models.Model):
     nombre = models.CharField(max_length=30,unique=True)
     cantidad_digitos = models.PositiveIntegerField()
     estado_jugada = models.BooleanField(default=False)
+    monto_jugada = models.FloatField(default=0)
+    cantidad_maxima_repeticion = models.PositiveIntegerField(default=0)
 
     def __str__(self):
          return self.nombre
@@ -21,7 +23,8 @@ class Jugada(models.Model):
     nombre_jugada = models.ForeignKey(TipoJugadas, on_delete=models.CASCADE)
     nombre_usuario = models.CharField(max_length=30,unique=True)
     digitos = models.IntegerField(unique=True)
-    repetidor = models.PositiveIntegerField()
+    repetidor = models.PositiveIntegerField(default=0)
+    fecha_creacion = models.DateTimeField(auto_now_add=True) 
 
     def __str__(self):
          return "Jugada: "+self.nombre_jugada+" Usuario: "+self.nombre_usuario
