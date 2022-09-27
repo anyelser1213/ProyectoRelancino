@@ -1,475 +1,70 @@
 {% load static %}
-<div class="wrapper">
-
-  
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link">
-        <img src="{% static 'src/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-             style="opacity: .8">
-        <span class="brand-text font-weight-light">Prevenauto CRP </span>
-      </a>
-  
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="{% static 'src/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
-          </div>
-          <div class="info">
-            <a href="{% url 'autenticacion:perfil' %}" class="d-block"><h6>{{usuario.username}} <b class="text-primary">({{usuario.rol}})</b></h6></a>
-          </div>
-        </div>
-  
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                 with font-awesome or any other icon font library -->
-           
-           <!--Permisologia en Django-->
-
-                  
-                 <li class="nav-item has-treeview">
-                   
-                  <!--Condicionales Python para darle efecto visual-->
-
-                  {% if perms.autenticacion.tablero %}
-
-                    {% if tema == "tablero"  %}
-                      <a href="{% url 'src:index'%}" class="nav-link active">
-                      {% else %}
-                      <a href="{% url 'src:index'%}" class="nav-link ">
-                      {% endif %}
-                      
-                        <i class="nav-icon fas fa-chart-pie"></i>
-                        <p>
-                          Tablero
-                          <span class="right badge badge-primary ">Gráficas</span>
-                        </p>
+<div id="layoutSidenav_nav">
+  <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+      <div class="sb-sidenav-menu">
+          <div class="nav">
+              <div class="sb-sidenav-menu-heading">Core</div>
+              <a class="nav-link" href="index.html">
+                  <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                  Dashboard
+              </a>
+              <div class="sb-sidenav-menu-heading">Interface</div>
+              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                  <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                  Layouts
+                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+              </a>
+              <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                  <nav class="sb-sidenav-menu-nested nav">
+                      <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                      <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                  </nav>
+              </div>
+              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                  <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                  Pages
+                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+              </a>
+              <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                  <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                          Authentication
+                          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                       </a>
-              
-                    </li>
-
-                    <li class="nav-header">OPCIONES GENERALES</li>
-
-                  {% endif %}
-                  
-
-
-                  {% if perms.autenticacion.planificacion %}
-
-                  <li class="nav-item has-treeview">
-
-                  {% if tema == "planificacion" %}
-
-                        <a href="#" class="nav-link active">
-                    {% else %}
-                        <a href="#" class="nav-link ">
-                    {% endif %}
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Planificación
-                    <i class="fas fa-angle-left right"></i>
-                  
-                  </p>
-                </a>
-              <ul class="nav nav-treeview">
-
-                {% if perms.autenticacion.planificacion_mantenimiento %}
-
-                  <li class="nav-item">
-
-                    {% if subtema == "mantenimiento" %}
-                      <a href="{% url 'planificacion:mantenimiento' %}" class="nav-link active">
-                    {% else %}
-                      <a href="{% url 'planificacion:mantenimiento' %}" class="nav-link ">
-                    {% endif %}
-                    
-                      <i class="far bi-align-start nav-icon"></i>
-                      <p>Mantenimiento</p>
-                    </a>
-                  </li>
-
-                {% endif %}
-
-
-
-
-                {% if perms.autenticacion.planificacion_eventos %}
-                <li class="nav-item">
-
-                  {% if subtema == "eventos"%}
-                    <a href="{% url 'planificacion:eventos'%}" class="nav-link active">
-                  {% else %}
-                    <a href="{% url 'planificacion:eventos'%}" class="nav-link ">
-                  {% endif %}
-                    <i class="far bi-align-start nav-icon"></i>
-                    <p>Eventos</p>
-                  </a>
-                </li>
-                {% endif %}
-               
-              </ul>
-            </li>
-
-            {% endif %}
-
-
-
-            {% if perms.autenticacion.servicios %}
-
-                <li class="nav-item has-treeview">
-
-                    {% if tema == "servicios" %}
-
-                        <a href="#" class="nav-link active">
-                    {% else %}
-                        <a href="#" class="nav-link ">
-                    {% endif %}
-
-                    <i class="nav-icon fas fa-edit"></i>
-                    <p>
-                      Servicios
-                      <i class="fas fa-angle-left right"></i>
-              
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-
-                    {% if perms.autenticacion.servicios_reportes %}
-
-                        <li class="nav-item">
-
-                          {% if subtema == "reportes" %}
-                            <a href="{% url 'servicios:reportes'%}" class="nav-link active">
-                          {% else %}
-                            <a href="{% url 'servicios:reportes'%}" class="nav-link ">
-                          {% endif %}
-                            <i class="far bi-align-start nav-icon"></i>
-                            <p>Reportes</p>
-                          </a>
-                        </li>
-
-                    {% endif %}
-
-                    {% if perms.autenticacion.servicios_ordenes %}
-
-                        <li class="nav-item">
-
-                          {% if subtema == "ordenes" %}
-                            <a href="{% url 'servicios:ordenes'%}" class="nav-link active">
-                          {% else %}
-                            <a href="{% url 'servicios:ordenes'%}" class="nav-link ">
-                          {% endif %}
-                            <i class="far bi-align-start nav-icon"></i>
-                            <p>Ordenes</p>
-                          </a>
-                        </li>
-
-                    {% endif %}
-
-
-                    {% if perms.autenticacion.planes_tareas %}
-
-                        <li class="nav-item">
-                          
-                          {% if subtema == "planes" %}
-                            <a href="{% url 'servicios:planes_tareas'%}" class="nav-link active">
-                          {% else %}
-                            <a href="{% url 'servicios:planes_tareas'%}" class="nav-link ">
-                          {% endif %}
-                            <i class="far bi-align-start nav-icon"></i>
-                            <p>Planes/Tareas</p>
-                          </a>
-                        </li>
-
-                    {% endif %}
-
-
-                    {% if perms.autenticacion.vehiculo_planes %}
-
-                        <li class="nav-item">
-                          
-                          {% if subtema == "vehiculos/planes" %}
-                            <a href="{% url 'servicios:vehiculo_planes'%}" class="nav-link active">
-                          {% else %}
-                            <a href="{% url 'servicios:vehiculo_planes'%}" class="nav-link ">
-                          {% endif %}
-                            <i class="far bi-align-start nav-icon"></i>
-                            <p>Vehículos/Planes</p>
-                          </a>
-
-                        </li>
-
-                    {% endif %}
-                    
-                  </ul>
-                </li>
-
-            {% endif %}
-
-
-            {% if perms.autenticacion.flota %}
-
-            
-
-                <li class="nav-item has-treeview">
-
-                  {% if tema == "flota" %}
-
-                        <a href="#" class="nav-link active">
-
-                    {% else %}
-
-                        <a href="#" class="nav-link ">
-
-                    {% endif %}
-
-                      <i class="nav-icon fas fa-car"></i>
-                      <p>
-                        Flota
-                        <i class="right fas fa-angle-left"></i>
-              
-                      </p>
-                  </a>
-
-                  
-
-                      
-                      <ul class="nav nav-treeview">
-
-                        {% if perms.autenticacion.flota_vehiculos %}
-
-                            <li class="nav-item">
-                              {% if subtema == "vehiculo" %}
-                                <a href="{% url 'flota:vehiculos'%}" class="nav-link active">
-                              {% else %}
-                                <a href="{% url 'flota:vehiculos'%}" class="nav-link ">
-                              {% endif %}
-                                <i class="far bi-align-start nav-icon"></i>
-                                <p>Vehículo</p>
-                              </a>
-                            </li>
-
-                        {% endif %}
-
-
-                        {% if perms.autenticacion.flota_medicion_de_estrias %}
-
-                            <li class="nav-item">
-                              {% if subtema == "medicion_estrias" %}
-                                <a href="{% url 'flota:medicion_de_estrias'%}" class="nav-link active">
-                              {% else %}
-                                <a href="{% url 'flota:medicion_de_estrias'%}" class="nav-link ">
-                              {% endif %}
-                                <i class="far bi-align-start nav-icon botoncolor"></i>
-                                <p>Medición de estrías</p>
-                                <span class="right badge badge-danger">Off</span>
-                              </a>
-                            </li>
-
-                        {% endif %}
-
-                        
-                        {% if perms.autenticacion.flota_combustible %}
-
-                            <li class="nav-item">
-                              {% if subtema == "combustible" %}
-                                <a href="{% url 'flota:combustible'%}" class="nav-link active">
-                              {% else %}
-                                <a href="{% url 'flota:combustible'%}" class="nav-link ">
-                              {% endif %}
-                                <i class="far bi-align-start nav-icon botoncolor"></i>
-                                <p cl>Combustible</p>
-                                <span class="right badge badge-danger">Off</span>
-                              </a>
-                            </li>
-
-                        {% endif %}
-                      </ul>
-
-                  {% endif %}
-
-
-                </li>
-
-
-            {% if perms.autenticacion.almacen %}
-                <li class="nav-item has-treeview">
-                  {% if tema == "almacen" %}
-
-                        <a href="#" class="nav-link active">
-
-                    {% else %}
-
-                        <a href="#" class="nav-link ">
-
-                    {% endif %}
-                    <i class="nav-icon fas bi-inboxes-fill"></i>
-                    <p>
-                      Almacen
-                      <i class="fas fa-angle-left right"></i>
-            
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-
-                    {% if perms.autenticacion.almacen_inventario %}
-
-
-                        <li class="nav-item">
-                          {% if subtema == "inventario" %}
-                            <a href="{% url 'almacen:inventario'%}" class="nav-link active">
-                          {% else %}
-                            <a href="{% url 'almacen:inventario'%}" class="nav-link ">
-                          {% endif %}
-                            <i class="far bi-align-start nav-icon"></i>
-                            <p>Inventario</p>
-                          </a>
-                        </li>
-
-                    {% endif %}
-                    
-                  </ul>
-                </li>
-
-            {% endif %}
-
-
-
-            {% if perms.autenticacion.configuracion %}
-
-
-                <li class="nav-item has-treeview">
-                  {% if tema == "autenticacion" %}
-
-                        <a href="#" class="nav-link active">
-
-                    {% else %}
-
-                        <a href="#" class="nav-link ">
-
-                    {% endif %}
-                    <i class="nav-icon fas bi-gear-fill"></i>
-                    <p>
-                      Configuración
-                      <i class="fas fa-angle-left right"></i>
-        
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-
-                    {% if perms.autenticacion.configuracion_usuario %}
-
-                        <li class="nav-item">
-                          {% if subtema == "usuarios" %}
-                            <a href="{% url 'autenticacion:usuarios' %}" class="nav-link active">
-                          {% else %}
-                            <a href="{% url 'autenticacion:usuarios' %}" class="nav-link ">
-                          {% endif %}
-                            <i class="far bi-align-start nav-icon"></i>
-                            <p>Usuario</p>
-                          </a>
-                        </li>
-
-                    {% endif %}
-
-                    {% if perms.autenticacion.configuracion_asignaciones %}
-
-                        <li class="nav-item">
-                          {% if subtema == "asignaciones" %}
-                            <a href="{% url 'autenticacion:asignaciones' %}" class="nav-link active">
-                          {% else %}
-                            <a href="{% url 'autenticacion:asignaciones' %}" class="nav-link ">
-                          {% endif %}
-                            <i class="far bi-align-start nav-icon"></i>
-                            <p>Asignaciones</p>
-                          </a>
-                        </li>
-
-                    {% endif %}
-                  
-                  </ul>
-                </li>
-
-            {% endif %}
-
-
-            {% if perms.autenticacion.taller %}
-
-
-                <li class="nav-item has-treeview">
-                  {% if tema == "taller" %}<!----PENDIENTE AQUI, DEBES CAMBIARLO---->
-
-                        <a href="#" class="nav-link active">
-
-                    {% else %}
-
-                        <a href="#" class="nav-link ">
-
-                    {% endif %}
-                    
-                    <i class="nav-icon fas bi-shop"></i>
-                    <p>
-                      Taller
-                      <i class="fas fa-angle-left right"></i>
-        
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-
-                    {% if perms.autenticacion.taller_crear %}
-
-                        <li class="nav-item">
-                          {% if subtema == "crear" %}<!----PENDIENTE AQUI, DEBES CAMBIARLO---->
-                            <a href="{% url 'flota:crear_taller' %}" class="nav-link active">
-                          {% else %}
-                            <a href="{% url 'flota:crear_taller' %}" class="nav-link ">
-                          {% endif %}
-                            <i class="far bi-align-start nav-icon"></i>
-                            <p>Crear Taller</p>
-                          </a>
-                        </li>
-
-                    {% endif %}
-
-                    {% if perms.autenticacion.taller_listar %}
-
-                        <li class="nav-item">
-                          {% if subtema == "asignaciones" %}<!----PENDIENTE AQUI, DEBES CAMBIARLO---->
-                            <a href="{% url 'autenticacion:asignaciones' %}" class="nav-link active">
-                          {% else %}
-                            <a href="{% url 'autenticacion:asignaciones' %}" class="nav-link ">
-                          {% endif %}
-                            <i class="far bi-align-start nav-icon"></i>
-                            <p>Ver Talleres</p>
-                          </a>
-                        </li>
-                        
-                    {% endif %}
-                  
-                  </ul>
-                </li>
-
-            {% endif %}
-            
-              
-
-
-
-
-
-
-
-
-        </nav>
-        <!-- /.sidebar-menu -->
+                      <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                          <nav class="sb-sidenav-menu-nested nav">
+                              <a class="nav-link" href="login.html">Login</a>
+                              <a class="nav-link" href="register.html">Register</a>
+                              <a class="nav-link" href="password.html">Forgot Password</a>
+                          </nav>
+                      </div>
+                      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                          Error
+                          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                          <nav class="sb-sidenav-menu-nested nav">
+                              <a class="nav-link" href="401.html">401 Page</a>
+                              <a class="nav-link" href="404.html">404 Page</a>
+                              <a class="nav-link" href="500.html">500 Page</a>
+                          </nav>
+                      </div>
+                  </nav>
+              </div>
+              <div class="sb-sidenav-menu-heading">Addons</div>
+              <a class="nav-link" href="charts.html">
+                  <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                  Charts
+              </a>
+              <a class="nav-link" href="tables.html">
+                  <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                  Tables
+              </a>
+          </div>
       </div>
-        <!-- /.sidebar -->
-        </aside>
-
-        
-       </div>
+      <div class="sb-sidenav-footer">
+          <div class="small">Logged in as:</div>
+          Start Bootstrap
+      </div>
+  </nav>
+</div>
