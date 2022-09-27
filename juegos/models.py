@@ -1,0 +1,32 @@
+from django.db import models
+
+# Create your models here.
+
+class TipoJugadas(models.Model):
+
+    nombre = models.CharField(max_length=30,unique=True)
+    cantidad_digitos = models.PositiveIntegerField()
+    estado_jugada = models.BooleanField(default=False)
+
+    def __str__(self):
+         return self.nombre
+
+    class Meta:
+
+        verbose_name = "Tipo Jugada"
+        verbose_name_plural = "1.Tipos Jugadas"
+
+class Jugada(models.Model):
+
+    nombre_jugada = models.ForeignKey(TipoJugadas, on_delete=models.CASCADE)
+    nombre_usuario = models.CharField(max_length=30,unique=True)
+    digitos = models.IntegerField(unique=True)
+    repetidor = models.PositiveIntegerField()
+
+    def __str__(self):
+         return "Jugada: "+self.nombre_jugada+" Usuario: "+self.nombre_usuario
+
+    class Meta:
+
+        verbose_name = "Jugada"
+        verbose_name_plural = "2.Jugadas"

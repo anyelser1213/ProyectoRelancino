@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'login',
     'principal',
     'usuarios',
+    'juegos',
 ]
 
 MIDDLEWARE = [

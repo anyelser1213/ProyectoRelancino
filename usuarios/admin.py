@@ -6,9 +6,9 @@ from .models import *
 
 
 #Con esto modificamos los titulos en el admin de django
-admin.site.site_header = 'Quintico'
-admin.site.index_title = 'Panel de control de Quintico'
-admin.site.site_title = 'Quintico Loteria'
+admin.site.site_header = 'Relancino'
+admin.site.index_title = 'Panel de control de Relancino'
+admin.site.site_title = 'Relancino Loteria'
 
 class UserAdmin(BaseUserAdmin):
     
