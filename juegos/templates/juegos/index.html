@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% load tag_tipos_jugadas %}
 {% block EnlacesPlantillas %}
 
 <link rel="stylesheet" href="{% static 'juegos/css/estilos.css' %}">
@@ -46,42 +48,43 @@
                                     
                                     <form action="#" class="credit-card-div abs-center">
                                         <div class="panel panel-default" >
+                                            <div class="row  abs-center ">
+                                                <div class="col-md-12 pad-adjust">
+                                                    <h1 class="abs-center">tipo de jugada</h1>
+                                                </div>
+
+                                                
+                                          </div>
                                          <div class="panel-heading ">
                                              
-                                                  <div class="row abs-center">
-                                                      <div class="col-md-3 col-sm-3 col-xs-3">
-                                                          <span class="help-block text-muted small-font" > Expiry Month</span>
-                                                          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                                      </div>
-                                                 <div class="col-md-3 col-sm-3 col-xs-3">
-                                                          <span class="help-block text-muted small-font" >  Expiry Year</span>
-                                                          <input type="text" class="form-control" placeholder="YY" />
-                                                      </div>
-                                                <div class="col-md-3 col-sm-3 col-xs-3">
-                                                          <span class="help-block text-muted small-font" >  CCV</span>
-                                                          <input type="text" class="form-control" placeholder="CCV" />
-                                                      </div>
+                                                  <div class="row row-cols-3 ">
+
+                                                    
+                                                    {% tipos_jugadas  %}
+                                                        
+
                                                   </div>
                                                 <br>
 
                                                 <div class="row abs-center ">
                                                       <div class="col-md-6 pad-adjust">
-                                        
-                                                          <input type="text" class="form-control" placeholder="Name On The Card" />
+                                                          <input type="text" class="form-control" placeholder="Ingrese Digitos" />
                                                       </div>
                                                 </div>
 
                                                   <br>
                                                <div class="row  ">
                                                     <div class="col abs-center ">
-                                                         <input type="submit"  class="btn btn-danger" value="CANCEL" />
-                                                         <input type="submit"  class="btn btn-warning " value="PAY NOW" />
+                                                         <input type="submit"  class="btn btn-danger" value="Limpiar" />
+                                                         <input type="submit"  class="btn btn-warning " value="Guardar" />
                                                       </div>
                                                 </div>
                                              
-                                                           </div>
-                                                      </div>
-                                        </form>  
+                                            </div>
+
+
+                                        </div>
+                                    </form>  
                                 </div>
                             </div>
                         </div>
