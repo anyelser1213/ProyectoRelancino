@@ -155,8 +155,8 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
         
         
         
-        print(self.id)
-        print("metodo jajajaj:",self._state.adding)
+        #print(self.id)
+        #print("metodo jajajaj:",self._state.adding)
 
 
 

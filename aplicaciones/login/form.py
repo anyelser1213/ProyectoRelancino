@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.core.exceptions import ValidationError
 from django.db.models import fields
 from django.forms import ClearableFileInput, ModelForm, widgets
-from usuarios.models import Usuarios
+from aplicaciones.usuarios.models import Usuarios
 
 
 

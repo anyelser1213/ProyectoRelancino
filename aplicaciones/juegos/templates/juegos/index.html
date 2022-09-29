@@ -47,6 +47,7 @@
                                 <div class="card-body">
                                     
                                     <form action="#" class="credit-card-div abs-center">
+                                        <h1>{{informacion}} </h1>
                                         <div class="panel panel-default" >
                                             <div class="row  abs-center ">
                                                 <div class="col-md-12 pad-adjust">
@@ -68,14 +69,14 @@
 
                                                 <div class="row abs-center ">
                                                       <div class="col-md-6 pad-adjust">
-                                                          <input type="text" class="form-control" placeholder="Ingrese Digitos" />
-                                                      </div>
+                                                          {{JugadaForm.digitos}}
+                                                        </div>
                                                 </div>
 
                                                   <br>
                                                <div class="row  ">
                                                     <div class="col abs-center ">
-                                                         <input type="submit"  class="btn btn-danger" value="Limpiar" />
+                                                         <input type="reset"  class="btn btn-danger" value="Limpiar" />
                                                          <input type="submit"  class="btn btn-warning " value="Guardar" />
                                                       </div>
                                                 </div>

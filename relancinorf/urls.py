@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from login import views as vistasLogin #Para cambiar el nombre
 
 app_name="relancito"
 urlpatterns = [
@@ -23,9 +22,13 @@ urlpatterns = [
     #Administrador Django
     path('admin/', admin.site.urls),
 
-    path('', include('principal.urls')),
-    path('', include('juegos.urls')),
-    path('login/', include('login.urls')),
-    path('logout/', vistasLogin.Logout.as_view() ,name="logout"),
+    path('', include('aplicaciones.principal.urls')),
+    path('', include('aplicaciones.juegos.urls')),
+    path('', include('aplicaciones.juegos.api.urls')),
+    path('', include('aplicaciones.login.urls')),
     #path('login', include('login.urls')),
+
+
+    #Para las apis
+    path('api-auth/', include('rest_framework.urls'))
 ]

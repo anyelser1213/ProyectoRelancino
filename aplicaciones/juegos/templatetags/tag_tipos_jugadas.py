@@ -1,7 +1,7 @@
 from django import template
 from atexit import register
 
-from juegos.models import *
+from aplicaciones.juegos.models import *
 
 register = template.Library()
 

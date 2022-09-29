@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from juegos.models import Jugada, TipoJugadas
+from .models import Jugada, TipoJugadas
 
 # Register your models here.
 
