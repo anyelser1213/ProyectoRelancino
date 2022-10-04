@@ -11,13 +11,18 @@ var jugadas_activas = [];
 function verificar_max_min_campo_digitos(tipo){
 
     //console.log("Probando todo");
+    console.clear();
+    //console.log(jugadas_activas);
+    
     //console.log(tipo);
-    //console.log(tipo.value);
+    //console.log("valor: ",tipo.value);
     //console.log(tipo.id);
 
     //console.log(tipo.checked);
     
     if(tipo.checked){//En caso de que sea true se verifica y entramos aqui
+        //input_digito.
+        document.getElementById("id_digitos").focus();
 
         if(jugadas_activas.length == 0){
             //En caso de que el arrays no tenga ningun elemento agregamos aqui
@@ -34,7 +39,7 @@ function verificar_max_min_campo_digitos(tipo){
 
             if(jugadas_activas.indexOf(tipo.id) == -1){//En caso de que no este el eLlemento en el arrays
 
-                console.log("Este elemento NO existe en el arrays");
+                //console.log("Este elemento NO existe en el arrays");
                 jugadas_activas.push(tipo.id);
 
                 if(tipo.value >= cantidad_maxima){
@@ -56,40 +61,69 @@ function verificar_max_min_campo_digitos(tipo){
     
     }else{//En caso de que sea false desactivamos y verificamos
 
-        console.log("quitando seleccion y la cantidad es: ",cantidad_maxima);
-        console.log("Este elemento existe en el arrays");
+        console.log(jugadas_activas);
         eliminar = jugadas_activas.indexOf(tipo.id);
-        jugadas_activas.splice(eliminar, 1)
+        jugadas_activas.splice(eliminar, 1);
+        console.log(jugadas_activas);
+        
 
         if(jugadas_activas.length == 0){
 
             cantidad_maxima = 0;
             input_digito.setAttribute("maxlength",cantidad_maxima);
+            cantidad_maxima = 0;
+
+            var temporal = input_digito.value;
+            //console.log("quitando seleccion y la cantidad es: ",cantidad_maxima);
+            input_digito.value =temporal.substring(0,cantidad_maxima);
+            
+            
 
         }else{
 
-            for (let i = 0; i < jugadas_activas.length; i++) {
+            document.getElementById("id_digitos").focus();
+            let auxiliar = document.getElementById(''+jugadas_activas[0]);
+            let auxiliar2 = auxiliar.value;
+            console.log("Cantidad Maxima Actualmente: ",cantidad_maxima);
+            for (let i = 1; i < jugadas_activas.length; i++) {
 
-                let auxiliar = document.getElementById(jugadas_activas[i]);
-                console.log(auxiliar);
-                console.log("tipo jugada: ",auxiliar.id," value: ",auxiliar.value);
+                auxiliar = document.getElementById(''+jugadas_activas[i]);
 
-                if(cantidad_maxima > auxiliar.value){
-                    cantidad_maxima = auxiliar.value;
-                    input_digito.setAttribute("maxlength",cantidad_maxima);
-                }//Fin del if
-                //const element = array[index];
+
+                if(auxiliar.value > auxiliar2 ){
+
+                    console.log("resultado value interno: ",auxiliar.value);
+                    console.log("Cantidad Maxima auxiliar jajaja: ",auxiliar2);
+                    auxiliar2 = auxiliar.value;
+                    
+
+                //Fin del if
+                }else{
+
+                    //No pasa nada aqui
+                }
+
                 
             }//fin del for
 
-        }
+            cantidad_maxima = auxiliar2;
+            var temporal = input_digito.value;
+            input_digito.value =temporal.substring(0,cantidad_maxima);
+
+            
+            
+
+        }//Fin de else
+
+
+        
 
         
 
 
         
 
-    }
+    }//fin del else principal
 
 
     
