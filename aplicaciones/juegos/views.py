@@ -3,6 +3,8 @@ from django.shortcuts import redirect, render
 #Clases para las plantillas
 from django.views.generic import TemplateView, CreateView, UpdateView, DetailView, ListView, DeleteView
 
+from aplicaciones.juegos.models import TipoJugadas
+
 from .form import JugadaForm
 
     
@@ -55,6 +57,7 @@ class IniciarJugada(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['informacion'] = "Hola..."
+        context['tipos_de_jugadas'] = TipoJugadas.objects.all()
         context['JugadaForm'] = JugadaForm()
         return context
 

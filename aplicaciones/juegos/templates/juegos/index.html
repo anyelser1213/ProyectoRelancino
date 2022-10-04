@@ -47,7 +47,6 @@
                                 <div class="card-body">
                                     
                                     <form action="#" class="credit-card-div abs-center">
-                                        <h1>{{informacion}} </h1>
                                         <div class="panel panel-default" >
                                             <div class="row  abs-center ">
                                                 <div class="col-md-12 pad-adjust">
@@ -60,8 +59,12 @@
                                              
                                                   <div class="row row-cols-3 ">
 
+                                                    {% for tipo_jugada in tipos_de_jugadas %}
+
+                                                        {% visualizar_tipos2 tipo_jugada  %}
+
+                                                    {% endfor %}
                                                     
-                                                    {% tipos_jugadas  %}
                                                         
 
                                                   </div>
