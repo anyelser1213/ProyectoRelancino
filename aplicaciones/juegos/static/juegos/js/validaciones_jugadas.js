@@ -4,8 +4,6 @@
 input_digito = document.getElementById("id_digitos");
 
 //Variables a usar
-var tipo_con_cantidad_mas_alta = "";
-var ultimo_tipo = "";
 var cantidad_maxima = 0;
 var jugadas_activas = [];
 
@@ -25,8 +23,10 @@ function verificar_max_min_campo_digitos(tipo){
             //En caso de que el arrays no tenga ningun elemento agregamos aqui
 
             jugadas_activas.push(tipo.id);
+            
+
             cantidad_maxima = tipo.value;
-            input_digito.setAttribute("max",cantidad_maxima);
+            input_digito.setAttribute("maxlength",cantidad_maxima);
 
 
         }else{//En caso de que tengamos elementos en el arrays ejecutamos aqui
@@ -40,7 +40,7 @@ function verificar_max_min_campo_digitos(tipo){
                 if(tipo.value >= cantidad_maxima){
                     //En caso de que el elemento tenga un valor mayor a la cantidad maxima ejecutamos
                     cantidad_maxima = tipo.value;
-                    input_digito.setAttribute("max",cantidad_maxima);
+                    input_digito.setAttribute("maxlength",cantidad_maxima);
 
                 }else{
                     //Dejamos el input igual
@@ -64,7 +64,7 @@ function verificar_max_min_campo_digitos(tipo){
         if(jugadas_activas.length == 0){
 
             cantidad_maxima = 0;
-            input_digito.setAttribute("max",cantidad_maxima);
+            input_digito.setAttribute("maxlength",cantidad_maxima);
 
         }else{
 
@@ -76,7 +76,7 @@ function verificar_max_min_campo_digitos(tipo){
 
                 if(cantidad_maxima > auxiliar.value){
                     cantidad_maxima = auxiliar.value;
-                    input_digito.setAttribute("max",cantidad_maxima);
+                    input_digito.setAttribute("maxlength",cantidad_maxima);
                 }//Fin del if
                 //const element = array[index];
                 
@@ -96,6 +96,21 @@ function verificar_max_min_campo_digitos(tipo){
     console.log(jugadas_activas);
 
     
+}
+
+
+function valideKey(evt){
+    
+    // code is the decimal ASCII representation of the pressed key.
+    var code = (evt.which) ? evt.which : evt.keyCode;
+    
+    if(code==8) { // backspace.
+      return true;
+    } else if(code>=48 && code<=57) { // is a number.
+      return true;
+    } else{ // other keys.
+      return false;
+    }
 }
 
 

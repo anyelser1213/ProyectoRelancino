@@ -5,7 +5,7 @@ from django.db import models
 class TipoJugadas(models.Model):
 
     nombre = models.CharField(max_length=30,unique=True)
-    cantidad_digitos = models.PositiveIntegerField()
+    cantidad_digitos = models.CharField(max_length=30)
     estado_jugada = models.BooleanField(default=False)
     monto_jugada = models.FloatField(default=0)
     cantidad_maxima_repeticion = models.PositiveIntegerField(default=0)

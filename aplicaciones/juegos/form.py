@@ -9,7 +9,7 @@ from .models import *
 
 
 class JugadaForm(forms.Form):
-    digitos = forms.IntegerField(
+    digitos = forms.CharField(
                      help_text = "Ingresa Numeros"
                      )
     #texto = forms.CharField(max_length=500)
@@ -18,7 +18,7 @@ class JugadaForm(forms.Form):
         super(JugadaForm, self).__init__(*args, **kwargs)
         print("entramos en formulario JugadaForm")
         self.fields['digitos'].widget.attrs.update({
-            'class': 'form-control','placeholder':'Ingrese Digitos', 'max':1,'min':1 })
+            'class': 'form-control','placeholder':'Ingrese Digitos','maxlength':0,'pattern':'[0-9]+','onkeypress':'return valideKey(event);' })
     #description = forms.CharField()
 
 
