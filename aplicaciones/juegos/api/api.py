@@ -19,6 +19,12 @@ def jugada_api_view(request):
     elif request.method == 'POST':
 
         print("datos",request.data)
+        print("datos tipos:  ",request.data.get('tipos'))
+
+        tipos = request.data.get('tipos')
+        print(tipos)
+        for i in tipos:
+            print("Prueba: ",i)
         #jugada_serializer = JugadaSerializer(data = request.data) #De json a objeto otra ves y guardamos
         
         data = {
