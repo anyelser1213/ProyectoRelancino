@@ -18,7 +18,7 @@ class JugadaForm(forms.Form):
         super(JugadaForm, self).__init__(*args, **kwargs)
         print("entramos en formulario JugadaForm")
         self.fields['digitos'].widget.attrs.update({
-            'class': 'form-control','placeholder':'Ingrese Digitos','value':'0','maxlength':0,'pattern':'[0-9]+','onkeypress':'return valideKey(event);' })
+            'class': 'form-control','placeholder':'Ingrese Digitos','maxlength':0,'pattern':'[0-9]+','onkeypress':'return valideKey(event);' })
     #description = forms.CharField()
 
 

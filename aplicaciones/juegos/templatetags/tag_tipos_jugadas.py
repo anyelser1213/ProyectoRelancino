@@ -36,26 +36,6 @@ def visualizar_tipos2(elemento):
 
 
 
-    try:
-
-        pass
-
-    except:
-
-        pass
-        #os.path.exists es para saber si existe la ruta
-        #print(os.path.exists(os.path.join(settings.MEDIA_ROOT)+"/videos/zulia/enero/"))
-        #print("No existe la ruta aqui")
-
-
-
-
-
-
-
-
-
-
 
 
     #ruta = "videos/"+categoria_nombre+"/"+subcategoria_nombre

@@ -5,6 +5,7 @@ input_digito = document.getElementById("id_digitos");
 
 //Variables a usar
 var cantidad_maxima = 0;
+var cantidad_minima = 0;
 var jugadas_activas = [];
 
 
@@ -31,7 +32,11 @@ function verificar_max_min_campo_digitos(tipo){
             
 
             cantidad_maxima = tipo.value;
+            //cantidad_minima = tipo.value;
             input_digito.setAttribute("maxlength",cantidad_maxima);
+            input_digito.setAttribute("minlength",cantidad_maxima);
+            console.log("Entramos aqiu",cantidad_minima);
+            
 
 
         }else{//En caso de que tengamos elementos en el arrays ejecutamos aqui
@@ -46,11 +51,17 @@ function verificar_max_min_campo_digitos(tipo){
                     //En caso de que el elemento tenga un valor mayor a la cantidad maxima ejecutamos
                     cantidad_maxima = tipo.value;
                     input_digito.setAttribute("maxlength",cantidad_maxima);
+                    input_digito.setAttribute("minlength",cantidad_maxima);
 
-                }else{
-                    //Dejamos el input igual
                 }
+                /*
+                if(tipo.value < cantidad_minima){
+                    //En caso de que el elemento tenga un valor mayor a la cantidad maxima ejecutamos
+                    cantidad_minima = tipo.value;
+                    input_digito.setAttribute("minlength",cantidad_minima);
 
+                }
+                */
 
             }//Fin del if 
 
@@ -71,10 +82,10 @@ function verificar_max_min_campo_digitos(tipo){
 
             cantidad_maxima = 0;
             input_digito.setAttribute("maxlength",cantidad_maxima);
-            cantidad_maxima = 0;
+            input_digito.setAttribute("minlength",cantidad_maxima);
 
             var temporal = input_digito.value;
-            //console.log("quitando seleccion y la cantidad es: ",cantidad_maxima);
+            console.log("Sin elementos");
             input_digito.value =temporal.substring(0,cantidad_maxima);
             
             
@@ -85,6 +96,7 @@ function verificar_max_min_campo_digitos(tipo){
             let auxiliar = document.getElementById(''+jugadas_activas[0]);
             let auxiliar2 = auxiliar.value;
             console.log("Cantidad Maxima Actualmente: ",cantidad_maxima);
+
             for (let i = 1; i < jugadas_activas.length; i++) {
 
                 auxiliar = document.getElementById(''+jugadas_activas[i]);
@@ -109,6 +121,9 @@ function verificar_max_min_campo_digitos(tipo){
             cantidad_maxima = auxiliar2;
             var temporal = input_digito.value;
             input_digito.value =temporal.substring(0,cantidad_maxima);
+            input_digito.setAttribute("maxlength",cantidad_maxima);
+            input_digito.setAttribute("minlength",cantidad_maxima);
+
 
             
             
