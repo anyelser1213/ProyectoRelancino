@@ -21,7 +21,7 @@ from django.db.models.signals import pre_save, post_save, pre_delete, post_delet
 
 class UsuarioManager(BaseUserManager):
 
-    def create_user(self,email,username,password=None,admin = False,is_superuser =False,plan_elegido="gratis"):
+    def create_user(self,username,password=None,admin = False,is_superuser =False,plan_elegido="gratis"):
         print("Creamos Usuario Normal")
         #if not email:
         #    raise ValueError('El usuario debe tener un correo electronico')
@@ -29,7 +29,7 @@ class UsuarioManager(BaseUserManager):
         usuario = self.model(
             
             username = username,
-            email = self.normalize_email(email),
+            #email = self.normalize_email(email),
             password = password,
             #rol = rol,
             admin =admin,
@@ -46,11 +46,11 @@ class UsuarioManager(BaseUserManager):
     
 
     #Funcion para usuario administrador
-    def create_superuser(self,email,username,password,admin = True,is_superuser = True):
+    def create_superuser(self,username,password,admin = True,is_superuser = True):
         print("Creamos superusuario")
 
         usuario = self.create_user(
-            email = email,  
+            #email = email,  
             username = username,
             #rol = rol,
             #plan_elegido = plan_elegido,
@@ -97,7 +97,7 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
     username = models.CharField("Username",max_length=200,unique=True)
     nombres = models.CharField("Nombres",max_length=200,blank=True, null=True) 
     apellidos = models.CharField("Apellidos",max_length=200,blank=True, null=True) 
-    email = models.EmailField("Correo Electronico",max_length=150, unique=True)
+    #email = models.EmailField("Correo Electronico",max_length=150, unique=True)
     #empresa = models.ForeignKey(Empresa,on_delete=models.CASCADE,blank=True, null=True)
     activo = models.BooleanField(default=True)#Para poder ingresar al sistema  
     is_superuser = models.BooleanField(default=False)#Este es superusuario
@@ -123,7 +123,7 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
     objects = UsuarioManager()
 
     USERNAME_FIELD = 'username'  #Para estableccer este campo como unico
-    REQUIRED_FIELDS = ['email','is_superuser'] # Campos obligatorios(los pide cuando los creas por consola)
+    REQUIRED_FIELDS = ['is_superuser'] # Campos obligatorios(los pide cuando los creas por consola)
 
     def __str__(self):
         return f'Usuario {self.username}'

@@ -12,7 +12,7 @@ admin.site.site_title = 'Relancino Loteria'
 
 class UserAdmin(BaseUserAdmin):
     
-    ordering = ('email',)
+    ordering = ('username',)
     
     #Aqui es cuando se va a editar
     fieldsets = (
@@ -28,7 +28,7 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         ("Informacion Obligatoria", {
             'classes': ('wide',),
-            'fields': ('username','email', 'password1', 'password2'),
+            'fields': ('username', 'password1', 'password2'),
         }),
         ("Informacion Importante", {
             'classes': ('wide',),
@@ -43,12 +43,12 @@ class UserAdmin(BaseUserAdmin):
 
 
     #Para indicarle al admin que campos queremos mostrar
-    list_display = ('id','username', 'email','is_superuser','admin','activo','fecha_creacion','ultimo_ingreso')
+    list_display = ('id','username','is_superuser','admin','activo','fecha_creacion','ultimo_ingreso')
     #list_display = ('username', 'email','is_superuser','admin','rol','plan_elegido')
-    list_filter = ('username','email','activo')
+    list_filter = ('username','activo')
     
     #Para especificar que campos van a efectuar la busqueda
-    search_fields = ('username', 'nombres', 'apellidos', 'email')
+    search_fields = ('username', 'nombres', 'apellidos')
     filter_horizontal = ()
 
 

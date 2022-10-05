@@ -7,8 +7,23 @@ register = template.Library()
 
 
 
+@register.simple_tag
+def visualizar_tipos(tipo): # Only one argument.
+    
+    
+    print("El tipo insertado es: ",tipo)
+    respuesta = TipoJugadas.objects.get(nombre=tipo.nombre)
+    print("respuestas: ",respuesta)
+    #return Video.objects.all()
+    return respuesta
+
+
+
+
+
+
 @register.inclusion_tag('juegos/tipos_de_juegos.html')
-def tipos_jugadas():
+def visualizar_tipos2(elemento):
 
     #print("La categoria insertada es: ", categoria_nombre," y el mes es: ",subcategoria_nombre)
     
@@ -16,21 +31,6 @@ def tipos_jugadas():
     existen = False
     #print("Probando aqui:",videos," cantidad: ",videos.count())
     archivos = [] #Creamos la lista
-    try:
-
-        print("Probando aqui")
-
-    except:
-
-        pass
-        #os.path.exists es para saber si existe la ruta
-        #print(os.path.exists(os.path.join(settings.MEDIA_ROOT)+"/videos/zulia/enero/"))
-        #print("No existe la ruta aqui")
-
-
-
-
-
 
 
 
@@ -41,6 +41,6 @@ def tipos_jugadas():
     #ruta = "videos/"+categoria_nombre+"/"+subcategoria_nombre
     return {
         'existe':existen,
-        #'archivos':archivos,
+        'tipo_jugada':elemento,
         #'ruta':"/media/"+categoria_nombre+"/"+subcategoria_nombre+"/"
     }

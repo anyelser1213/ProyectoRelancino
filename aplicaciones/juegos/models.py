@@ -1,11 +1,13 @@
+from contextlib import nullcontext
 from django.db import models
+from aplicaciones.usuarios.models import Usuarios
 
 # Create your models here.
 
 class TipoJugadas(models.Model):
 
     nombre = models.CharField(max_length=30,unique=True)
-    cantidad_digitos = models.PositiveIntegerField()
+    cantidad_digitos = models.CharField(max_length=30)
     estado_jugada = models.BooleanField(default=False)
     monto_jugada = models.FloatField(default=0)
     cantidad_maxima_repeticion = models.PositiveIntegerField(default=0)
@@ -20,9 +22,9 @@ class TipoJugadas(models.Model):
 
 class Jugada(models.Model):
 
-    #nombre_jugada = models.ForeignKey(TipoJugadas, on_delete=models.CASCADE)
-    nombre_usuario = models.CharField(max_length=30,unique=True)
-    digitos = models.IntegerField(unique=True)
+    nombre_jugada = models.ForeignKey(TipoJugadas, on_delete=models.CASCADE)
+    nombre_usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
+    digitos = models.PositiveIntegerField(blank=False, null=False)
     repetidor = models.PositiveIntegerField(default=0)
     fecha_creacion = models.DateTimeField(auto_now_add=True) 
 
