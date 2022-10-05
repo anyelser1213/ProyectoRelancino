@@ -1,3 +1,4 @@
+from contextlib import nullcontext
 from django.db import models
 from aplicaciones.usuarios.models import Usuarios
 
@@ -23,7 +24,7 @@ class Jugada(models.Model):
 
     nombre_jugada = models.ForeignKey(TipoJugadas, on_delete=models.CASCADE)
     nombre_usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
-    digitos = models.IntegerField(unique=True)
+    digitos = models.PositiveIntegerField(blank=False, null=False)
     repetidor = models.PositiveIntegerField(default=0)
     fecha_creacion = models.DateTimeField(auto_now_add=True) 
 
