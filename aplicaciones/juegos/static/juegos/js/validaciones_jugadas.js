@@ -1,7 +1,7 @@
 
 
 //Tomar input de digitos
-input_digito = document.getElementById("id_digitos");
+var input_digito = document.getElementById("id_digitos");
 
 //Variables a usar
 var cantidad_maxima = 0;

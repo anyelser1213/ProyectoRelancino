@@ -46,7 +46,8 @@
                                 </div>
                                 <div class="card-body">
                                     
-                                    <form action="#" class="credit-card-div abs-center">
+                                    <form action="#" class="credit-card-div abs-center" id="FormJugadas" method="post">
+                                        {% csrf_token %}
                                         <div class="panel panel-default" >
                                             <div class="row  abs-center ">
                                                 <div class="col-md-12 pad-adjust">
@@ -75,12 +76,14 @@
                                                           {{JugadaForm.digitos}}
                                                         </div>
                                                 </div>
-
-                                                  <br>
+                                                    <br>
+                                                    <div class="d-none alert alert-danger" id="MensajeAdvertencia" role="alert">
+                                                        Mensaje Subliminal
+                                                    </div>
                                                <div class="row  ">
                                                     <div class="col abs-center ">
                                                          <input type="reset"  class="btn btn-danger" value="Limpiar" />
-                                                         <input type="submit"  class="btn btn-warning " value="Guardar" />
+                                                         <input type="submit"  class="btn btn-warning " value="Guardar" id="GuardarJugadas" />
                                                       </div>
                                                 </div>
                                              
@@ -109,6 +112,8 @@
 
     {% block EnlacesListado_js %}
 
+        <script src="{% static 'juegos/js/cookiesDjango.js' %}" type="module"></script>
        <script src="{% static 'juegos/js/validaciones_jugadas.js' %}"></script>
+       <script src="{% static 'juegos/js/api_jugadas.js' %}" type="module"></script>
 
     {% endblock %}

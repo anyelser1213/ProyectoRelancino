@@ -9,6 +9,7 @@ from .models import *
 
 
 class JugadaForm(forms.Form):
+    
     digitos = forms.CharField(
                      help_text = "Ingresa Numeros"
                      )
