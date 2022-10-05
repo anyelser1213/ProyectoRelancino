@@ -88,12 +88,12 @@ class UsuariosForm(UserCreationForm):
         #fields = "__all__"
         #fields = ["username","nombres","apellidos","email","compañia","cedula","direccion","rol","telefono","imagen","is_superuser","admin"]
         #fields = ["username","apellidos","email","direccion","rol","telefono","imagen"]
-        fields = ["username","apellidos","email"]
+        fields = ["username","apellidos"]
         widgets = {
             #"creado_por": forms.Select(attrs={'class': 'form-control' }),
             "username": forms.TextInput(attrs={'class': 'browser-default ', 'placeholder':'Enter username' }),
             #"nombres": forms.TextInput(attrs={'class': 'form-control ', 'placeholder':'Enter name' }),
-            "email": forms.EmailInput(attrs={'class': 'browser-default' , 'placeholder':'Enter email'}),
+            #"email": forms.EmailInput(attrs={'class': 'browser-default' , 'placeholder':'Enter email'}),
             "apellidos": forms.TextInput(attrs={'class': 'browser-default ', 'placeholder':'Enter full name' }),
             #"cedula": forms.NumberInput(attrs={'class': 'form-control ', 'placeholder':'Enter DNI' }),
             #"compañia": forms.Select(attrs={'class': 'form-control' }),
@@ -116,12 +116,12 @@ class UsuariosForm(UserCreationForm):
             raise forms.ValidationError('El nombre de usuario ya esta en usooooo.')
         return username
 
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        email_taken = Usuarios.objects.filter(email=email).exists()
-        if email_taken:
-            raise forms.ValidationError('El email ya esta en uso.')
-        return email
+    #def clean_email(self):
+    #    email = self.cleaned_data['email']
+    #    email_taken = Usuarios.objects.filter(email=email).exists()
+    #    if email_taken:
+    #        raise forms.ValidationError('El email ya esta en uso.')
+    #    return email
 
     
     def clean_password2(self):

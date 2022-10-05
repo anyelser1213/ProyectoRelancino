@@ -35,18 +35,23 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
             
         }else{
 
+            console.clear();
             //Aqui lo primero es tomar el formulario
             var FormularioJugadas = document.getElementById("FormJugadas");
             var formData = new FormData(FormularioJugadas);
 
 
 
-            var data = {username: 'example'};
+            var data = {"tipos": 
+                jugadas_activas,
+                'digitos': formData.get('digitos')};
 
-            console.log("formulario: ",formData);
-            console.log("formulario digitos: ",formData.get('digitos'));
-            console.log("tipos: ",jugadas_activas);
-            console.log("tipos: ",jugadas_activas.length);
+            //console.log("formulario: ",formData);
+            //console.log("formulario digitos: ",formData.get('digitos'));
+            //console.log("tipos: ",jugadas_activas);
+            //console.log("tipos: ",jugadas_activas.length);
+
+            //console.log("data: ",data);
             
 
             //AQUI ES CUANDO ES POST

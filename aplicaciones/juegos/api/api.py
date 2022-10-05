@@ -10,7 +10,6 @@ from aplicaciones.juegos.api.serializers import JugadaSerializer
 @api_view(['GET','POST'])
 def jugada_api_view(request):
 
-    print("su madre jaja",request.data)
 
     if request.method == 'GET':
         jugadas = Jugada.objects.all()
@@ -19,7 +18,7 @@ def jugada_api_view(request):
     
     elif request.method == 'POST':
 
-        print(request.data)
+        print("datos",request.data)
         #jugada_serializer = JugadaSerializer(data = request.data) #De json a objeto otra ves y guardamos
         
         data = {
