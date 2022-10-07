@@ -96,6 +96,13 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
     }//Fin del else de las condiciones
 
 
+    //Aqui reseteamos el formulario
+    var formulario = document.getElementById("FormJugadas");
+    formulario.reset();
+    cantidad_maxima =0;
+    jugadas_activas = [];
+
+
     
 
    // AQUI ES CUANDO ES GET

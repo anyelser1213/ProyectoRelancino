@@ -22,14 +22,14 @@ class TipoJugadas(models.Model):
 
 class Jugada(models.Model):
 
-    nombre_jugada = models.ForeignKey(TipoJugadas, on_delete=models.CASCADE)
-    nombre_usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
+    id_tipo_jugada = models.ForeignKey(TipoJugadas, on_delete=models.CASCADE)
+    id_usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
     digitos = models.PositiveIntegerField(blank=False, null=False)
     repetidor = models.PositiveIntegerField(default=0)
     fecha_creacion = models.DateTimeField(auto_now_add=True) 
 
     def __str__(self):
-         return "Digitos: "+str(self.digitos)+" Usuario: "+self.nombre_usuario
+         return "Digitos: "+str(self.digitos)+" Usuario: "+str(self.id_usuario)
 
     class Meta:
 
