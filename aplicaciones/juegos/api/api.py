@@ -61,11 +61,13 @@ def jugada_api_view(request):
         
         #jugada_serializer = JugadaSerializer(data = request.data) #De json a objeto otra ves y guardamos
         
+
         data = {
         "name": "Vaibhav",
         "age": 20,
         "hobbies": ["Coding", "Art", "Gaming", "Cricket", "Piano"]
-    }
+        }
+        print("El tipo de dato es: ",type(data))
 
         return JsonResponse(data,safe = False)
         #return HttpResponse(json.dumps(data), content_type = "application/json")

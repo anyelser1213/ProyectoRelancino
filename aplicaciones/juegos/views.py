@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 #Clases para las plantillas
 from django.views.generic import TemplateView, CreateView, UpdateView, DetailView, ListView, DeleteView
 
-from aplicaciones.juegos.models import TipoJugadas
+from aplicaciones.juegos.models import TipoJugadas, Jugada
 
 from .form import JugadaForm
 
@@ -59,6 +59,35 @@ class IniciarJugada(TemplateView):
         context['informacion'] = "Hola..."
         context['tipos_de_jugadas'] = TipoJugadas.objects.all()
         context['JugadaForm'] = JugadaForm()
+        return context
+
+    
+
+
+class ConsultarJugada(TemplateView):
+
+    template_name = "juegos/consultar_jugada.html"
+
+    def dispatch(self, request, *args, **kwargs):
+
+        if request.user.is_anonymous:
+            print("No estas autenticado, eres un usuario anonimo")
+            return redirect("login:login")
+
+        else:
+
+            print("Entramos en ConsultarJugada")
+            
+
+            
+            #empresa_creada = Empresa.objects.filter(creado_por_id=request.user.id)
+
+
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['jugadas'] = Jugada.objects.all()
         return context
 
 

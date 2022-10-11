@@ -11,6 +11,8 @@ urlpatterns = [
     
     path('iniciarJugada', views.IniciarJugada.as_view() ,name="iniciarJugada"),
 
+    path('consultarJuegos', views.ConsultarJugada.as_view() ,name="consultarJugada"),
+
 
 
     

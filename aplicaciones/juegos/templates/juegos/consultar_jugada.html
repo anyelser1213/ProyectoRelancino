@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load tag_tipos_jugadas %}
+{% block EnlacesPlantillas %}
+
+<link rel="stylesheet" href="{% static 'juegos/css/estilos.css' %}">
+
+
+    {% endblock %}
+
+
+
+
+
+{% block menu_superior %}
+      <!--Aqui se incluye el menu superior-->
+      {% include "menu_superior.html" %}
+    
+      {% endblock%}
+
+
+    
+    
+    
+
+    
+    {% block contenedor %} 
+
+    <div id="layoutSidenav">
+    
+        <!--Aqui se incluye el menu lateral-->
+        {% include "menu_dashboar.html" with tema="index" subtema=""   %}
+
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4 abs-center">Jugadas Actuales</h1>
+                    
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <!--<i class="fas fa-chart-area me-1"></i>-->
+                                </div>
+                                <div class="card-body">
+                                    
+                                    <h1>jajajaj</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+
+            
+        </div>
+
+
+    </div>
+            
+          
+    {% endblock %}
+
+
+    {% block EnlacesListado_js %}
+
+        <script src="{% static 'juegos/js/cookiesDjango.js' %}" type="module"></script>
+       <script src="{% static 'juegos/js/validaciones_jugadas.js' %}"></script>
+       <script src="{% static 'juegos/js/api_jugadas.js' %}" type="module"></script>
+
+    {% endblock %}
