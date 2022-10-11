@@ -52,21 +52,22 @@
                                         <thead>
                                           <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">First</th>
-                                            <th scope="col">Last</th>
-                                            <th scope="col">Handle</th>
+                                            <th scope="col">Tipo de Jugada</th>
+                                            <th scope="col">Usuario</th>
+                                            <th scope="col">Digito:</th>
+                                            <th scope="col">Repeticiones:</th>
                                           </tr>
                                         </thead>
                                         <tbody>
-                                            <h1>{{jugadas}}</h1>
                                             {% for jugada in jugadas %} 
                                                 <tr>
                                                 <th scope="row">{{forloop.counter}}</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
+                                                <td>{{ jugada.id_tipo_jugada.nombre }}</td>
+                                                <td>{{ jugada.id_usuario }}</td>
+                                                <td>{{ jugada.digitos }}</td>
+                                                <td>{{ jugada.repetidor }}</td>
                                               </tr>
-                                                <div class="col text-light"> {{ jugada.tipos_jugadas }} </div> 
+                                                <div class="col text-light">  </div> 
                                             {% endfor %}
 
                                         </tbody>
