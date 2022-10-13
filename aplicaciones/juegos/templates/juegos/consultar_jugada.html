@@ -436,47 +436,7 @@
 
 
 
-
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <!--<i class="fas fa-chart-area me-1"></i>-->
-                                </div>
-                                <div class="card-body">
-                                    
-                                    <table class="table">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Tipo de Jugada</th>
-                                            <th scope="col">Usuario</th>
-                                            <th scope="col">Digito:</th>
-                                            <th scope="col">Repeticiones:</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for jugada in jugadas %} 
-                                                <tr>
-                                                <th scope="row">{{forloop.counter}}</th>
-                                                <td>{{ jugada.id_tipo_jugada.nombre }}</td>
-                                                <td>{{ jugada.id_usuario }}</td>
-                                                <td>{{ jugada.digitos }}</td>
-                                                <td>{{ jugada.repetidor }}</td>
-                                              </tr>
-                                                <div class="col text-light">  </div> 
-                                            {% endfor %}
-
-                                        </tbody>
-                                      </table>
-                                      
-                                </div>
-                                <div class="card-header">
-                                    <!--<i class="fas fa-chart-area me-1"></i>-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </main>
 
