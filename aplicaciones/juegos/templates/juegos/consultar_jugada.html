@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% load tag_tipos_jugadas %}
+{% load tag_consultas_jugadas %}
 {% block EnlacesPlantillas %}
 
 <link rel="stylesheet" href="{% static 'juegos/css/estilos.css' %}">
@@ -88,12 +88,77 @@
                     <hr>
                     <div class=" container-fluid ">
 
-                        <div class="row filaGeneral mx-auto"  >
+                        <div class="row filaGeneral "  >
 
                             
                             
 
-                            <div class="col  columnasGeneral border-end " style="background-color:bslanchedalmond;">
+                            <div class="col  columnasGeneral  " style="background-color:bslanchedalmond;">
+
+                                <div class="row abs-center ">
+                            
+                                    <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                                    <div class="col-3 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                                </div>
+                            
+                                {% for jugada in jugadas1 %} 
+
+                                
+                                <div class="row abs-center">
+
+                            
+                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                    <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                    {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
+                                </div>
+                                
+                                                
+                                {% endfor %}
+                            
+                            
+                            
+                            </div>
+
+
+                            
+
+                            
+
+                            <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
+
+                                <div class="row abs-center ">
+                            
+                                    <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                                    <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                                </div>
+
+                                {% for jugada in jugadas2 %} 
+
+                                
+                                <div class="row abs-center">
+
+                            
+                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                    <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                    {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
+                                </div>
+                                
+                                                
+                                {% endfor %}
+                            
+                            
+                            
+                            </div>
+
+                            <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
 
                                 <div class="row abs-center ">
                             
@@ -103,26 +168,27 @@
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
                                 </div>
                             
+
+                                {% for jugada in jugadas3 %} 
+
+                                
                                 <div class="row abs-center">
+
                             
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
+                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                    <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                    {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
                                 </div>
-                            
-                                <div class="row abs-center">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
-                                </div>
+                                
+                                                
+                                {% endfor %}
                             
                             
                             </div>
 
-                            <div class="col  columnasGeneral border-end " style="background-color:bslanchedalmond;">
+                            <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
 
                                 <div class="row abs-center ">
                             
@@ -131,27 +197,28 @@
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
                                 </div>
-                            
+
+                                {% for jugada in jugadas4 %} 
+
+                                
                                 <div class="row abs-center">
+
                             
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
+                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                    <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                    {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
                                 </div>
+                                
+                                                
+                                {% endfor %}
                             
-                                <div class="row abs-center">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
-                                </div>
                             
                             
                             </div>
 
-                            <div class="col  columnasGeneral border-end " style="background-color:bslanchedalmond;">
+                            <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
 
                                 <div class="row abs-center ">
                             
@@ -160,27 +227,28 @@
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
                                 </div>
-                            
+
+                                {% for jugada in jugadas5 %} 
+
+                                
                                 <div class="row abs-center">
+
                             
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
+                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                    <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                    {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
                                 </div>
+                                
+                                                
+                                {% endfor %}
                             
-                                <div class="row abs-center">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
-                                </div>
                             
                             
                             </div>
 
-                            <div class="col  columnasGeneral border-end " style="background-color:bslanchedalmond;">
+                            <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
 
                                 <div class="row abs-center ">
                             
@@ -189,27 +257,28 @@
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
                                 </div>
-                            
+
+                                {% for jugada in jugadas6 %} 
+
+                                
                                 <div class="row abs-center">
+
                             
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
+                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                    <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                    {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
                                 </div>
+                                
+                                                
+                                {% endfor %}
                             
-                                <div class="row abs-center">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
-                                </div>
                             
                             
                             </div>
 
-                            <div class="col  columnasGeneral border-end " style="background-color:bslanchedalmond;">
+                            <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
 
                                 <div class="row abs-center ">
                             
@@ -218,27 +287,28 @@
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
                                 </div>
-                            
+
+                                {% for jugada in jugadas7 %} 
+
+                                
                                 <div class="row abs-center">
+
                             
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
+                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                    <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                    {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
                                 </div>
+                                
+                                                
+                                {% endfor %}
                             
-                                <div class="row abs-center">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
-                                </div>
                             
                             
                             </div>
 
-                            <div class="col  columnasGeneral border-end " style="background-color:bslanchedalmond;">
+                            <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
 
                                 <div class="row abs-center ">
                             
@@ -247,27 +317,28 @@
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
                                 </div>
-                            
+
+                                {% for jugada in jugadas8 %} 
+
+                                
                                 <div class="row abs-center">
+
                             
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
+                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                    <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                    {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
                                 </div>
+                                
+                                                
+                                {% endfor %}
                             
-                                <div class="row abs-center">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
-                                </div>
                             
                             
                             </div>
 
-                            <div class="col  columnasGeneral border-end " style="background-color:bslanchedalmond;">
+                            <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
 
                                 <div class="row abs-center ">
                             
@@ -276,27 +347,29 @@
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
                                 </div>
-                            
+
+                                {% for jugada in jugadas9 %} 
+
+                                
                                 <div class="row abs-center">
+
                             
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
+                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                    <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                    {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
                                 </div>
+                                
+                                                
+                                {% endfor %}
                             
-                                <div class="row abs-center">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
-                                </div>
                             
                             
                             </div>
 
-                            <div class="col  columnasGeneral border-end " style="background-color:bslanchedalmond;">
+
+                            <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
 
                                 <div class="row abs-center ">
                             
@@ -305,83 +378,27 @@
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
                                     <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
                                 </div>
-                            
+
+                                {% for jugada in jugadas10 %} 
+
+                                
                                 <div class="row abs-center">
+
                             
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
+                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                    <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                    {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
                                 </div>
+                                
+                                                
+                                {% endfor %}
                             
-                                <div class="row abs-center">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
-                                </div>
                             
                             
                             </div>
 
-                            <div class="col  columnasGeneral border-end " style="background-color:bslanchedalmond;">
-
-                                <div class="row abs-center ">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
-                                </div>
-                            
-                                <div class="row abs-center">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
-                                </div>
-                            
-                                <div class="row abs-center">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
-                                </div>
-                            
-                            
-                            </div>
-
-                            <div class="col  columnasGeneral border-end " style="background-color:bslanchedalmond;">
-
-                                <div class="row abs-center ">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
-                                </div>
-                            
-                                <div class="row abs-center">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
-                                </div>
-                            
-                                <div class="row abs-center">
-                            
-                                    <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >1</p></div>
-                                    <div class="col-2 border" style="background-color:bluse;"><p class="numeroPrincipal">32</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">1</p></div>
-                                    <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">0.5</p></div>
-                                </div>
-                            
-                            
-                            </div>
 
 
 

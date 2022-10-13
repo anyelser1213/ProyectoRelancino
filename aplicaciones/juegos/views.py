@@ -87,7 +87,22 @@ class ConsultarJugada(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['jugadas'] = Jugada.objects.all()
+
+        #Por ahora pedimos 1000 datos
+        
+        print(Jugada.objects.all())
+
+        context['jugadas1'] = Jugada.objects.all().order_by('id')[0:100]
+        context['jugadas2'] = Jugada.objects.all().order_by('id')[101:200]
+        context['jugadas3'] = Jugada.objects.all().order_by('id')[201:300]
+        context['jugadas4'] = Jugada.objects.all().order_by('id')[301:400]
+        context['jugadas5'] = Jugada.objects.all().order_by('id')[401:500]
+        context['jugadas6'] = Jugada.objects.all().order_by('id')[501:600]
+        context['jugadas7'] = Jugada.objects.all().order_by('id')[601:700]
+        context['jugadas8'] = Jugada.objects.all().order_by('id')[701:800]
+        context['jugadas9'] = Jugada.objects.all().order_by('id')[801:900]
+        context['jugadas10'] = Jugada.objects.all().order_by('id')[901:1000]
+
         return context
 
 
