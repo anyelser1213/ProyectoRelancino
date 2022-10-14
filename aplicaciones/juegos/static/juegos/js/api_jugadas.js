@@ -39,7 +39,9 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
             //Aqui lo primero es tomar el formulario
             var FormularioJugadas = document.getElementById("FormJugadas");
             var formData = new FormData(FormularioJugadas);
-
+            MensajeSubliminal.classList.add("d-none"); //alert alert-success
+            MensajeSubliminal.innerHTML = "jajajtes<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
+    
 
 
             var data = {"tipos": 
@@ -70,13 +72,32 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
                 function(response){
 
                     return response.json();
+                    
                     //console.log(response.data);
                 }//fin de la funcion
 
             ).then(
                 function(data){
 
+                    MensajeSubliminal.classList.remove("d-none","alert-danger");
+                    MensajeSubliminal.classList.add("alert-primary"); //alert alert-success
+                    MensajeSubliminal.innerHTML = "Informacion:<br> ";
                     console.log("datos traidos desde la api: ",data);
+                    console.log("tipo de dato: ",typeof data);
+                    console.log("datos traidos desde la api: ",data['name']);
+
+
+                    //For para agregar los mensaje respectivos
+                    for (const element in data) {
+                        console.log(`${element}: ${data[element]}`);
+                        MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
+                      }
+
+
+
+
+
+
 
                 }//fin de la funcion
 
@@ -98,9 +119,10 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
     //Aqui reseteamos el formulario
     var formulario = document.getElementById("FormJugadas");
-    formulario.reset();
-    cantidad_maxima =0;
-    jugadas_activas = [];
+    //formulario.reset();
+    //cantidad_maxima =0;
+    //jugadas_activas = [];
+            
 
 
     

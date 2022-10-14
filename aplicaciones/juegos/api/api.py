@@ -23,6 +23,9 @@ def jugada_api_view(request):
         tipos = request.data.get('tipos')
         jugada = str(request.data.get('digitos'))
 
+        #Datos que enviaremos
+        datos = {}
+
         #posicion_index = tipos[0].find("_")
         #posicion_index +=1
         #print("Posicion : ",str(tipos[0]).find("_"))
@@ -45,31 +48,35 @@ def jugada_api_view(request):
             if jugada_actual.exists():
                 print("Ya existe esta jugada",jugada_actual)
                 jugada_actual = Jugada.objects.get(id_tipo_jugada=Elemento.id,id_usuario=request.user.id,digitos=str(jugada)[0:int(Elemento.cantidad_digitos)])
+                
+                #En caso de que no se pueda repetir
                 if jugada_actual.repetidor == Elemento.cantidad_maxima_repeticion:
+
                     print("No se puede ejecutar esta jugada porque alcanzo el limite de repeticiones")
+                    datos.update({str(Elemento):"No se ejecuto esta jugada porque se alcanzo el limite de repeticiones de esta jugada"})
+                
+                #En caso de que se pueda repetir
                 else:
-                    print("Ejecutando repeticion de la juhada")
+                    print("Ejecutando repeticion de la jugada")
+                    datos.update({str(Elemento):"Esta jugada ya existe y se creo una repeticion"})
                     jugada_actual.repetidor +=1
                     jugada_actual.save()
 
                 
             else:#En caso de que no exista la jugada
                 print("No existe ninguna jugada asi")
+                datos.update({str(Elemento):"Se creo esta jugada"})
                 CreandoJugada = Jugada(id_tipo_jugada=Elemento, id_usuario=request.user,digitos=str(jugada)[0:int(Elemento.cantidad_digitos)],repetidor=1)
                 CreandoJugada.save()
+
             print(jugada_actual)
         
         #jugada_serializer = JugadaSerializer(data = request.data) #De json a objeto otra ves y guardamos
         
 
-        data = {
-        "name": "Vaibhav",
-        "age": 20,
-        "hobbies": ["Coding", "Art", "Gaming", "Cricket", "Piano"]
-        }
-        print("El tipo de dato es: ",type(data))
+        #print("El tipo de dato es: ",type(datos))
 
-        return JsonResponse(data,safe = False)
+        return JsonResponse(datos,safe = False)
         #return HttpResponse(json.dumps(data), content_type = "application/json")
         
         data={'uno':1,'dos':2}
