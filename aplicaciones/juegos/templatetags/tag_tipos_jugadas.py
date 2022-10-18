@@ -11,9 +11,9 @@ register = template.Library()
 def visualizar_tipos(tipo): # Only one argument.
     
     
-    print("El tipo insertado es: ",tipo)
+    #print("El tipo insertado es: ",tipo)
     respuesta = TipoJugadas.objects.get(nombre=tipo.nombre)
-    print("respuestas: ",respuesta)
+    #print("respuestas: ",respuesta)
     #return Video.objects.all()
     return respuesta
 

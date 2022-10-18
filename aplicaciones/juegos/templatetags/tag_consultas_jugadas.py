@@ -11,9 +11,9 @@ register = template.Library()
 def monto_total(repeticion,monto): # Only one argument.
     
     
-    print("Datos insertados: ",repeticion,monto)
+    #print("Datos insertados: ",repeticion,monto)
     respuesta=repeticion*monto
-    print("respuestas: ",respuesta)
+    #print("respuestas: ",respuesta)
     #return Video.objects.all()
     return respuesta
 

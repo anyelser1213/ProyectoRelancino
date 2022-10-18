@@ -18,7 +18,29 @@ class TipoJugadasAdmin(admin.ModelAdmin):
 
     #Para indicar que campos seran editables
     list_editable = ('estado_jugada','hora_inicio','hora_cierre','fecha_cierre')#,'fecha_cierre'
+
+    #Con esto creamos los filtros
+    list_filter = ('estado_jugada','fecha_cierre','cantidad_digitos')
+
+    #Paginacion
+    list_per_page = 10
+
+
     ordering = ('cantidad_digitos','nombre',)
+
+
+    #Aqui es cuando se va a editar
+    fieldsets = (
+        #Aqui es para editar
+        ("Informacion Esencial", {'fields': ('nombre','cantidad_digitos')}),
+        ("Fecha", {
+            'classes': ('collapse','wide','extrapretty'),
+            'fields': ('estado_jugada','hora_inicio','hora_cierre','fecha_cierre'),
+        }),
+    )
+
+
+
 
 """
 
