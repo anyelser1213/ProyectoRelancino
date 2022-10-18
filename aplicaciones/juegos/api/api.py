@@ -46,11 +46,19 @@ def jugada_api_view(request):
             print("Para este elemento usamos solo: ",str(jugada)[0:int(Elemento.cantidad_digitos)])
             jugada_actual = Jugada.objects.filter(id_tipo_jugada=Elemento.id,id_usuario=request.user.id,digitos=str(jugada)[0:int(Elemento.cantidad_digitos)])
             if jugada_actual.exists():
-                print("Ya existe esta jugada",jugada_actual)
-                jugada_actual = Jugada.objects.get(id_tipo_jugada=Elemento.id,id_usuario=request.user.id,digitos=str(jugada)[0:int(Elemento.cantidad_digitos)])
                 
+                jugada_actual = Jugada.objects.get(id_tipo_jugada=Elemento.id,id_usuario=request.user.id,digitos=str(jugada)[0:int(Elemento.cantidad_digitos)])
+                print("Ya existe esta jugada",jugada_actual,"Bloquado",jugada_actual.bloquear_repetidor)
+                
+                #En caso de que tenga el bloqueador de repeticion
+                if jugada_actual.bloquear_repetidor == True:
+                    
+                    print("No se puede ejecutar esta jugada porque tiene bloqueador de repeticiones")
+                    datos.update({str(Elemento):"No se ejecuto esta jugada porque tiene bloqueador de repeticiones"})
+                
+
                 #En caso de que no se pueda repetir
-                if jugada_actual.repetidor == Elemento.cantidad_maxima_repeticion:
+                elif jugada_actual.repetidor == Elemento.cantidad_maxima_repeticion:
 
                     print("No se puede ejecutar esta jugada porque alcanzo el limite de repeticiones")
                     datos.update({str(Elemento):"No se ejecuto esta jugada porque se alcanzo el limite de repeticiones de esta jugada"})

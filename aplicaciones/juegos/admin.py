@@ -32,7 +32,7 @@ class TipoJugadasAdmin(admin.ModelAdmin):
     #Aqui es cuando se va a editar
     fieldsets = (
         #Aqui es para editar
-        ("Informacion Esencial", {'fields': ('nombre','cantidad_digitos')}),
+        ("Informacion Esencial", {'fields': ('nombre','cantidad_digitos','cantidad_maxima_repeticion')}),
         ("Fecha", {
             'classes': ('collapse','wide','extrapretty'),
             'fields': ('estado_jugada','hora_inicio','hora_cierre','fecha_cierre'),

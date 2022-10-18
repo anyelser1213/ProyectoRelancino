@@ -92,7 +92,7 @@ class IniciarJugada(TemplateView):
                 print(" ")
                 #print(Nombre_Categoria[Nombre_Categoria.index('_')+1:])
 
-                if fecha_hoy < tipo.fecha_cierre:
+                if fecha_hoy <= tipo.fecha_cierre:
 
                     if hora_hoy >= tipo.hora_inicio and hora_hoy < tipo.hora_cierre:
 

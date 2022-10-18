@@ -43,6 +43,7 @@ class Jugada(models.Model):
     id_usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
     digitos = models.PositiveIntegerField(blank=False, null=False)
     repetidor = models.PositiveIntegerField(default=0)
+    bloquear_repetidor = models.BooleanField(default=False)
     fecha_creacion = models.DateTimeField(auto_now_add=True) 
 
     def __str__(self):
