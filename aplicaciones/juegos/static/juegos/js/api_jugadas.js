@@ -4,12 +4,18 @@ import {csrftoken} from "./cookiesDjango.js";
 var BotonEnviarJugadas = document.getElementById("GuardarJugadas");
 var MensajeSubliminal = document.getElementById("MensajeAdvertencia");
 
+//Aqui lo primero es tomar el formulario
+var FormularioJugadas = document.getElementById("FormJugadas");
+
 
 
 //Escuchadores de eventos en javascript
 BotonEnviarJugadas.addEventListener('click',function(event) {
 
     event.preventDefault();
+
+    console.log(FormularioJugadas);
+    
 
 
 
@@ -35,9 +41,8 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
             
         }else{
 
-            console.clear();
-            //Aqui lo primero es tomar el formulario
-            var FormularioJugadas = document.getElementById("FormJugadas");
+            //console.clear();
+            
             var formData = new FormData(FormularioJugadas);
             MensajeSubliminal.classList.add("d-none"); //alert alert-success
             MensajeSubliminal.innerHTML = "jajajtes<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
@@ -79,12 +84,28 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
             ).then(
                 function(data){
 
-                    MensajeSubliminal.classList.remove("d-none","alert-danger");
-                    MensajeSubliminal.classList.add("alert-primary"); //alert alert-success
-                    MensajeSubliminal.innerHTML = "Informacion:<br> ";
-                    console.log("datos traidos desde la api: ",data);
-                    console.log("tipo de dato: ",typeof data);
-                    console.log("datos traidos desde la api: ",data['name']);
+                    //Esto es para saber la longitud del Json
+                    //Object.keys(data).length
+
+                    //En caso de que no haya ningun mensaje
+
+                    if(Object.keys(data).length == 0){
+
+                        console.log("No hay mensajes traidos de la api");
+                    
+                    }else{
+
+                        console.log("Hay mensajes traidos de la api",Object.keys(data).length);
+                        MensajeSubliminal.classList.remove("d-none","alert-danger");
+                        MensajeSubliminal.classList.add("alert-primary"); //alert alert-success
+                        MensajeSubliminal.innerHTML = "Informacion:<br> ";
+                        console.log("datos traidos desde la api: ",data);
+                        console.log("tipo de dato: ",typeof data);
+                        console.log("datos traidos desde la api: ",data['name']);
+
+                    }
+
+                    
 
 
                     //For para agregar los mensaje respectivos
@@ -96,7 +117,7 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
 
 
-
+                      FormularioJugadas.reset();
 
 
                 }//fin de la funcion

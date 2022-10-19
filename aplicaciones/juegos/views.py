@@ -132,6 +132,7 @@ class IniciarJugada(TemplateView):
         context['tipos_de_jugadas'] = Q1
         #context['tipos_de_jugadas'] = TipoJugadas.objects.all()
         context['JugadaForm'] = JugadaForm()
+        context['usuario'] = request.user.username
         return context
 
     

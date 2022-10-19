@@ -126,7 +126,7 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
     REQUIRED_FIELDS = ['is_superuser'] # Campos obligatorios(los pide cuando los creas por consola)
 
     def __str__(self):
-        return f'Usuario {self.username}'
+        return f' {self.username}'
     
     
     

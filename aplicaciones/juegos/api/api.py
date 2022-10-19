@@ -66,14 +66,14 @@ def jugada_api_view(request):
                 #En caso de que se pueda repetir
                 else:
                     print("Ejecutando repeticion de la jugada")
-                    datos.update({str(Elemento):"Esta jugada ya existe y se creo una repeticion"})
+                    #datos.update({str(Elemento):"Esta jugada ya existe y se creo una repeticion"})
                     jugada_actual.repetidor +=1
                     jugada_actual.save()
 
                 
             else:#En caso de que no exista la jugada
                 print("No existe ninguna jugada asi")
-                datos.update({str(Elemento):"Se creo esta jugada"})
+                #datos.update({str(Elemento):"Se creo esta jugada"})
                 CreandoJugada = Jugada(id_tipo_jugada=Elemento, id_usuario=request.user,digitos=str(jugada)[0:int(Elemento.cantidad_digitos)],repetidor=1)
                 CreandoJugada.save()
 

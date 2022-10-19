@@ -35,7 +35,7 @@ function verificar_max_min_campo_digitos(tipo){
             //cantidad_minima = tipo.value;
             input_digito.setAttribute("maxlength",cantidad_maxima);
             input_digito.setAttribute("minlength",cantidad_maxima);
-            console.log("Entramos aqiu",cantidad_minima);
+            console.log("Entramos aqui",cantidad_minima);
             
 
 
