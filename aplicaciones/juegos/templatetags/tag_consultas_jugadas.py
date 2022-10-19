@@ -21,5 +21,37 @@ def monto_total(repeticion,monto): # Only one argument.
 
 
 
+@register.inclusion_tag('juegos/botones_tipos_juegos.html')
+def crear_boton_tipos(elemento):
+
+    #print("La categoria insertada es: ", categoria_nombre," y el mes es: ",subcategoria_nombre)
+    
+    Tipos = TipoJugadas.objects.filter(nombre=str(elemento))
+    existen = False
+    print("Probando aqui:",Tipos," cantidad: ",Tipos.count())
+    archivos = [] #Creamos la lista
+
+
+
+
+
+
+
+    #ruta = "videos/"+categoria_nombre+"/"+subcategoria_nombre
+    return {
+        'existe':existen,
+        'tipo_jugada':elemento,
+        #'ruta':"/media/"+categoria_nombre+"/"+subcategoria_nombre+"/"
+    }
+
+
+
+
+
+
+
+
+
+
 
 

@@ -21,7 +21,7 @@ def visualizar_tipos(tipo): # Only one argument.
 
 
 
-
+"""
 @register.inclusion_tag('juegos/tipos_de_juegos.html')
 def visualizar_tipos2(elemento):
 
@@ -44,3 +44,5 @@ def visualizar_tipos2(elemento):
         'tipo_jugada':elemento,
         #'ruta':"/media/"+categoria_nombre+"/"+subcategoria_nombre+"/"
     }
+
+"""
