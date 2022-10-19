@@ -23,7 +23,7 @@ class Index(TemplateView):
 
         else:
 
-            print("Estas autenticado GENIAL")
+            print("Estas autenticado GENIAL",request.user)
             #print("usuario: ",request.user)
             #print("usuario permisos: ",request.user.get_all_permissions())
             #print(request.user.has_perm('src.ver_zulia'))

@@ -1,5 +1,3 @@
-
-from urllib import request
 from django.shortcuts import redirect, render
 from datetime import datetime
 
@@ -79,6 +77,7 @@ class IniciarJugada(TemplateView):
         
         print("hora hoy: ",hora_hoy)
         print("fecha hoy: ",fecha_hoy)
+        print(self.request.user)
 
         #jugada1 = TipoJugadas.objects.get(id=1)
         #print("nombre de jugada: ",jugada1)
@@ -132,7 +131,7 @@ class IniciarJugada(TemplateView):
         context['tipos_de_jugadas'] = Q1
         #context['tipos_de_jugadas'] = TipoJugadas.objects.all()
         context['JugadaForm'] = JugadaForm()
-        context['usuario'] = request.user.username
+        context['usuario'] = self.request.user.username
         return context
 
     
