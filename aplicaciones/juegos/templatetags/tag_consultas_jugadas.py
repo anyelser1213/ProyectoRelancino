@@ -24,7 +24,7 @@ def monto_total(repeticion,monto): # Only one argument.
 @register.inclusion_tag('juegos/botones_tipos_juegos.html')
 def crear_boton_tipos(elemento):
 
-    #print("La categoria insertada es: ", categoria_nombre," y el mes es: ",subcategoria_nombre)
+    print("Entramos en CREAR BOTON TIPOS")
     
     Tipos = TipoJugadas.objects.filter(nombre=str(elemento))
     existen = False
