@@ -5,11 +5,98 @@
 {% block EnlacesPlantillas %}
 
 <link rel="stylesheet" href="{% static 'juegos/css/estilos.css' %}">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
   
 
 
-    {% endblock %}
+    <script >
+
+        function getCookie(name) {
+                    var cookieValue = null;
+                    if (document.cookie && document.cookie !== '') {
+                        var cookies = document.cookie.split(';');
+                        for (var i = 0; i < cookies.length; i++) {
+                            var cookie = cookies[i].trim();
+                            // Does this cookie string begin with the name we want?
+                            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                break;
+                            }
+                        }
+                    }
+                    return cookieValue;
+        }
+
+        //Valor que  le pasaremos aa Django para la seguridad
+        var csrftoken = getCookie('csrftoken');
+       
+    
+    function ConsultarJugadas(tipo){
+
+        console.log("Iniciando aqui...",tipo.id);
+        var data = {'tipos': tipo.id};
+
+        fetch("consultarjugada/",{
+        method:"POST",
+        //body: formData,
+        body:JSON.stringify(data),
+        headers:{
+            'Content-Type': 'application/json',
+            "X-CSRFToken":csrftoken,
+            "X-Requestd-With":"XMLGttpRequest"//Con esto indicamos que es una peticion ajax
+        }
+
+    //Promesa de javascript
+    }).then(
+        function(response){
+
+            return response.json();
+            
+            //console.log(response.data);
+        }//fin de la funcion
+
+    ).then(
+        function(data){
+
+            //Esto es para saber la longitud del Json
+            //Object.keys(data).length
+
+            //En caso de que no haya ningun mensaje
+
+            if(Object.keys(data).length == 0){
+
+                console.log("No hay mensajes traidos de la api");
+            
+            }else{
+
+                console.log("Hay mensajes traidos de la api",Object.keys(data).length);
+
+
+                console.log("datos traidos desde la api: ",data);
+                console.log("tipo de dato: ",typeof data);
+                console.log("datos traidos desde la api: ",data['name']);
+
+            }
+
+            
+
+
+            //For para agregar los mensaje respectivos
+            for (const element in data) {
+                //console.log(`${element}: ${data[element]}`);
+                //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
+            }
+
+
+
+
+
+        }//fin de la funcion
+
+    ) //fin de then
+    }
+    </script>
+
+{% endblock %}
 
 
 
@@ -476,7 +563,6 @@
 
     {% block EnlacesListado_js %}
 
-    <script src="{% static 'juegos/js/cookiesDjango.js' %}" type="module"></script>
-    <script src="{% static 'juegos/js/consulta_jugadas.js' %}"></script>
+    
 
     {% endblock %}

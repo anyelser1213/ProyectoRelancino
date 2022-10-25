@@ -1,10 +1,10 @@
-import {csrftoken} from "./cookiesDjango.js";
+
 
 
 function ConsultarTipo(tipo){
 
     console.log("Probando jajaj",tipo.id);
-    var data = {'tipos': tipo.id};
+    //var data = {'tipos': tipo.id};
 
 
     //AQUI ES CUANDO ES POST
@@ -67,6 +67,12 @@ function ConsultarTipo(tipo){
         }//fin de la funcion
 
     ) //fin de then
-
+        
 
 }//Fin de la funcion ConsultarTipoJugada
+
+
+
+
+
+
