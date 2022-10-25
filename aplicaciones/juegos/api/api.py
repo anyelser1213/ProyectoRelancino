@@ -126,7 +126,7 @@ def consultarJugada_api_view(request):
     
     if request.method == 'POST':
 
-        print("datos",request.data, "Usuario: ",request.user.username,request.user.id)
+        print("datos",request.data, "Usuario: ",request.user.username, " Id:",request.user.id)
         #print("datos tipos:  ",request.data.get('tipos'))
         tipos = request.data.get('tipos')
 
@@ -137,10 +137,12 @@ def consultarJugada_api_view(request):
         #posicion_index +=1
         #print("Posicion : ",str(tipos[0]).find("_"))
         #print(tipos[0][posicion_index:])
+        tipo= TipoJugadas.objects.get(nombre=tipos)
 
-        #Elemento = TipoJugadas.objects.get(nombre=tipos[0][posicion_index:])
+        print("Generico:",tipo)
+        Elemento = Jugada.objects.filter(id_tipo_jugada=tipo,id_usuario=request.user.id)
         
-        print("Tipos Jugados: ",tipos)
+        print("Tipos Jugados: ",tipos," elementos:",Elemento)
         #print("Tipo jugada: ",Elemento," Cantidad: ",Elemento.cantidad_digitos)
         
 
