@@ -107,3 +107,43 @@ class JugadaApiView(APIView):
         jugadas_serializer = JugadaSerializer(jugadas,many=True)
         return Response(jugadas_serializer.data)
 """
+
+
+
+
+
+
+
+
+@api_view(['GET','POST'])
+def consultarJugada_api_view(request):
+
+
+    #if request.method == 'GET':
+    #    jugadas = Jugada.objects.all()
+    #    jugadas_serializer = JugadaSerializer(jugadas,many=True)
+    #    return Response(jugadas_serializer.data)
+    
+    if request.method == 'POST':
+
+        print("datos",request.data, "Usuario: ",request.user.username,request.user.id)
+        #print("datos tipos:  ",request.data.get('tipos'))
+        tipos = request.data.get('tipos')
+
+        #Datos que enviaremos
+        datos = {}
+
+        #posicion_index = tipos[0].find("_")
+        #posicion_index +=1
+        #print("Posicion : ",str(tipos[0]).find("_"))
+        #print(tipos[0][posicion_index:])
+
+        #Elemento = TipoJugadas.objects.get(nombre=tipos[0][posicion_index:])
+        
+        print("Tipos Jugados: ",tipos)
+        #print("Tipo jugada: ",Elemento," Cantidad: ",Elemento.cantidad_digitos)
+        
+
+        #print("El tipo de dato es: ",type(datos))
+
+        return JsonResponse(datos,safe = False)

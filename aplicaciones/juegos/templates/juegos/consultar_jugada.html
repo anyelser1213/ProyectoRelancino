@@ -476,6 +476,7 @@
 
     {% block EnlacesListado_js %}
 
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script src="{% static 'juegos/js/cookiesDjango.js' %}" type="module"></script>
+    <script src="{% static 'juegos/js/consulta_jugadas.js' %}"></script>
 
     {% endblock %}
