@@ -3,6 +3,7 @@
 
 function ConsultarTipo(tipo){
 
+    console.clear();
     console.log("Probando jajaj",tipo.id);
     //var data = {'tipos': tipo.id};
 
@@ -47,7 +48,7 @@ function ConsultarTipo(tipo){
 
                 console.log("datos traidos desde la api: ",data);
                 console.log("tipo de dato: ",typeof data);
-                console.log("datos traidos desde la api: ",data['name']);
+                //console.log("datos traidos desde la api: ",data['digitos']);
 
             }
 
