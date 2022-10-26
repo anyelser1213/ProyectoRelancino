@@ -33,6 +33,9 @@
     function ConsultarJugadas(tipo){
 
         console.log("Iniciando aqui...",tipo.id);
+        console.log("Monto: ",tipo.dataset.monto);
+
+
         var data = {'tipos': tipo.id};
 
         fetch("consultarjugada/",{
@@ -45,55 +48,254 @@
             "X-Requestd-With":"XMLGttpRequest"//Con esto indicamos que es una peticion ajax
         }
 
-    //Promesa de javascript
-    }).then(
-        function(response){
+        //Promesa de javascript
+        }).then(
+            function(response){
 
-            return response.json();
-            
-            //console.log(response.data);
-        }//fin de la funcion
+                return response.json();
+                
+                //console.log(response.data);
+            }//fin de la funcion
 
-    ).then(
-        function(data){
+        ).then(
+            function(data){
 
-            //Esto es para saber la longitud del Json
-            //Object.keys(data).length
+                //Esto es para saber la longitud del Json
+                //Object.keys(data).length
 
-            //En caso de que no haya ningun mensaje
+                //En caso de que no haya ningun mensaje
+                //console.clear();
+                if(Object.keys(data).length == 0){
 
-            if(Object.keys(data).length == 0){
-
-                console.log("No hay mensajes traidos de la api");
-            
-            }else{
-
-                console.log("Hay mensajes traidos de la api",Object.keys(data).length);
-
-
-                console.log("datos traidos desde la api: ",data);
-                console.log("tipo de dato: ",typeof data);
-                console.log("datos traidos desde la api: ",data['name']);
-
-            }
-
-            
+                    console.log("No hay mensajes traidos de la api");
+                     // Eliminando todos los hijos de un elemento
+                     var elemento  = document.getElementById("jugadas1");
+                     while (elemento.firstChild) {
+                         
+                         elemento.removeChild(elemento.firstChild);
+                     }
 
 
-            //For para agregar los mensaje respectivos
-            for (const element in data) {
-                //console.log(`${element}: ${data[element]}`);
-                //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
-            }
+                     //Div principal(ROW)
+                    var DivRow = document.createElement("div");
+                    DivRow.className += "row abs-center";
+
+                    //Div columnas(COL)
+                    var Divcol1 = document.createElement("div");
+                    Divcol1.className += "col-1 border";
+
+                    var Divcol2 = document.createElement("div");
+                    Divcol2.className += "col-3 border";
+
+                    var Divcol3 = document.createElement("div");
+                    Divcol3.className += "col-2 border";
+
+                    var Divcol4 = document.createElement("div");
+                    Divcol4.className += "col-2 border";
+                    
+
+                    //Parrafos
+                    var p1 = document.createElement("p");
+                    var p2 = document.createElement("p");
+                    var p3 = document.createElement("p");
+                    var p4 = document.createElement("p");
+                    p1.className += "consultaP letraPrincipal";
+                    p2.className += "consultaP letraPrincipal";
+                    p3.className += "consultaP letraPrincipal";
+                    p4.className += "consultaP letraPrincipal";
+                    p1.innerHTML = "#";
+                    p2.innerHTML = "Num";
+                    p3.innerHTML = "Rep";
+                    p4.innerHTML = "Mon";
+                    
+                    //Metemos dentro de la columna general el div Row
+                    elemento.appendChild(DivRow);
+
+                    //Metemos las columnas dentro del div row
+                    DivRow.appendChild(Divcol1); 
+                    DivRow.appendChild(Divcol2); 
+                    DivRow.appendChild(Divcol3); 
+                    DivRow.appendChild(Divcol4); 
+
+                    //Metemos los parrafos dentro de los div col
+                    Divcol1.appendChild(p1); 
+                    Divcol2.appendChild(p2); 
+                    Divcol3.appendChild(p3); 
+                    Divcol4.appendChild(p4);
 
 
 
 
 
-        }//fin de la funcion
 
-    ) //fin de then
-    }
+
+
+                
+                }else{
+
+                    console.log("Hay mensajes traidos de la api",Object.keys(data).length);
+
+
+                    console.log("datos traidos desde la api: ",data);
+                    console.log("tipo de dato: ",typeof data);
+                    //console.log("datos traidos desde la api: ",data['name']);
+
+                    // Eliminando todos los hijos de un elemento
+                    var elemento  = document.getElementById("jugadas1");
+                    while (elemento.firstChild) {
+                        
+                        elemento.removeChild(elemento.firstChild);
+                    }
+
+
+
+
+
+
+                    //Empezamos la creacion de los elemento
+                    /*
+                    <div class="row abs-center " id="Mensaje">
+                                
+                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                        <div class="col-3 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                    </div>
+                    */
+
+                    //Div principal(ROW)
+                    var DivRow = document.createElement("div");
+                    DivRow.className += "row abs-center";
+
+                    //Div columnas(COL)
+                    var Divcol1 = document.createElement("div");
+                    Divcol1.className += "col-1 border";
+
+                    var Divcol2 = document.createElement("div");
+                    Divcol2.className += "col-3 border";
+
+                    var Divcol3 = document.createElement("div");
+                    Divcol3.className += "col-2 border";
+
+                    var Divcol4 = document.createElement("div");
+                    Divcol4.className += "col-2 border";
+                    
+
+                    //Parrafos
+                    var p1 = document.createElement("p");
+                    var p2 = document.createElement("p");
+                    var p3 = document.createElement("p");
+                    var p4 = document.createElement("p");
+                    p1.className += "consultaP letraPrincipal";
+                    p2.className += "consultaP letraPrincipal";
+                    p3.className += "consultaP letraPrincipal";
+                    p4.className += "consultaP letraPrincipal";
+                    p1.innerHTML = "#";
+                    p2.innerHTML = "Num";
+                    p3.innerHTML = "Rep";
+                    p4.innerHTML = "Mon";
+                    
+                    //Metemos dentro de la columna general el div Row
+                    elemento.appendChild(DivRow);
+
+                    //Metemos las columnas dentro del div row
+                    DivRow.appendChild(Divcol1); 
+                    DivRow.appendChild(Divcol2); 
+                    DivRow.appendChild(Divcol3); 
+                    DivRow.appendChild(Divcol4); 
+
+                    //Metemos los parrafos dentro de los div col
+                    Divcol1.appendChild(p1); 
+                    Divcol2.appendChild(p2); 
+                    Divcol3.appendChild(p3); 
+                    Divcol4.appendChild(p4); 
+
+
+                    for (const element in data) {
+                        console.log(element);
+                        console.log("Elemento: ",`${element}`, "Digito: ", `${data[element].digitos}`, "Repeticion: ", `${data[element].repetidor}`);
+                        //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
+                    
+                    
+                        //Div principal(ROW)
+                    var DivRow = document.createElement("div");
+                    DivRow.className += "row abs-center";
+
+                    //Div columnas(COL)
+                    var Divcol1 = document.createElement("div");
+                    Divcol1.className += "col-1 border";
+
+                    var Divcol2 = document.createElement("div");
+                    Divcol2.className += "col-3 border";
+
+                    var Divcol3 = document.createElement("div");
+                    Divcol3.className += "col-2 border";
+
+                    var Divcol4 = document.createElement("div");
+                    Divcol4.className += "col-2 border";
+                    
+
+                    //Parrafos
+                    var p1 = document.createElement("p");
+                    var p2 = document.createElement("p");
+                    var p3 = document.createElement("p");
+                    var p4 = document.createElement("p");
+                    p1.className += "consultaP letraPrincipal";
+                    p2.className += "consultaP letraPrincipal";
+                    p3.className += "consultaP letraPrincipal";
+                    p4.className += "consultaP letraPrincipal";
+                    p1.innerHTML = "#";
+                    p2.innerHTML = data[element].digitos;
+                    p3.innerHTML = data[element].repetidor;
+                    var monto_jugada= parseFloat(tipo.dataset.monto);
+                    var repeticion = Number(data[element].repetidor)
+                    var monto = monto_jugada*repeticion;
+                    console.log(monto,typeof monto);
+                    console.log(repeticion,typeof repeticion);
+                    console.log(monto*repeticion);
+                    p4.innerHTML = monto;
+                    
+                    //Metemos dentro de la columna general el div Row
+                    elemento.appendChild(DivRow);
+
+                    //Metemos las columnas dentro del div row
+                    DivRow.appendChild(Divcol1); 
+                    DivRow.appendChild(Divcol2); 
+                    DivRow.appendChild(Divcol3); 
+                    DivRow.appendChild(Divcol4); 
+
+                    //Metemos los parrafos dentro de los div col
+                    Divcol1.appendChild(p1); 
+                    Divcol2.appendChild(p2); 
+                    Divcol3.appendChild(p3); 
+                    Divcol4.appendChild(p4); 
+                    
+                    
+                    
+                    }
+
+
+
+                }//Fin del else
+
+                
+
+
+                //For para agregar los mensaje respectivos
+                for (const element in data) {
+                    //console.log(`${element}: ${data[element]}`);
+                    //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
+                }
+
+
+
+
+
+            }//fin de la funcion
+
+        ) //fin de then
+
+    }//fin de la funcion consultarJugada
     </script>
 
 {% endblock %}
@@ -140,11 +342,15 @@
                                     <h3>Tipos de jugadas:</h3>
 
                                     <p>
+                                        
+                                        
+                                        
                                         {% for tipo_jugada in tipos_de_jugadas %}
 
                                             {% crear_boton_tipos tipo_jugada  %}
 
                                         {% endfor %}
+                                        
                                         <!--
                                         <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Primera Jugada</a>
                                         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Segunda Jugada</button>
@@ -157,27 +363,7 @@
                                     </p>
                                       
 
-                                    <!-- 
-                                    <table class="table">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">Tipo de Jugada</th>
-                                            <th scope="col">Usuario</th>
-                                            <th scope="col">Digito:</th>
-                                            <th scope="col">Repeticiones:</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                            <form action="#" method="get">
-                                                <th scope="col"><input type="text"></th>
-                                                <th scope="col"><input type="text"></th>
-                                                <th scope="col"><input type="text"></th>
-                                                <th scope="col"><input type="text"></th>
-                                            </form>
-
-                                        </tbody>
-                                      </table>
-                                    -->
+                                    
                                       
                                 </div>
                             
@@ -199,9 +385,9 @@
                             
                             
 
-                                <div class="col  columnasGeneral  " style="background-color:bslanchedalmond;">
+                                <div class="col columnasGeneral" id="jugadas1" style="background-color:bslanchedalmond;">
     
-                                    <div class="row abs-center ">
+                                    <div class="row abs-center " >
                                 
                                         <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
                                         <div class="col-3 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
@@ -224,6 +410,21 @@
                                     
                                                     
                                     {% endfor %}
+                                    <!----DATOS DINAMICOS AQUI-->
+
+
+                                    <div class="row abs-center">
+    
+                                        <!---Primera Fila--->
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                        <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                        
+                                        
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
+                                    </div>
+
+                                    
                                 
                                 
                                 
