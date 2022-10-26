@@ -138,57 +138,81 @@
 
 
 
-        function CrearCuerpo2(){
+        function CrearCuerpo2(aux,nombre,digitos,monto,data){
 
             
+            if(aux ==1){
+                console.log("nada");
+            }else if(aux == 2){
+                aux =11;
+            }else if(aux == 3){
+                aux =21;
+            }else if(aux == 4){
+                aux =31;
+            }else if(aux == 5){
+                aux =41;
+            }else if(aux == 6){
+                aux =51;
+            }
+            for(var i=0;i<Object.keys(data).length;i++){
 
+                //console.log("Probando aqui....",data[i].digitos);
+                //CrearCuerpo1(aux,nombre,digitos,repetidor,monto);
+                var elemento = document.getElementById(nombre);
 
-            //Div principal(ROW)
-           var DivRow = document.createElement("div");
-           DivRow.className += "row abs-center";
+                //Div principal(ROW)
+                var DivRow = document.createElement("div");
+                DivRow.className += "row abs-center";
 
-           //Div columnas(COL)
-           var Divcol1 = document.createElement("div");
-           Divcol1.className += "col-1 border";
+                //Div columnas(COL)
+                var Divcol1 = document.createElement("div");
+                Divcol1.className += "col-1 border";
 
-           var Divcol2 = document.createElement("div");
-           Divcol2.className += "col-3 border";
+                var Divcol2 = document.createElement("div");
+                Divcol2.className += "col-3 border";
 
-           var Divcol3 = document.createElement("div");
-           Divcol3.className += "col-2 border";
+                var Divcol3 = document.createElement("div");
+                Divcol3.className += "col-2 border";
 
-           var Divcol4 = document.createElement("div");
-           Divcol4.className += "col-2 border";
-           
+                var Divcol4 = document.createElement("div");
+                Divcol4.className += "col-2 border";
+                
 
-           //Parrafos
-           var p1 = document.createElement("p");
-           var p2 = document.createElement("p");
-           var p3 = document.createElement("p");
-           var p4 = document.createElement("p");
-           p1.className += "consultaP letraPrincipal";
-           p2.className += "consultaP letraPrincipal";
-           p3.className += "consultaP letraPrincipal";
-           p4.className += "consultaP letraPrincipal";
-           p1.innerHTML = "#";
-           p2.innerHTML = "Num";
-           p3.innerHTML = "Rep";
-           p4.innerHTML = "Mon";
-           
-           //Metemos dentro de la columna general el div Row
-           elemento.appendChild(DivRow);
+                //Parrafos
+                var p1 = document.createElement("p");
+                var p2 = document.createElement("p");
+                var p3 = document.createElement("p");
+                var p4 = document.createElement("p");
+                p1.className += "consultaP letraPrincipal";
+                p2.className += "consultaP letraPrincipal";
+                p3.className += "consultaP letraPrincipal";
+                p4.className += "consultaP letraPrincipal";
+                p1.innerHTML = aux;
+                aux+=1;
+                p2.innerHTML = data[i].digitos;
+                p3.innerHTML = data[i].repetidor;
+                p4.innerHTML = monto*data[i].repetidor;
+                
+                //Metemos dentro de la columna general el div Row
+                elemento.appendChild(DivRow);
 
-           //Metemos las columnas dentro del div row
-           DivRow.appendChild(Divcol1); 
-           DivRow.appendChild(Divcol2); 
-           DivRow.appendChild(Divcol3); 
-           DivRow.appendChild(Divcol4); 
+                //Metemos las columnas dentro del div row
+                DivRow.appendChild(Divcol1); 
+                DivRow.appendChild(Divcol2); 
+                DivRow.appendChild(Divcol3); 
+                DivRow.appendChild(Divcol4); 
 
-           //Metemos los parrafos dentro de los div col
-           Divcol1.appendChild(p1); 
-           Divcol2.appendChild(p2); 
-           Divcol3.appendChild(p3); 
-           Divcol4.appendChild(p4);
+                //Metemos los parrafos dentro de los div col
+                Divcol1.appendChild(p1); 
+                Divcol2.appendChild(p2); 
+                Divcol3.appendChild(p3); 
+                Divcol4.appendChild(p4);
+
+                
+            }
+                        
+
+            
 
         }//Fin de la funcion CrearEncabezado
 
@@ -344,45 +368,41 @@
 
                         //00-99 |00|10|20|30|40|50|60|70|80|90| asi comienza en cada columna
 
+                        //no le hagas caso a elay
                         var inicio = 0;
-                        var final = 9;
-                        console.log("tenemos: ",Object.keys(data).length,"datos");
-                        var nuevaData = data.splice(inicio,final);
-                        console.log("Data elegida: ",nuevaData,"inicio: ",inicio," final: ",final);
-                        inicio = final+1;
-                        final = inicio+9;
-                        for (const element in nuevaData) {
+                        var final = 10;
+                        
+                        for (const element in data) {
 
-                            //Variables a enviar
                             
-                            var aux = Number(element)+1; //Para incrementar #
+                            //Variables a enviar
+                            var aux = Number(element)+1;
+                             //Para incrementar #
                             var nombre = "jugadas"+aux.toString(); //Nombre de la jugada para llamar al div
                             var digitos = data[element].digitos;
-                            var repetidor = data[element].repetidor;
+                            //var repetidor = data[element].repetidor;
                             var monto_jugada= parseFloat(tipo.dataset.monto);//Esto es solo para hacer el calculo aqui
-                            var monto = monto_jugada*repetidor;
+                            //var monto = monto_jugada*repetidor;
+                            
+                            var nuevaData = data.splice(inicio,final);
+                            console.log("Data elegida: ",nuevaData,"inicio: ",inicio," final: ",final);
                             
                             
                             
-                            
 
 
 
 
 
-                            //CrearCuerpo2(aux,nombre,digitos,repetidor,monto);
+                            CrearCuerpo2(aux,nombre,digitos,monto_jugada,nuevaData);
                             //console.log(element);
                             //console.log("Elemento: ",`${element}`, "Digito: ", `${data[element].digitos}`, "Repeticion: ", `${data[element].repetidor}`);
                             //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
                         
                         }//fin del for
+                        
 
-
-                        for (const element in data) {
-                            console.log(element);
-                    
-                    
-                        }//fin del for
+                        
 
                     
                         

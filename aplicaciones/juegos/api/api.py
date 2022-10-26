@@ -140,6 +140,8 @@ def consultarJugada_api_view(request):
         tipo= TipoJugadas.objects.get(nombre=tipos)
 
         #print("Tipo de Jugada:",tipo, "Usuario: ",request.user)
+
+        #Pendiente validacion super usuario
         Elemento = Jugada.objects.filter(id_tipo_jugada=tipo,id_usuario=request.user.id).order_by('digitos')
 
         
