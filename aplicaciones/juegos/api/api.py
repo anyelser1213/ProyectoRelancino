@@ -139,17 +139,19 @@ def consultarJugada_api_view(request):
         #print(tipos[0][posicion_index:])
         tipo= TipoJugadas.objects.get(nombre=tipos)
 
-        print("Tipo de Jugada:",tipo, "Usuario: ",request.user)
+        #print("Tipo de Jugada:",tipo, "Usuario: ",request.user)
         Elemento = Jugada.objects.filter(id_tipo_jugada=tipo,id_usuario=request.user.id).order_by('digitos')
 
         
-        print("Jugadas: ",Elemento)
+        print("Jugadas: ",Elemento, Elemento.count())
         #print("Tipo jugada: ",Elemento," Cantidad: ",Elemento.cantidad_digitos)
         
 
         #print("El tipo de dato es: ",type(datos))
 
         jugadas_serializer = JugadaSerializer(Elemento,many=True) #El many true es cuando son varios objetos
-        print(jugadas_serializer.data)
+        
+        print(jugadas_serializer)
+        #print(jugadas_serializer.data)
 
         return JsonResponse(jugadas_serializer.data,safe = False)

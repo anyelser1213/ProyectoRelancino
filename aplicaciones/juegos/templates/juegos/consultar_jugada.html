@@ -65,7 +65,141 @@
            Divcol2.appendChild(p2); 
            Divcol3.appendChild(p3); 
            Divcol4.appendChild(p4);
-        }
+
+        }//Fin de la funcion CrearEncabezado
+
+
+
+        //Cuando es un solo digito
+        function CrearCuerpo1(aux,nombre,digitos,repetidor,monto){
+
+            
+            //CrearCuerpo1(aux,nombre,digitos,repetidor,monto);
+            var elemento = document.getElementById(nombre);
+
+            //Div principal(ROW)
+           var DivRow = document.createElement("div");
+           DivRow.className += "row abs-center";
+
+           //Div columnas(COL)
+           var Divcol1 = document.createElement("div");
+           Divcol1.className += "col-1 border";
+
+           var Divcol2 = document.createElement("div");
+           Divcol2.className += "col-3 border";
+
+           var Divcol3 = document.createElement("div");
+           Divcol3.className += "col-2 border";
+
+           var Divcol4 = document.createElement("div");
+           Divcol4.className += "col-2 border";
+           
+
+           //Parrafos
+           var p1 = document.createElement("p");
+           var p2 = document.createElement("p");
+           var p3 = document.createElement("p");
+           var p4 = document.createElement("p");
+           p1.className += "consultaP letraPrincipal";
+           p2.className += "consultaP letraPrincipal";
+           p3.className += "consultaP letraPrincipal";
+           p4.className += "consultaP letraPrincipal";
+           p1.innerHTML = aux;
+           p2.innerHTML = digitos;
+           p3.innerHTML = repetidor;
+           p4.innerHTML = monto;
+           
+           //Metemos dentro de la columna general el div Row
+           elemento.appendChild(DivRow);
+
+           //Metemos las columnas dentro del div row
+           DivRow.appendChild(Divcol1); 
+           DivRow.appendChild(Divcol2); 
+           DivRow.appendChild(Divcol3); 
+           DivRow.appendChild(Divcol4); 
+
+           //Metemos los parrafos dentro de los div col
+           Divcol1.appendChild(p1); 
+           Divcol2.appendChild(p2); 
+           Divcol3.appendChild(p3); 
+           Divcol4.appendChild(p4);
+
+        }//Fin de la funcion CrearEncabezado
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function CrearCuerpo2(){
+
+            
+
+
+            //Div principal(ROW)
+           var DivRow = document.createElement("div");
+           DivRow.className += "row abs-center";
+
+           //Div columnas(COL)
+           var Divcol1 = document.createElement("div");
+           Divcol1.className += "col-1 border";
+
+           var Divcol2 = document.createElement("div");
+           Divcol2.className += "col-3 border";
+
+           var Divcol3 = document.createElement("div");
+           Divcol3.className += "col-2 border";
+
+           var Divcol4 = document.createElement("div");
+           Divcol4.className += "col-2 border";
+           
+
+           //Parrafos
+           var p1 = document.createElement("p");
+           var p2 = document.createElement("p");
+           var p3 = document.createElement("p");
+           var p4 = document.createElement("p");
+           p1.className += "consultaP letraPrincipal";
+           p2.className += "consultaP letraPrincipal";
+           p3.className += "consultaP letraPrincipal";
+           p4.className += "consultaP letraPrincipal";
+           p1.innerHTML = "#";
+           p2.innerHTML = "Num";
+           p3.innerHTML = "Rep";
+           p4.innerHTML = "Mon";
+           
+           //Metemos dentro de la columna general el div Row
+           elemento.appendChild(DivRow);
+
+           //Metemos las columnas dentro del div row
+           DivRow.appendChild(Divcol1); 
+           DivRow.appendChild(Divcol2); 
+           DivRow.appendChild(Divcol3); 
+           DivRow.appendChild(Divcol4); 
+
+           //Metemos los parrafos dentro de los div col
+           Divcol1.appendChild(p1); 
+           Divcol2.appendChild(p2); 
+           Divcol3.appendChild(p3); 
+           Divcol4.appendChild(p4);
+
+        }//Fin de la funcion CrearEncabezado
+
+
+
+
+
+
+
+
+
 
         function getCookie(name) {
                     var cookieValue = null;
@@ -124,34 +258,29 @@
                 //En caso de que no haya ningun mensaje
                 //console.clear();
 
-                var elemento  = document.getElementById("jugadas1");
-                var elemento  = document.getElementById("jugadas2");
-                var elemento  = document.getElementById("jugadas3");
-                var elemento  = document.getElementById("jugadas4");
-                var elemento  = document.getElementById("jugadas5");
-                var elemento  = document.getElementById("jugadas6");
-                var elemento  = document.getElementById("jugadas7");
-                var elemento  = document.getElementById("jugadas8");
-                var elemento  = document.getElementById("jugadas9");
-                var elemento  = document.getElementById("jugadas10");
+                var elemento1  = document.getElementById("jugadas1");
+                var elemento2  = document.getElementById("jugadas2");
+                var elemento3  = document.getElementById("jugadas3");
+                var elemento4  = document.getElementById("jugadas4");
+                var elemento5  = document.getElementById("jugadas5");
+                var elemento6  = document.getElementById("jugadas6");
+                var elemento7  = document.getElementById("jugadas7");
+                var elemento8  = document.getElementById("jugadas8");
+                var elemento9  = document.getElementById("jugadas9");
+                var elemento10  = document.getElementById("jugadas10");
 
                 if(Object.keys(data).length == 0){
 
+                    //////////////EN CASO DE QUE NO TRAIGAN DATOS DE LA API///////////////////////
                     console.log("No hay mensajes traidos de la api");
                      // Eliminando todos los hijos de la columna jugadas1
                      
 
                      //Limpieza
-                     CrearEncabezado(document.getElementById("jugadas1"));
-                     CrearEncabezado(document.getElementById("jugadas2"));
-                     CrearEncabezado(document.getElementById("jugadas3"));
-                     CrearEncabezado(document.getElementById("jugadas4"));
-                     CrearEncabezado(document.getElementById("jugadas5"));
-                     CrearEncabezado(document.getElementById("jugadas6"));
-                     CrearEncabezado(document.getElementById("jugadas7"));
-                     CrearEncabezado(document.getElementById("jugadas8"));
-                     CrearEncabezado(document.getElementById("jugadas9"));
-                     CrearEncabezado(document.getElementById("jugadas10"));
+                     for (var i = 1; i < 11; i++) {
+                        var nombre = "jugadas"+i.toString();var elemento = document.getElementById(nombre)
+                        CrearEncabezado(elemento);
+                      }
 
 
 
@@ -164,76 +293,126 @@
                 
                 }else{
 
-                    console.log("Hay mensajes traidos de la api",Object.keys(data).length);
+                    //////////////EN CASO DE QUE TRAIGAN DATOS DE LA API///////////////////////
+                    //console.log("Hay mensajes traidos de la api",Object.keys(data).length);
                     var cantidad_de_digitos = Number(tipo.dataset.cantidad_digitos);
 
-                    console.log("datos traidos desde la api: ",data);
-                    console.log("tipo de dato: ",typeof data," cantidad digitos: ",cantidad_de_digitos);
+                    //console.log("datos traidos desde la api: ",data);
+                    //console.log("tipo de dato: ",typeof data," cantidad digitos: ",cantidad_de_digitos);
                     //console.log("datos traidos desde la api: ",data['name']);
 
-                    // Limpieza
-                    CrearEncabezado(elemento);
+                    //Limpieza
+                    for (var i = 1; i < 11; i++) {
+                        var nombre = "jugadas"+i.toString();var elemento = document.getElementById(nombre)
+                        CrearEncabezado(elemento);
+                      }
+
+
+                    if(cantidad_de_digitos == 1){//En caso de que solo sea 1 digito
+
+                        //0-9 |0|1|2|3|4|5|6|7|8|9| asi comienza en cada columna
+
+                        
+
+
+                        for (const element in data) {
+
+                            //Variables a enviar
+                            var aux = Number(element)+1; //Para incrementar #
+                            var nombre = "jugadas"+aux.toString(); //Nombre de la jugada para llamar al div
+                            var digitos = data[element].digitos;
+                            var repetidor = data[element].repetidor;
+                            var monto_jugada= parseFloat(tipo.dataset.monto);//Esto es solo para hacer el calculo aqui
+                            var monto = monto_jugada*repetidor;
+
+
+
+
+                            CrearCuerpo1(aux,nombre,digitos,repetidor,monto);
+                            //console.log(element);
+                            //console.log("Elemento: ",`${element}`, "Digito: ", `${data[element].digitos}`, "Repeticion: ", `${data[element].repetidor}`);
+                            //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
+                            
+                        
+                        
+                        
+                        }//fin del for
+
+
+
+                    }else if(cantidad_de_digitos == 2){//En caso de que solo sean 2 digitos
+
+                        //00-99 |00|10|20|30|40|50|60|70|80|90| asi comienza en cada columna
+
+                        var inicio = 0;
+                        var final = 9;
+                        console.log("tenemos: ",Object.keys(data).length,"datos");
+                        var nuevaData = data.splice(inicio,final);
+                        console.log("Data elegida: ",nuevaData,"inicio: ",inicio," final: ",final);
+                        inicio = final+1;
+                        final = inicio+9;
+                        for (const element in nuevaData) {
+
+                            //Variables a enviar
+                            
+                            var aux = Number(element)+1; //Para incrementar #
+                            var nombre = "jugadas"+aux.toString(); //Nombre de la jugada para llamar al div
+                            var digitos = data[element].digitos;
+                            var repetidor = data[element].repetidor;
+                            var monto_jugada= parseFloat(tipo.dataset.monto);//Esto es solo para hacer el calculo aqui
+                            var monto = monto_jugada*repetidor;
+                            
+                            
+                            
+                            
+
+
+
+
+
+                            //CrearCuerpo2(aux,nombre,digitos,repetidor,monto);
+                            //console.log(element);
+                            //console.log("Elemento: ",`${element}`, "Digito: ", `${data[element].digitos}`, "Repeticion: ", `${data[element].repetidor}`);
+                            //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
+                        
+                        }//fin del for
+
+
+                        for (const element in data) {
+                            console.log(element);
+                    
+                    
+                        }//fin del for
+
+                    
+                        
+                        
+                        }else if(cantidad_de_digitos == 3){//En caso de que solo sea un digito
+
+                        //000-999 |000|100|200|300|400|500|600|700|800|900| asi comienza en cada columna
+
+
+                    }else if(cantidad_de_digitos == 4){//En caso de que solo sea un digito
+
+                        //0000-9999 |0000|1000|2000|3000|4000|5000|6000|7000|8000|9000| asi comienza en cada columna
+
+
+                    }else{
+
+                    }
+                    ///Continuara...
+
+
+
+
+
+
+
+
 
 
                     for (const element in data) {
-                        console.log(element);
-                        console.log("Elemento: ",`${element}`, "Digito: ", `${data[element].digitos}`, "Repeticion: ", `${data[element].repetidor}`);
-                        //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
-                    
-                    
-                        //Div principal(ROW)
-                        var DivRow = document.createElement("div");
-                        DivRow.className += "row abs-center";
-
-                        //Div columnas(COL)
-                        var Divcol1 = document.createElement("div");
-                        Divcol1.className += "col-1 border";
-
-                        var Divcol2 = document.createElement("div");
-                        Divcol2.className += "col-3 border";
-
-                        var Divcol3 = document.createElement("div");
-                        Divcol3.className += "col-2 border";
-
-                        var Divcol4 = document.createElement("div");
-                        Divcol4.className += "col-2 border";
                         
-
-                        //Parrafos
-                        var p1 = document.createElement("p");
-                        var p2 = document.createElement("p");
-                        var p3 = document.createElement("p");
-                        var p4 = document.createElement("p");
-                        p1.className += "consultaP letraPrincipal";
-                        p2.className += "consultaP letraPrincipal";
-                        p3.className += "consultaP letraPrincipal";
-                        p4.className += "consultaP letraPrincipal";
-                        p1.innerHTML = Number(element)+1;
-                        p2.innerHTML = data[element].digitos;
-                        p3.innerHTML = data[element].repetidor;
-                        var monto_jugada= parseFloat(tipo.dataset.monto);
-                        var repeticion = Number(data[element].repetidor)
-                        var monto = monto_jugada*repeticion;
-                        console.log(monto,typeof monto);
-                        console.log(repeticion,typeof repeticion);
-                        console.log(monto*repeticion);
-                        p4.innerHTML = monto;
-                        
-                        //Metemos dentro de la columna general el div Row
-                        elemento.appendChild(DivRow);
-
-                        //Metemos las columnas dentro del div row
-                        DivRow.appendChild(Divcol1); 
-                        DivRow.appendChild(Divcol2); 
-                        DivRow.appendChild(Divcol3); 
-                        DivRow.appendChild(Divcol4); 
-
-                        //Metemos los parrafos dentro de los div col
-                        Divcol1.appendChild(p1); 
-                        Divcol2.appendChild(p2); 
-                        Divcol3.appendChild(p3); 
-                        Divcol4.appendChild(p4); 
-                    
                     
                     
                     }//fin del for

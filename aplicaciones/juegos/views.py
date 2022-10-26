@@ -194,7 +194,7 @@ class ConsultarJugada(TemplateView):
             print("Ya no se permite la jugada")
                         
 
-        context['tipos_de_jugadas'] = Q1
+        context['tipos_de_jugadas'] = Q1.order_by("cantidad_digitos")
 
         #Por ahora pedimos 1000 datos
         
