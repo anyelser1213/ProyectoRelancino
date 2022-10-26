@@ -8,4 +8,5 @@ class JugadaSerializer(serializers.ModelSerializer):
         model = Jugada
         #fields = '__all__'
         fields = ['digitos','repetidor'] #cuando son campos especificos
+        
         #exclude

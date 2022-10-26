@@ -10,6 +10,63 @@
 
     <script >
 
+        function CrearEncabezado(elemento){
+
+            //console.log("Creamos encabezado");
+            while (elemento.firstChild) {
+                         
+                elemento.removeChild(elemento.firstChild);
+            }
+
+
+            //Div principal(ROW)
+           var DivRow = document.createElement("div");
+           DivRow.className += "row abs-center";
+
+           //Div columnas(COL)
+           var Divcol1 = document.createElement("div");
+           Divcol1.className += "col-1 border";
+
+           var Divcol2 = document.createElement("div");
+           Divcol2.className += "col-3 border";
+
+           var Divcol3 = document.createElement("div");
+           Divcol3.className += "col-2 border";
+
+           var Divcol4 = document.createElement("div");
+           Divcol4.className += "col-2 border";
+           
+
+           //Parrafos
+           var p1 = document.createElement("p");
+           var p2 = document.createElement("p");
+           var p3 = document.createElement("p");
+           var p4 = document.createElement("p");
+           p1.className += "consultaP letraPrincipal";
+           p2.className += "consultaP letraPrincipal";
+           p3.className += "consultaP letraPrincipal";
+           p4.className += "consultaP letraPrincipal";
+           p1.innerHTML = "#";
+           p2.innerHTML = "Num";
+           p3.innerHTML = "Rep";
+           p4.innerHTML = "Mon";
+           
+           //Metemos dentro de la columna general el div Row
+           elemento.appendChild(DivRow);
+
+           //Metemos las columnas dentro del div row
+           DivRow.appendChild(Divcol1); 
+           DivRow.appendChild(Divcol2); 
+           DivRow.appendChild(Divcol3); 
+           DivRow.appendChild(Divcol4); 
+
+           //Metemos los parrafos dentro de los div col
+           Divcol1.appendChild(p1); 
+           Divcol2.appendChild(p2); 
+           Divcol3.appendChild(p3); 
+           Divcol4.appendChild(p4);
+        }
+
         function getCookie(name) {
                     var cookieValue = null;
                     if (document.cookie && document.cookie !== '') {
@@ -34,6 +91,7 @@
 
         console.log("Iniciando aqui...",tipo.id);
         console.log("Monto: ",tipo.dataset.monto);
+        console.log("Cantidad digitos: ",tipo.dataset.cantidad_digitos);
 
 
         var data = {'tipos': tipo.id};
@@ -65,63 +123,35 @@
 
                 //En caso de que no haya ningun mensaje
                 //console.clear();
+
+                var elemento  = document.getElementById("jugadas1");
+                var elemento  = document.getElementById("jugadas2");
+                var elemento  = document.getElementById("jugadas3");
+                var elemento  = document.getElementById("jugadas4");
+                var elemento  = document.getElementById("jugadas5");
+                var elemento  = document.getElementById("jugadas6");
+                var elemento  = document.getElementById("jugadas7");
+                var elemento  = document.getElementById("jugadas8");
+                var elemento  = document.getElementById("jugadas9");
+                var elemento  = document.getElementById("jugadas10");
+
                 if(Object.keys(data).length == 0){
 
                     console.log("No hay mensajes traidos de la api");
-                     // Eliminando todos los hijos de un elemento
-                     var elemento  = document.getElementById("jugadas1");
-                     while (elemento.firstChild) {
-                         
-                         elemento.removeChild(elemento.firstChild);
-                     }
+                     // Eliminando todos los hijos de la columna jugadas1
+                     
 
-
-                     //Div principal(ROW)
-                    var DivRow = document.createElement("div");
-                    DivRow.className += "row abs-center";
-
-                    //Div columnas(COL)
-                    var Divcol1 = document.createElement("div");
-                    Divcol1.className += "col-1 border";
-
-                    var Divcol2 = document.createElement("div");
-                    Divcol2.className += "col-3 border";
-
-                    var Divcol3 = document.createElement("div");
-                    Divcol3.className += "col-2 border";
-
-                    var Divcol4 = document.createElement("div");
-                    Divcol4.className += "col-2 border";
-                    
-
-                    //Parrafos
-                    var p1 = document.createElement("p");
-                    var p2 = document.createElement("p");
-                    var p3 = document.createElement("p");
-                    var p4 = document.createElement("p");
-                    p1.className += "consultaP letraPrincipal";
-                    p2.className += "consultaP letraPrincipal";
-                    p3.className += "consultaP letraPrincipal";
-                    p4.className += "consultaP letraPrincipal";
-                    p1.innerHTML = "#";
-                    p2.innerHTML = "Num";
-                    p3.innerHTML = "Rep";
-                    p4.innerHTML = "Mon";
-                    
-                    //Metemos dentro de la columna general el div Row
-                    elemento.appendChild(DivRow);
-
-                    //Metemos las columnas dentro del div row
-                    DivRow.appendChild(Divcol1); 
-                    DivRow.appendChild(Divcol2); 
-                    DivRow.appendChild(Divcol3); 
-                    DivRow.appendChild(Divcol4); 
-
-                    //Metemos los parrafos dentro de los div col
-                    Divcol1.appendChild(p1); 
-                    Divcol2.appendChild(p2); 
-                    Divcol3.appendChild(p3); 
-                    Divcol4.appendChild(p4);
+                     //Limpieza
+                     CrearEncabezado(document.getElementById("jugadas1"));
+                     CrearEncabezado(document.getElementById("jugadas2"));
+                     CrearEncabezado(document.getElementById("jugadas3"));
+                     CrearEncabezado(document.getElementById("jugadas4"));
+                     CrearEncabezado(document.getElementById("jugadas5"));
+                     CrearEncabezado(document.getElementById("jugadas6"));
+                     CrearEncabezado(document.getElementById("jugadas7"));
+                     CrearEncabezado(document.getElementById("jugadas8"));
+                     CrearEncabezado(document.getElementById("jugadas9"));
+                     CrearEncabezado(document.getElementById("jugadas10"));
 
 
 
@@ -131,84 +161,18 @@
 
 
                 
+                
                 }else{
 
                     console.log("Hay mensajes traidos de la api",Object.keys(data).length);
-
+                    var cantidad_de_digitos = Number(tipo.dataset.cantidad_digitos);
 
                     console.log("datos traidos desde la api: ",data);
-                    console.log("tipo de dato: ",typeof data);
+                    console.log("tipo de dato: ",typeof data," cantidad digitos: ",cantidad_de_digitos);
                     //console.log("datos traidos desde la api: ",data['name']);
 
-                    // Eliminando todos los hijos de un elemento
-                    var elemento  = document.getElementById("jugadas1");
-                    while (elemento.firstChild) {
-                        
-                        elemento.removeChild(elemento.firstChild);
-                    }
-
-
-
-
-
-
-                    //Empezamos la creacion de los elemento
-                    /*
-                    <div class="row abs-center " id="Mensaje">
-                                
-                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
-                        <div class="col-3 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
-                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
-                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
-                    </div>
-                    */
-
-                    //Div principal(ROW)
-                    var DivRow = document.createElement("div");
-                    DivRow.className += "row abs-center";
-
-                    //Div columnas(COL)
-                    var Divcol1 = document.createElement("div");
-                    Divcol1.className += "col-1 border";
-
-                    var Divcol2 = document.createElement("div");
-                    Divcol2.className += "col-3 border";
-
-                    var Divcol3 = document.createElement("div");
-                    Divcol3.className += "col-2 border";
-
-                    var Divcol4 = document.createElement("div");
-                    Divcol4.className += "col-2 border";
-                    
-
-                    //Parrafos
-                    var p1 = document.createElement("p");
-                    var p2 = document.createElement("p");
-                    var p3 = document.createElement("p");
-                    var p4 = document.createElement("p");
-                    p1.className += "consultaP letraPrincipal";
-                    p2.className += "consultaP letraPrincipal";
-                    p3.className += "consultaP letraPrincipal";
-                    p4.className += "consultaP letraPrincipal";
-                    p1.innerHTML = "#";
-                    p2.innerHTML = "Num";
-                    p3.innerHTML = "Rep";
-                    p4.innerHTML = "Mon";
-                    
-                    //Metemos dentro de la columna general el div Row
-                    elemento.appendChild(DivRow);
-
-                    //Metemos las columnas dentro del div row
-                    DivRow.appendChild(Divcol1); 
-                    DivRow.appendChild(Divcol2); 
-                    DivRow.appendChild(Divcol3); 
-                    DivRow.appendChild(Divcol4); 
-
-                    //Metemos los parrafos dentro de los div col
-                    Divcol1.appendChild(p1); 
-                    Divcol2.appendChild(p2); 
-                    Divcol3.appendChild(p3); 
-                    Divcol4.appendChild(p4); 
+                    // Limpieza
+                    CrearEncabezado(elemento);
 
 
                     for (const element in data) {
@@ -218,74 +182,66 @@
                     
                     
                         //Div principal(ROW)
-                    var DivRow = document.createElement("div");
-                    DivRow.className += "row abs-center";
+                        var DivRow = document.createElement("div");
+                        DivRow.className += "row abs-center";
 
-                    //Div columnas(COL)
-                    var Divcol1 = document.createElement("div");
-                    Divcol1.className += "col-1 border";
+                        //Div columnas(COL)
+                        var Divcol1 = document.createElement("div");
+                        Divcol1.className += "col-1 border";
 
-                    var Divcol2 = document.createElement("div");
-                    Divcol2.className += "col-3 border";
+                        var Divcol2 = document.createElement("div");
+                        Divcol2.className += "col-3 border";
 
-                    var Divcol3 = document.createElement("div");
-                    Divcol3.className += "col-2 border";
+                        var Divcol3 = document.createElement("div");
+                        Divcol3.className += "col-2 border";
 
-                    var Divcol4 = document.createElement("div");
-                    Divcol4.className += "col-2 border";
+                        var Divcol4 = document.createElement("div");
+                        Divcol4.className += "col-2 border";
+                        
+
+                        //Parrafos
+                        var p1 = document.createElement("p");
+                        var p2 = document.createElement("p");
+                        var p3 = document.createElement("p");
+                        var p4 = document.createElement("p");
+                        p1.className += "consultaP letraPrincipal";
+                        p2.className += "consultaP letraPrincipal";
+                        p3.className += "consultaP letraPrincipal";
+                        p4.className += "consultaP letraPrincipal";
+                        p1.innerHTML = Number(element)+1;
+                        p2.innerHTML = data[element].digitos;
+                        p3.innerHTML = data[element].repetidor;
+                        var monto_jugada= parseFloat(tipo.dataset.monto);
+                        var repeticion = Number(data[element].repetidor)
+                        var monto = monto_jugada*repeticion;
+                        console.log(monto,typeof monto);
+                        console.log(repeticion,typeof repeticion);
+                        console.log(monto*repeticion);
+                        p4.innerHTML = monto;
+                        
+                        //Metemos dentro de la columna general el div Row
+                        elemento.appendChild(DivRow);
+
+                        //Metemos las columnas dentro del div row
+                        DivRow.appendChild(Divcol1); 
+                        DivRow.appendChild(Divcol2); 
+                        DivRow.appendChild(Divcol3); 
+                        DivRow.appendChild(Divcol4); 
+
+                        //Metemos los parrafos dentro de los div col
+                        Divcol1.appendChild(p1); 
+                        Divcol2.appendChild(p2); 
+                        Divcol3.appendChild(p3); 
+                        Divcol4.appendChild(p4); 
                     
-
-                    //Parrafos
-                    var p1 = document.createElement("p");
-                    var p2 = document.createElement("p");
-                    var p3 = document.createElement("p");
-                    var p4 = document.createElement("p");
-                    p1.className += "consultaP letraPrincipal";
-                    p2.className += "consultaP letraPrincipal";
-                    p3.className += "consultaP letraPrincipal";
-                    p4.className += "consultaP letraPrincipal";
-                    p1.innerHTML = "#";
-                    p2.innerHTML = data[element].digitos;
-                    p3.innerHTML = data[element].repetidor;
-                    var monto_jugada= parseFloat(tipo.dataset.monto);
-                    var repeticion = Number(data[element].repetidor)
-                    var monto = monto_jugada*repeticion;
-                    console.log(monto,typeof monto);
-                    console.log(repeticion,typeof repeticion);
-                    console.log(monto*repeticion);
-                    p4.innerHTML = monto;
-                    
-                    //Metemos dentro de la columna general el div Row
-                    elemento.appendChild(DivRow);
-
-                    //Metemos las columnas dentro del div row
-                    DivRow.appendChild(Divcol1); 
-                    DivRow.appendChild(Divcol2); 
-                    DivRow.appendChild(Divcol3); 
-                    DivRow.appendChild(Divcol4); 
-
-                    //Metemos los parrafos dentro de los div col
-                    Divcol1.appendChild(p1); 
-                    Divcol2.appendChild(p2); 
-                    Divcol3.appendChild(p3); 
-                    Divcol4.appendChild(p4); 
                     
                     
-                    
-                    }
+                    }//fin del for
 
 
 
                 }//Fin del else
 
-                
-
-
-                //For para agregar los mensaje respectivos
-                for (const element in data) {
-                    //console.log(`${element}: ${data[element]}`);
-                    //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
-                }
 
 
 
@@ -395,34 +351,11 @@
                                         <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
                                     </div>
                                 
-                                    {% for jugada in jugadas1 %} 
-    
                                     
-                                    <div class="row abs-center">
-    
-                                
-                                        <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
-                                        <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
-                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
-                                        {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
-                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
-                                    </div>
-                                    
-                                                    
-                                    {% endfor %}
                                     <!----DATOS DINAMICOS AQUI-->
 
 
-                                    <div class="row abs-center">
-    
-                                        <!---Primera Fila--->
-                                        <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
-                                        <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
-                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
-                                        
-                                        
-                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
-                                    </div>
+                                    
 
                                     
                                 
@@ -431,11 +364,8 @@
                                 </div>
     
     
-                                
     
-                                
-    
-                                <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
+                                <div class="col  columnasGeneral " id="jugadas2" style="background-color:bslanchedalmond;">
     
                                     <div class="row abs-center ">
                                 
@@ -465,7 +395,7 @@
                                 
                                 </div>
     
-                                <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
+                                <div class="col  columnasGeneral " id="jugadas3" style="background-color:bslanchedalmond;">
     
                                     <div class="row abs-center ">
                                 
@@ -495,7 +425,7 @@
                                 
                                 </div>
     
-                                <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
+                                <div class="col  columnasGeneral " id="jugadas4" style="background-color:bslanchedalmond;">
     
                                     <div class="row abs-center ">
                                 
@@ -525,7 +455,7 @@
                                 
                                 </div>
     
-                                <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
+                                <div class="col  columnasGeneral " id="jugadas5" style="background-color:bslanchedalmond;">
     
                                     <div class="row abs-center ">
                                 
@@ -555,7 +485,7 @@
                                 
                                 </div>
     
-                                <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
+                                <div class="col  columnasGeneral " id="jugadas6" style="background-color:bslanchedalmond;">
     
                                     <div class="row abs-center ">
                                 
@@ -585,7 +515,7 @@
                                 
                                 </div>
     
-                                <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
+                                <div class="col  columnasGeneral " id="jugadas7" style="background-color:bslanchedalmond;">
     
                                     <div class="row abs-center ">
                                 
@@ -615,7 +545,7 @@
                                 
                                 </div>
     
-                                <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
+                                <div class="col  columnasGeneral " id="jugadas8" style="background-color:bslanchedalmond;">
     
                                     <div class="row abs-center ">
                                 
@@ -645,7 +575,7 @@
                                 
                                 </div>
     
-                                <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
+                                <div class="col  columnasGeneral " id="jugadas9" style="background-color:bslanchedalmond;">
     
                                     <div class="row abs-center ">
                                 
@@ -676,7 +606,7 @@
                                 </div>
     
     
-                                <div class="col  columnasGeneral " style="background-color:bslanchedalmond;">
+                                <div class="col  columnasGeneral " id="jugadas10" style="background-color:bslanchedalmond;">
     
                                     <div class="row abs-center ">
                                 
