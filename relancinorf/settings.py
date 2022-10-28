@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'aplicaciones.principal',
     'aplicaciones.usuarios',
     'aplicaciones.juegos',
+    'aplicaciones.fondo_imagenes',
+    'aplicaciones.informes',
 
     #Para api rest
     'rest_framework',

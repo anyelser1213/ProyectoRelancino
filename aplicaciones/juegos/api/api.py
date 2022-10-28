@@ -73,7 +73,7 @@ def jugada_api_view(request):
                 
             else:#En caso de que no exista la jugada
                 print("No existe ninguna jugada asi")
-                #datos.update({str(Elemento):"Se creo esta jugada"})
+                datos.update({str(Elemento):"Ultima Jugada guardada, "+str(jugada)[0:int(Elemento.cantidad_digitos)]})
                 CreandoJugada = Jugada(id_tipo_jugada=Elemento, id_usuario=request.user,digitos=str(jugada)[0:int(Elemento.cantidad_digitos)],repetidor=1)
                 CreandoJugada.save()
 
