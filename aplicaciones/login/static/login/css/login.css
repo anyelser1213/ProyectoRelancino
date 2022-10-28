@@ -151,27 +151,6 @@ footer{
 #page .login ul li{
 	width: 100%;
 }
-#page .login .border-down{
-	background: #fbfbfb url("../img/texture3.png");
-	-webkit-border-radius: 0px 0px 6px 6px;
-       -moz-border-radius: 0px 0px 6px 6px; 
-            border-radius: 0px 0px 6px 6px;
-	border: 1px solid #ddd;
-    border-top: 0;
-    -webkit-box-shadow: inset 0px 2px 2px rgba(0,0,0,0.05), 0px 1px 0px rgba(0,0,0,0.05);
-       -moz-box-shadow: inset 0px 2px 2px rgba(0,0,0,0.05), 0px 1px 0px rgba(0,0,0,0.05);
-            box-shadow: inset 0px 2px 2px rgba(0,0,0,0.05), 0px 1px 0px rgba(0,0,0,0.05);
-}
-#page .login .border-up{
-	background: #fbfbfb url("../img/texture3.png");
-	-webkit-border-radius: 6px 6px 0px 0px;
-       -moz-border-radius: 6px 6px 0px 0px; 
-            border-radius: 6px 6px 0px 0px;
-	border: 1px solid #ddd;
-	-webkit-box-shadow: inset 0px 2px 2px rgba(0,0,0,0.05), 0px -1px 0px rgba(255,255,255,0.7);
-       -moz-box-shadow: inset 0px 2px 2px rgba(0,0,0,0.05), 0px -1px 0px rgba(255,255,255,0.7);
-            box-shadow: inset 0px 2px 2px rgba(0,0,0,0.05), 0px -1px 0px rgba(255,255,255,0.7);
-}
 #page .login .inputup-bg{
 	background: url("../img/user.png") right no-repeat;
 	background-position: 97% 50%;
@@ -186,10 +165,6 @@ footer{
 }
 #page .login p{
 	padding: 5px;
-}
-.head {
-	background : url("../img/texture5.png");
-	width: 100%;
 }
 .head ul {
 	display: table;
@@ -236,12 +211,6 @@ footer{
 	color: #2e5840;
 	font-size: 13px;
 	font-weight: 500;
-}
-.content{
-	background: url("../img/texture2.png");
-	display: table;
-	position: relative;
-	width: 100%;
 }
 .sidebar{
 	background: #eee;
@@ -327,12 +296,6 @@ footer{
 .sidebar .inset i{
 	color: #c0c0c0;
 	font-size: 14px;
-}
-.frame{
-	background: url("../img/texture2.png");
-}
-.navigation{
-	background: url("../img/texture1.png");
 }
 .navigation p {
 	color: #606060;

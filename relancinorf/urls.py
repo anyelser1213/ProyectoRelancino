@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('aplicaciones.juegos.urls')),
     path('', include('aplicaciones.juegos.api.urls')),
     path('', include('aplicaciones.login.urls')),
+    path('', include('aplicaciones.fondo_imagenes.urls')),
     #path('login', include('login.urls')),
 
 
