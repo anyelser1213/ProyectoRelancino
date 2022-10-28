@@ -10,11 +10,16 @@ def api_login(request):
 
     if request.method == 'GET':
 
-        print("Llegamos aqui...")
-        data={"jamon":"unico"}
+        xxx= Login.objects.first().fondo_login
+        xxx2= Login.objects.first().logo_login
+        print("Llegamos aqui FONDO...",xxx)
+        print("Llegamos aqui LOGO...",xxx2)
+        data={'FondoLogin':xxx.url}
+        data.update({'ImagenLogin':xxx2.url})
+        data.update({'IconPagWeb':xxx2.url})
         return JsonResponse(data)
-
 """
+
         #Variables para probar
         respuestaFondoLogin = ""
         respuestaImagenLogin = ""
@@ -24,7 +29,7 @@ def api_login(request):
 
         ############# Respuesta para el fondo del login ###############
         try:
-            fondoLogin = Fondos.objects.get(nombre="fondoLogin")
+            fondoLogin = Login.objects.first().
             print(fondoLogin.imagen)
 
             if fondoLogin.imagen =="":
@@ -87,6 +92,6 @@ def api_login(request):
         #
         #
         return JsonResponse(datos)
-"""
-        
+
+       """ 
         

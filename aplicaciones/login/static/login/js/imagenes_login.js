@@ -26,10 +26,12 @@ console.log(csrftoken);
         function(data){
 
             console.log(data);
+            console.log(data.FondoLogin);
+            
 
-            IconoWeb.setAttribute("href",data.IconPagWeb);
+            //IconoWeb.setAttribute("href",data.IconPagWeb);
             //{% static 'src/img/logo_login.jpg' %} esto lo quitamos del login.html
-            img.setAttribute("src",data.ImagenLogin);
+            img.setAttribute("src",data.FondoLogin);
             //img.setAttribute("src","jamon");
             img.setAttribute("width","100%")
             img.setAttribute("heigth","100%")

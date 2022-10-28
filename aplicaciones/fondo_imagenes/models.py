@@ -15,8 +15,8 @@ from django.db import models
 class Login(models.Model):
 
     #fondo_login = models.ImageField(upload_to="login/imagenes/",blank=True, null=True)
-    fondo_login = models.ImageField(upload_to="login/imagenes/fondo",blank=True, null=True)
-    logo_login = models.ImageField(upload_to='login/imagenes/logo',blank=True, null=True)
+    fondo_login = models.ImageField(upload_to="login/imagenes/fondo/",blank=True, null=True)
+    logo_login = models.ImageField(upload_to='login/imagenes/logo/',blank=True, null=True)
     
     
 
