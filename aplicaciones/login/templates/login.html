@@ -6,11 +6,28 @@
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0">
   <title>Relancino - Login</title>
   <meta name="author" content="AplCorporacion">
+
+  <!-- Bootstrap CSS -->  
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap-5.2.1-dist/css/bootstrap.min.css' %}">
+
   <link rel="stylesheet" href="{% static 'login/css/login.css' %}">
 
   <!-- Icono de la pagina -->
   <link id="iconPagWeb" rel="shortcut icon" href="{% static 'principal/img/loteria.jpg' %}" type="image/x-icon">
 
+<style>
+  .abs-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.ocultarImagen{
+
+  display: none;
+}
+</style>
 
   
   
@@ -18,60 +35,59 @@
 
 </head>
 <body>
+
+  
+<div class="container  ">
+  <div class="row justify-content-center ">
+    <div class="col-md-3 offset-m-3  abs-center ">
+      
+      <div class=" card border border-dark ">
+
+          <form action="{% url 'login:login' %}" class="card-body cardbody-color  bg-dark" method="post">
+
+            {% csrf_token %}
+          <div class="text-center">
+            <img id="imagenLogin" src="" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-2 ocultarImagen"
+              width="200px" >
+          </div>
+          
+          
+            {% if messages %} 
+            <div class="alert alert-danger ">
+               {% for message in messages %} {{ message }} {% endfor %} 
+
+            </div>
+            {% endif %}
+
+          
   
 
-  <section id="page" class="body">
-    <div class="container">
-      <div class="margin-container">
-        <div class="default-container dc-logo">
-          <img src="{% static 'principal/img/loteria.jpg' %}" id="" height="86" width="250">
-          <!--<p class="logo_label">RelancinoRF</p>-->
-          <!--<p><small>Sistema ASQI</small></p>-->
-        </div>
-          <div class="login center">
-            <div class="body">
-              <form action="{% url 'login:login' %}" method="post" encoding='utf-8'>
-              {% csrf_token %}
-              <div class="default-container">
-                <ul>
-                                <li>
-                                    <div class="border-up">
-                                        <div class="inputup-bg">
-                                            
-                                            {{ form.username }}
+              {% if form.errors %}
+                  
+                  {% for error in form.non_field_errors %}
+                      <div class="alert alert-danger">
+                          <strong>{{ error }}</strong>
+                      </div>
+                  {% endfor %}
+              {% endif %}
 
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                  <div class="border-down">
-                                        <div class="inputdown-bg">
-                                           
-                                            {{form.password}}
-
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                       {% if form.non_field_errors  %}
-                              <ul class="messages">
-                                <li class="warning">
-                                  Combinacion de credenciales incorrecta.
-                                </li>
-                              </ul>     
-                        {% endif %}
-
-                        <div class="default-container-top">
-                          <button class="btn green" type="submit">Iniciar sesion</button>
-                        </div>
-                  </form>
-            </div>
+          <div class="mb-3">
+              {{form.username}}
           </div>
+          <div class="mb-3">
+            {{form.password}}
+          </div>
+          <div class="text-center"><button type="submit" class="btn btn-outline-secondary text-white px-5  ">Iniciar Sesion</button></div>
+          
+        </form>
       </div>
+
     </div>
-  </section>
+  </div>
+</div>
+  
+
+  
 
 
 

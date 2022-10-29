@@ -14,9 +14,10 @@ def api_login(request):
         xxx2= Login.objects.first().logo_login
         print("Llegamos aqui FONDO...",xxx)
         print("Llegamos aqui LOGO...",xxx2)
+        
         data={'FondoLogin':xxx.url}
-        data.update({'ImagenLogin':xxx2.url})
-        data.update({'IconPagWeb':xxx2.url})
+        data.update({'ImagenLogin':str(xxx2.url)})
+        data.update({'IconPagWeb':str(xxx2.url)})
         return JsonResponse(data)
 """
 
