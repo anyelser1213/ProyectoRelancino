@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import redirect, render
 from datetime import datetime
 
@@ -9,7 +10,6 @@ from aplicaciones.juegos.models import TipoJugadas, Jugada
 from .form import JugadaForm
 
     
-
 
 
 class IniciarJugada(TemplateView):
@@ -25,6 +25,12 @@ class IniciarJugada(TemplateView):
         else:
 
             print("Estas autenticado GENIAL")
+            if request.user.has_perm('jugada.iniciarjugada'):
+                print("Entramos en ConsultarJugada")
+            else:
+
+                print("El usuario: ",request.user," no tiene acceso en IniciarJugada")
+                return redirect("principal:index")
 
             
 
@@ -149,7 +155,12 @@ class ConsultarJugada(TemplateView):
 
         else:
 
-            print("Entramos en ConsultarJugada")
+            if request.user.has_perm('jugada.consultarjugada'):
+                print("Entramos en ConsultarJugada")
+            else:
+
+                print("El usuario: ",request.user," no tiene acceso en ConsultarJugada")
+                return redirect("principal:index")
             
 
             

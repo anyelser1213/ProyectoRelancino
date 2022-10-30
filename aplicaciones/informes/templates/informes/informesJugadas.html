@@ -1,0 +1,898 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load tag_consultas_jugadas %}
+{% block EnlacesPlantillas %}
+
+<link rel="stylesheet" href="{% static 'juegos/css/estilos.css' %}">
+  
+
+
+    <script >
+
+        function CrearEncabezado(elemento){
+
+            //console.log("Creamos encabezado");
+            while (elemento.firstChild) {
+                         
+                elemento.removeChild(elemento.firstChild);
+            }
+
+
+            //Div principal(ROW)
+           var DivRow = document.createElement("div");
+           DivRow.className += "row abs-center";
+
+           //Div columnas(COL)
+           var Divcol1 = document.createElement("div");
+           Divcol1.className += "col-1 border";
+
+           var Divcol2 = document.createElement("div");
+           Divcol2.className += "col-3 border";
+
+           var Divcol3 = document.createElement("div");
+           Divcol3.className += "col-2 border";
+
+           var Divcol4 = document.createElement("div");
+           Divcol4.className += "col-2 border";
+           
+
+           //Parrafos
+           var p1 = document.createElement("p");
+           var p2 = document.createElement("p");
+           var p3 = document.createElement("p");
+           var p4 = document.createElement("p");
+           p1.className += "consultaP letraPrincipal";
+           p2.className += "consultaP letraPrincipal";
+           p3.className += "consultaP letraPrincipal";
+           p4.className += "consultaP letraPrincipal";
+           p1.innerHTML = "#";
+           p2.innerHTML = "Num";
+           p3.innerHTML = "Rep";
+           p4.innerHTML = "Mon";
+           
+           //Metemos dentro de la columna general el div Row
+           elemento.appendChild(DivRow);
+
+           //Metemos las columnas dentro del div row
+           DivRow.appendChild(Divcol1); 
+           DivRow.appendChild(Divcol2); 
+           DivRow.appendChild(Divcol3); 
+           DivRow.appendChild(Divcol4); 
+
+           //Metemos los parrafos dentro de los div col
+           Divcol1.appendChild(p1); 
+           Divcol2.appendChild(p2); 
+           Divcol3.appendChild(p3); 
+           Divcol4.appendChild(p4);
+
+        }//Fin de la funcion CrearEncabezado
+
+
+
+        //Cuando es un solo digito
+        function CrearCuerpo1(aux,nombre,digitos,repetidor,monto){
+
+            
+            //CrearCuerpo1(aux,nombre,digitos,repetidor,monto);
+            var elemento = document.getElementById(nombre);
+
+            //Div principal(ROW)
+           var DivRow = document.createElement("div");
+           DivRow.className += "row abs-center";
+
+           //Div columnas(COL)
+           var Divcol1 = document.createElement("div");
+           Divcol1.className += "col-1 border";
+
+           var Divcol2 = document.createElement("div");
+           Divcol2.className += "col-3 border";
+
+           var Divcol3 = document.createElement("div");
+           Divcol3.className += "col-2 border";
+
+           var Divcol4 = document.createElement("div");
+           Divcol4.className += "col-2 border";
+           
+
+           //Parrafos
+           var p1 = document.createElement("p");
+           var p2 = document.createElement("p");
+           var p3 = document.createElement("p");
+           var p4 = document.createElement("p");
+           p1.className += "consultaP letraPrincipal";
+           p2.className += "consultaP letraPrincipal";
+           p3.className += "consultaP letraPrincipal";
+           p4.className += "consultaP letraPrincipal";
+           p1.innerHTML = aux;
+           p2.innerHTML = digitos;
+           p3.innerHTML = repetidor;
+           p4.innerHTML = monto;
+           
+           //Metemos dentro de la columna general el div Row
+           elemento.appendChild(DivRow);
+
+           //Metemos las columnas dentro del div row
+           DivRow.appendChild(Divcol1); 
+           DivRow.appendChild(Divcol2); 
+           DivRow.appendChild(Divcol3); 
+           DivRow.appendChild(Divcol4); 
+
+           //Metemos los parrafos dentro de los div col
+           Divcol1.appendChild(p1); 
+           Divcol2.appendChild(p2); 
+           Divcol3.appendChild(p3); 
+           Divcol4.appendChild(p4);
+
+        }//Fin de la funcion CrearEncabezado
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function CrearCuerpo2(aux,nombre,digitos,monto,data){
+
+            
+            if(aux ==1){
+                console.log("nada");
+            }else if(aux == 2){
+                aux =11;
+            }else if(aux == 3){
+                aux =21;
+            }else if(aux == 4){
+                aux =31;
+            }else if(aux == 5){
+                aux =41;
+            }else if(aux == 6){
+                aux =51;
+            }
+            for(var i=0;i<Object.keys(data).length;i++){
+
+                //console.log("Probando aqui....",data[i].digitos);
+                //CrearCuerpo1(aux,nombre,digitos,repetidor,monto);
+                var elemento = document.getElementById(nombre);
+
+                //Div principal(ROW)
+                var DivRow = document.createElement("div");
+                DivRow.className += "row abs-center";
+
+                //Div columnas(COL)
+                var Divcol1 = document.createElement("div");
+                Divcol1.className += "col-1 border";
+
+                var Divcol2 = document.createElement("div");
+                Divcol2.className += "col-3 border";
+
+                var Divcol3 = document.createElement("div");
+                Divcol3.className += "col-2 border";
+
+                var Divcol4 = document.createElement("div");
+                Divcol4.className += "col-2 border";
+                
+
+                //Parrafos
+                var p1 = document.createElement("p");
+                var p2 = document.createElement("p");
+                var p3 = document.createElement("p");
+                var p4 = document.createElement("p");
+                p1.className += "consultaP letraPrincipal";
+                p2.className += "consultaP letraPrincipal";
+                p3.className += "consultaP letraPrincipal";
+                p4.className += "consultaP letraPrincipal";
+                p1.innerHTML = aux;
+                aux+=1;
+                p2.innerHTML = data[i].digitos;
+                p3.innerHTML = data[i].repetidor;
+                p4.innerHTML = monto*data[i].repetidor;
+                
+                //Metemos dentro de la columna general el div Row
+                elemento.appendChild(DivRow);
+
+                //Metemos las columnas dentro del div row
+                DivRow.appendChild(Divcol1); 
+                DivRow.appendChild(Divcol2); 
+                DivRow.appendChild(Divcol3); 
+                DivRow.appendChild(Divcol4); 
+
+                //Metemos los parrafos dentro de los div col
+                Divcol1.appendChild(p1); 
+                Divcol2.appendChild(p2); 
+                Divcol3.appendChild(p3); 
+                Divcol4.appendChild(p4);
+
+                
+            }
+                        
+
+            
+
+        }//Fin de la funcion CrearEncabezado
+
+
+
+
+
+
+
+
+
+
+        function getCookie(name) {
+                    var cookieValue = null;
+                    if (document.cookie && document.cookie !== '') {
+                        var cookies = document.cookie.split(';');
+                        for (var i = 0; i < cookies.length; i++) {
+                            var cookie = cookies[i].trim();
+                            // Does this cookie string begin with the name we want?
+                            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                break;
+                            }
+                        }
+                    }
+                    return cookieValue;
+        }
+
+        //Valor que  le pasaremos aa Django para la seguridad
+        var csrftoken = getCookie('csrftoken');
+       
+    
+    function ConsultarJugadas(tipo){
+
+        console.log("Iniciando aqui...",tipo.id);
+        console.log("Monto: ",tipo.dataset.monto);
+        console.log("Cantidad digitos: ",tipo.dataset.cantidad_digitos);
+
+
+        var data = {'tipos': tipo.id};
+
+        fetch("consultarjugada/",{
+        method:"POST",
+        //body: formData,
+        body:JSON.stringify(data),
+        headers:{
+            'Content-Type': 'application/json',
+            "X-CSRFToken":csrftoken,
+            "X-Requestd-With":"XMLGttpRequest"//Con esto indicamos que es una peticion ajax
+        }
+
+        //Promesa de javascript
+        }).then(
+            function(response){
+
+                return response.json();
+                
+                //console.log(response.data);
+            }//fin de la funcion
+
+        ).then(
+            function(data){
+
+                //Esto es para saber la longitud del Json
+                //Object.keys(data).length
+
+                //En caso de que no haya ningun mensaje
+                //console.clear();
+
+                var elemento1  = document.getElementById("jugadas1");
+                var elemento2  = document.getElementById("jugadas2");
+                var elemento3  = document.getElementById("jugadas3");
+                var elemento4  = document.getElementById("jugadas4");
+                var elemento5  = document.getElementById("jugadas5");
+                var elemento6  = document.getElementById("jugadas6");
+                var elemento7  = document.getElementById("jugadas7");
+                var elemento8  = document.getElementById("jugadas8");
+                var elemento9  = document.getElementById("jugadas9");
+                var elemento10  = document.getElementById("jugadas10");
+
+                if(Object.keys(data).length == 0){
+
+                    //////////////EN CASO DE QUE NO TRAIGAN DATOS DE LA API///////////////////////
+                    console.log("No hay mensajes traidos de la api");
+                     // Eliminando todos los hijos de la columna jugadas1
+                     
+
+                     //Limpieza
+                     for (var i = 1; i < 11; i++) {
+                        var nombre = "jugadas"+i.toString();var elemento = document.getElementById(nombre)
+                        CrearEncabezado(elemento);
+                      }
+
+
+
+
+
+
+
+
+                
+                
+                }else{
+
+                    //////////////EN CASO DE QUE TRAIGAN DATOS DE LA API///////////////////////
+                    //console.log("Hay mensajes traidos de la api",Object.keys(data).length);
+                    var cantidad_de_digitos = Number(tipo.dataset.cantidad_digitos);
+
+                    //console.log("datos traidos desde la api: ",data);
+                    //console.log("tipo de dato: ",typeof data," cantidad digitos: ",cantidad_de_digitos);
+                    //console.log("datos traidos desde la api: ",data['name']);
+
+                    //Limpieza
+                    for (var i = 1; i < 11; i++) {
+                        var nombre = "jugadas"+i.toString();var elemento = document.getElementById(nombre)
+                        CrearEncabezado(elemento);
+                      }
+
+
+                    if(cantidad_de_digitos == 1){//En caso de que solo sea 1 digito
+
+                        //0-9 |0|1|2|3|4|5|6|7|8|9| asi comienza en cada columna
+
+                        
+
+
+                        for (const element in data) {
+
+                            //Variables a enviar
+                            var aux = Number(element)+1; //Para incrementar #
+                            var nombre = "jugadas"+aux.toString(); //Nombre de la jugada para llamar al div
+                            var digitos = data[element].digitos;
+                            var repetidor = data[element].repetidor;
+                            var monto_jugada= parseFloat(tipo.dataset.monto);//Esto es solo para hacer el calculo aqui
+                            var monto = monto_jugada*repetidor;
+
+
+
+
+                            CrearCuerpo1(aux,nombre,digitos,repetidor,monto);
+                            //console.log(element);
+                            //console.log("Elemento: ",`${element}`, "Digito: ", `${data[element].digitos}`, "Repeticion: ", `${data[element].repetidor}`);
+                            //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
+                            
+                        
+                        
+                        
+                        }//fin del for
+
+
+
+                    }else if(cantidad_de_digitos == 2){//En caso de que solo sean 2 digitos
+
+                        //00-99 |00|10|20|30|40|50|60|70|80|90| asi comienza en cada columna
+
+                        //no le hagas caso a elay
+                        var inicio = 0;
+                        var final = 10;
+                        
+                        for (const element in data) {
+
+                            
+                            //Variables a enviar
+                            var aux = Number(element)+1;
+                             //Para incrementar #
+                            var nombre = "jugadas"+aux.toString(); //Nombre de la jugada para llamar al div
+                            var digitos = data[element].digitos;
+                            //var repetidor = data[element].repetidor;
+                            var monto_jugada= parseFloat(tipo.dataset.monto);//Esto es solo para hacer el calculo aqui
+                            //var monto = monto_jugada*repetidor;
+                            
+                            var nuevaData = data.splice(inicio,final);
+                            console.log("Data elegida: ",nuevaData,"inicio: ",inicio," final: ",final);
+                            
+                            
+                            
+
+
+
+
+
+                            CrearCuerpo2(aux,nombre,digitos,monto_jugada,nuevaData);
+                            //console.log(element);
+                            //console.log("Elemento: ",`${element}`, "Digito: ", `${data[element].digitos}`, "Repeticion: ", `${data[element].repetidor}`);
+                            //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
+                        
+                        }//fin del for
+                        
+
+                        
+
+                    
+                        
+                        
+                        }else if(cantidad_de_digitos == 3){//En caso de que solo sea un digito
+
+                        //000-999 |000|100|200|300|400|500|600|700|800|900| asi comienza en cada columna
+
+
+                    }else if(cantidad_de_digitos == 4){//En caso de que solo sea un digito
+
+                        //0000-9999 |0000|1000|2000|3000|4000|5000|6000|7000|8000|9000| asi comienza en cada columna
+
+
+                    }else{
+
+                    }
+                    ///Continuara...
+
+
+
+
+
+
+
+
+
+
+                    for (const element in data) {
+                        
+                    
+                    
+                    }//fin del for
+
+
+
+                }//Fin del else
+
+
+
+
+
+
+            }//fin de la funcion
+
+        ) //fin de then
+
+    }//fin de la funcion consultarJugada
+    </script>
+
+{% endblock %}
+
+
+
+
+
+{% block menu_superior %}
+      <!--Aqui se incluye el menu superior-->
+      {% include "menu_superior.html" %}
+    
+      {% endblock%}
+
+
+    
+    
+    
+
+    
+    {% block contenedor %} 
+
+    <div id="layoutSidenav">
+    
+        <!--Aqui se incluye el menu lateral-->
+        {% include "menu_dashboar.html" with tema="index" subtema=""   %}
+
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4 abs-center">Informes</h1>
+                    
+                    <div class="row">
+                        
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                
+                                    
+                                <div class="card-header">
+                                    <i class="fas fa-chart-area me-1"></i>
+                                </div>
+                                <div class="card-body">
+                                    <h3>Tipos de jugadas:</h3>
+
+                                    <p>
+                                        
+                                        
+                                        
+                                        {% for tipo_jugada in tipos_de_jugadas %}
+
+                                            {% crear_boton_tipos tipo_jugada  %}
+
+                                        {% endfor %}
+                                        
+                                        <!--
+                                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Primera Jugada</a>
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Segunda Jugada</button>
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Tercea Jugada</button>
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">Cuarta Jugada</button>
+                                        
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+                                    
+                                        -->
+                                    </p>
+                                      
+
+                                    
+                                      
+                                </div>
+                            
+                                
+                            
+                            </div>
+                        </div>
+                        <!---
+                        -->
+                    </div>
+
+
+                    <div class=" container-fluid ">
+
+                        <div class="collapse multi-collapse" id="multiCollapseExample1">
+
+                            <div class="row filaGeneral "  >
+
+                            
+                            
+
+                                <div class="col columnasGeneral" id="jugadas1" style="background-color:bslanchedalmond;">
+    
+                                    <div class="row abs-center " >
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                                        <div class="col-3 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                                    </div>
+                                
+                                    
+                                    <!----DATOS DINAMICOS AQUI-->
+
+
+                                    
+
+                                    
+                                
+                                
+                                
+                                </div>
+    
+    
+    
+                                <div class="col  columnasGeneral " id="jugadas2" style="background-color:bslanchedalmond;">
+    
+                                    <div class="row abs-center ">
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                                        <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                                    </div>
+    
+                                    {% for jugada in jugadas2 %} 
+    
+                                    
+                                    <div class="row abs-center">
+    
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                        <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                        {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
+                                    </div>
+                                    
+                                                    
+                                    {% endfor %}
+                                
+                                
+                                
+                                </div>
+    
+                                <div class="col  columnasGeneral " id="jugadas3" style="background-color:bslanchedalmond;">
+    
+                                    <div class="row abs-center ">
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                                        <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                                    </div>
+                                
+    
+                                    {% for jugada in jugadas3 %} 
+    
+                                    
+                                    <div class="row abs-center">
+    
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                        <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                        {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
+                                    </div>
+                                    
+                                                    
+                                    {% endfor %}
+                                
+                                
+                                </div>
+    
+                                <div class="col  columnasGeneral " id="jugadas4" style="background-color:bslanchedalmond;">
+    
+                                    <div class="row abs-center ">
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                                        <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                                    </div>
+    
+                                    {% for jugada in jugadas4 %} 
+    
+                                    
+                                    <div class="row abs-center">
+    
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                        <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                        {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
+                                    </div>
+                                    
+                                                    
+                                    {% endfor %}
+                                
+                                
+                                
+                                </div>
+    
+                                <div class="col  columnasGeneral " id="jugadas5" style="background-color:bslanchedalmond;">
+    
+                                    <div class="row abs-center ">
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                                        <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                                    </div>
+    
+                                    {% for jugada in jugadas5 %} 
+    
+                                    
+                                    <div class="row abs-center">
+    
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                        <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                        {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
+                                    </div>
+                                    
+                                                    
+                                    {% endfor %}
+                                
+                                
+                                
+                                </div>
+    
+                                <div class="col  columnasGeneral " id="jugadas6" style="background-color:bslanchedalmond;">
+    
+                                    <div class="row abs-center ">
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                                        <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                                    </div>
+    
+                                    {% for jugada in jugadas6 %} 
+    
+                                    
+                                    <div class="row abs-center">
+    
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                        <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                        {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
+                                    </div>
+                                    
+                                                    
+                                    {% endfor %}
+                                
+                                
+                                
+                                </div>
+    
+                                <div class="col  columnasGeneral " id="jugadas7" style="background-color:bslanchedalmond;">
+    
+                                    <div class="row abs-center ">
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                                        <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                                    </div>
+    
+                                    {% for jugada in jugadas7 %} 
+    
+                                    
+                                    <div class="row abs-center">
+    
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                        <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                        {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
+                                    </div>
+                                    
+                                                    
+                                    {% endfor %}
+                                
+                                
+                                
+                                </div>
+    
+                                <div class="col  columnasGeneral " id="jugadas8" style="background-color:bslanchedalmond;">
+    
+                                    <div class="row abs-center ">
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                                        <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                                    </div>
+    
+                                    {% for jugada in jugadas8 %} 
+    
+                                    
+                                    <div class="row abs-center">
+    
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                        <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                        {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
+                                    </div>
+                                    
+                                                    
+                                    {% endfor %}
+                                
+                                
+                                
+                                </div>
+    
+                                <div class="col  columnasGeneral " id="jugadas9" style="background-color:bslanchedalmond;">
+    
+                                    <div class="row abs-center ">
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                                        <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                                    </div>
+    
+                                    {% for jugada in jugadas9 %} 
+    
+                                    
+                                    <div class="row abs-center">
+    
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                        <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                        {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
+                                    </div>
+                                    
+                                                    
+                                    {% endfor %}
+                                
+                                
+                                
+                                </div>
+    
+    
+                                <div class="col  columnasGeneral " id="jugadas10" style="background-color:bslanchedalmond;">
+    
+                                    <div class="row abs-center ">
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                                        <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                                    </div>
+    
+                                    {% for jugada in jugadas10 %} 
+    
+                                    
+                                    <div class="row abs-center">
+    
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="numeroPrincipal" >{{forloop.counter}}</p></div>
+                                        <div class="col-3 border" style="background-color:bluse;"><p class="numeroPrincipal ">{{ jugada.digitos }}</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ jugada.repetidor }}</p></div>
+                                        {% monto_total jugada.repetidor jugada.id_tipo_jugada.monto_jugada as MontoTotal %}
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="numeroPrincipal">{{ MontoTotal }}</p></div>
+                                    </div>
+                                    
+                                                    
+                                    {% endfor %}
+                                
+                                
+                                
+                                </div>
+    
+    
+    
+    
+    
+    
+                                
+    
+                                
+    
+    
+                                
+    
+                                
+    
+                                
+    
+                                
+    
+    
+    
+                                
+                               
+    
+                              
+                              
+                            </div>
+
+
+                        </div><!--Fin de collapse-->
+                        
+
+                        
+                        
+                        
+                    </div>
+
+
+                    <br><br>
+
+
+
+                    
+                </div>
+            </main>
+
+
+            
+        </div>
+
+
+    </div>
+            
+          
+    {% endblock %}
+
+
+    {% block EnlacesListado_js %}
+
+    
+
+    {% endblock %}

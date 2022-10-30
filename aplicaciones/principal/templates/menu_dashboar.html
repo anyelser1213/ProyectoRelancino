@@ -6,7 +6,7 @@
               <div class="sb-sidenav-menu-heading"></div>
               <a class="nav-link" href="{% url 'principal:index' %}">
                   <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                  Inicio
+                  Inicio {{perms.juegos.iniciarjugada}}
               </a>
               <!--<div class="sb-sidenav-menu-heading"></div>--->
               <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -16,17 +16,25 @@
               </a>
               <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                   <nav class="sb-sidenav-menu-nested nav">
-                      <a class="nav-link" href="{% url 'juegos:iniciarJugada' %}">Iniciar Jugada</a>
-                      <a class="nav-link" href="{% url 'juegos:consultarJugada' %}">Consultar Jugadas</a>
+                    {% if perms.juegos.iniciarjugada %}
+                        <a class="nav-link" href="{% url 'juegos:iniciarJugada' %}">Iniciar Jugada</a>
+                    {% endif %}
+                      
+                    {% if perms.juegos.consultarjugada %}
+                        <a class="nav-link" href="{% url 'juegos:consultarJugada' %}">Consultar Jugadas</a>
+                    {% endif %}
+                    
+                      
                       
                   </nav>
               </div>
-              <!--
-              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                  <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                  Informes
-                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+              
+              <a class="nav-link" href="{% url 'informes:informarJugada' %}">
+                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                Informes
               </a>
+              
+              <!--
               <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                   <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                       <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">

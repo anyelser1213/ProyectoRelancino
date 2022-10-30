@@ -53,3 +53,15 @@ class Jugada(models.Model):
 
         verbose_name = "Jugada"
         verbose_name_plural = "2.Jugadas"
+
+        permissions = [
+            #(Lo que se guarda en bases de datos, lo que se ve al usuario)
+            
+            #Permisos para iniciar y consultar jugadas
+            ("iniciarjugada", "IniciarJugada"),
+            ("consultarjugada", "ConsultarJugada"),
+
+            #Para ver los informes
+            ("informejugada", "InformeJugada"),
+
+        ]#Fin de los permisos

@@ -24,9 +24,9 @@ class Index(TemplateView):
         else:
 
             print("Estas autenticado GENIAL",request.user)
-            #print("usuario: ",request.user)
-            #print("usuario permisos: ",request.user.get_all_permissions())
-            #print(request.user.has_perm('src.ver_zulia'))
+            print("usuario: ",request.user)
+            print("usuario permisos: ",request.user.get_all_permissions())
+            print(request.user.has_perm('src.ver_zulia'))
             
             
             #Aqui verificamos si el usuario esta activo para que ingrese
