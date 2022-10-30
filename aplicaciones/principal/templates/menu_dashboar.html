@@ -29,10 +29,13 @@
                   </nav>
               </div>
               
-              <a class="nav-link" href="{% url 'informes:informarJugada' %}">
-                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                Informes
-              </a>
+              {% if perms.juegos.informejugada %}
+                <a class="nav-link" href="{% url 'informes:informarJugada' %}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                    Informes
+                </a>
+              {% endif %}
+              
               
               <!--
               <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
