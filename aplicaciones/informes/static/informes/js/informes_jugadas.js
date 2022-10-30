@@ -1,5 +1,5 @@
 
-
+var MensajeSubliminal = document.getElementById("MensajeInforme");
 
 function InformeJugadas(tipo){
 
@@ -55,10 +55,11 @@ function InformeJugadas(tipo){
             
 
 
+            MensajeSubliminal.innerHTML = "";
             //For para agregar los mensaje respectivos
             for (const element in data) {
                 //console.log(`${element}: ${data[element]}`);
-                //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
+                MensajeSubliminal.innerHTML += element+": "+data[element]+" <br>";
             }
 
 

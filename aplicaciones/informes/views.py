@@ -3,12 +3,15 @@ from datetime import datetime
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import redirect, render
 from django.http import HttpResponseRedirect, JsonResponse
+from os import system
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 
 #Clases para las plantillas
 from django.views.generic import TemplateView, CreateView, UpdateView, DetailView, ListView, DeleteView
 
 
-from aplicaciones.juegos.models import TipoJugadas
+from aplicaciones.juegos.models import TipoJugadas, Jugada
 
 # Create your views here.
 
@@ -80,15 +83,25 @@ class InformesJugada(TemplateView):
 
 
 
-
+@api_view(['GET','POST'])
 def api_informes(request):
 
 
     if request.method == 'POST':
 
-        print("Probando aqui...")
-        
-        data={'TotalJugadas':'5'}
-        data.update({'MontoTotal':'400'})
+        system("cls")
+
+        print("Probando aqui...",request.data.get('tipos'))
+        jugadas = Jugada.objects.filter(id_tipo_jugada=request.data.get('tipos'))
+        TotalJugadas = 0
+        MontoTotal = 0
+        for element in jugadas:
+            TotalJugadas+=1
+            Tipo= TipoJugadas.objects.get(id = element.id_tipo_jugada.id)
+            MontoTotal+= Tipo.monto_jugada*element.repetidor
+            print(element)
+            
+        data={'TotalJugadas':TotalJugadas}
+        data.update({'MontoTotal':MontoTotal})
         return JsonResponse(data)
 
