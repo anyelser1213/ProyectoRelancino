@@ -11,5 +11,8 @@ urlpatterns = [
     
     path('informes', views.InformesJugada.as_view() ,name="informarJugada"),
 
+    #apis para informes
+    path('api_informes/', views.api_informes ,name="api_informes"),
+
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

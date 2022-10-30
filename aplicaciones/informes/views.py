@@ -84,7 +84,7 @@ class InformesJugada(TemplateView):
 def api_informes(request):
 
 
-    if request.method == 'GET':
+    if request.method == 'POST':
 
         print("Probando aqui...")
         

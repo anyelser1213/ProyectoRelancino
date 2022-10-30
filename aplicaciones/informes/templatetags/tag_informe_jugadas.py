@@ -21,7 +21,7 @@ def monto_total(repeticion,monto): # Only one argument.
 
 
 
-@register.inclusion_tag('juegos/botones_tipos_juegos.html')
+@register.inclusion_tag('informes/botones_tipos_juegos.html')
 def crear_boton_tipos(elemento):
 
     print("Entramos en CREAR BOTON TIPOS")

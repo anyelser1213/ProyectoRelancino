@@ -10,7 +10,7 @@ function InformeJugadas(tipo){
 
     //AQUI ES CUANDO ES POST
     
-    fetch("consultarjugada/",{
+    fetch("api_informes/",{
         method:"POST",
         //body: formData,
         body:JSON.stringify(data),
