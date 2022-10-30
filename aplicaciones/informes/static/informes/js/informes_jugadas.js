@@ -59,7 +59,14 @@ function InformeJugadas(tipo){
             //For para agregar los mensaje respectivos
             for (const element in data) {
                 //console.log(`${element}: ${data[element]}`);
-                MensajeSubliminal.innerHTML += element+": "+data[element]+" <br>";
+                if(element == "TotalJugadas"){
+                    MensajeSubliminal.innerHTML += "Total Jugadas"+": "+data[element]+" <br>";
+                }
+
+                if(element == "MontoTotal"){
+                    MensajeSubliminal.innerHTML += "Monto Total"+": "+data[element]+" <br>";
+                }
+                
             }
 
 
