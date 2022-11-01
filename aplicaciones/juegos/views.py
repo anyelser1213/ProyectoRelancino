@@ -24,8 +24,9 @@ class IniciarJugada(TemplateView):
 
         else:
 
+            print("usuario permisos: ",request.user.get_all_permissions())
             print("Estas autenticado GENIAL")
-            if request.user.has_perm('jugada.iniciarjugada'):
+            if request.user.has_perm('juegos.iniciarjugada'):
                 print("Entramos en ConsultarJugada")
             else:
 
@@ -155,7 +156,7 @@ class ConsultarJugada(TemplateView):
 
         else:
 
-            if request.user.has_perm('jugada.consultarjugada'):
+            if request.user.has_perm('juegos.consultarjugada'):
                 print("Entramos en ConsultarJugada")
             else:
 

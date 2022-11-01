@@ -27,11 +27,11 @@ class InformesJugada(TemplateView):
 
         else:
 
-            if request.user.has_perm('jugada.consultarjugada'):
-                print("Entramos en ConsultarJugada")
+            if request.user.has_perm('juegos.informejugada'):
+                print("Entramos en InformesJugada")
             else:
 
-                print("El usuario: ",request.user," no tiene acceso en ConsultarJugada")
+                print("El usuario: ",request.user," no tiene acceso en InformesJugada")
                 return redirect("principal:index")
             
 
