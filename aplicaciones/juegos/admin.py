@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Jugada, TipoJugadas
+from .models import Jugada, Telefono, TipoJugadas
 
 # Register your models here.
 
@@ -94,5 +94,5 @@ class TipoJugadasAdmin(admin.ModelAdmin):
 
 
 
-#admin.site.register(TipoJugadas)
+admin.site.register(Telefono)
 admin.site.register(Jugada)

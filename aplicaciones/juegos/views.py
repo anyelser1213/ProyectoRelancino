@@ -5,7 +5,7 @@ from datetime import datetime
 #Clases para las plantillas
 from django.views.generic import TemplateView, CreateView, UpdateView, DetailView, ListView, DeleteView
 
-from aplicaciones.juegos.models import TipoJugadas, Jugada
+from aplicaciones.juegos.models import TipoJugadas, Jugada,Jugadas_Numeros, Telefono
 
 from .form import JugadaForm
 
@@ -27,7 +27,15 @@ class IniciarJugada(TemplateView):
             print("usuario permisos: ",request.user.get_all_permissions())
             print("Estas autenticado GENIAL")
             if request.user.has_perm('juegos.iniciarjugada'):
-                print("Entramos en ConsultarJugada")
+                print("Entramos en IniciarJugada")
+
+                jugada1 = Jugada.objects.first()
+                telefono1 = Telefono.objects.first()
+                #Jugadas_Numeros.objects.create()
+                Prueba = Jugadas_Numeros(id_jugada=jugada1, id_telefono=telefono1,id_usuario=request.user)
+                Prueba.save()
+                print(Prueba)
+
             else:
 
                 print("El usuario: ",request.user," no tiene acceso en IniciarJugada")
