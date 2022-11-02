@@ -22,6 +22,7 @@ def jugada_api_view(request):
         #print("datos tipos:  ",request.data.get('tipos'))
         tipos = request.data.get('tipos')
         jugada = str(request.data.get('digitos'))
+        numero_telefonico = str(request.data.get('numeros'))
 
         #Datos que enviaremos
         datos = {}
@@ -35,6 +36,7 @@ def jugada_api_view(request):
         
         print("Tipos Jugados: ",tipos)
         print("Jugada: ",jugada)
+        print("Numero: ",numero_telefonico)
         #print("Tipo jugada: ",Elemento," Cantidad: ",Elemento.cantidad_digitos)
         for i in tipos:
             
@@ -67,6 +69,8 @@ def jugada_api_view(request):
                 else:
                     print("Ejecutando repeticion de la jugada")
                     #datos.update({str(Elemento):"Esta jugada ya existe y se creo una repeticion"})
+                    datos.update({str(Elemento):"Ultima Jugada guardada, "+str(jugada)[0:int(Elemento.cantidad_digitos)]})
+                
                     jugada_actual.repetidor +=1
                     jugada_actual.save()
 

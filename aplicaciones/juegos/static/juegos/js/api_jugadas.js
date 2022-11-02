@@ -25,7 +25,11 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
         MensajeSubliminal.classList.remove("d-none");
         MensajeSubliminal.innerHTML = "Debes seleccionar un tipo y agregar los digitos y el nº telefonico para la jugada";
 
-    }else{
+
+
+    }else{//En caso de que se seleccione algun elemento
+
+
 
         if(input_digito.value.length == 0){
 
@@ -39,6 +43,11 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
             MensajeSubliminal.classList.remove("d-none");
             MensajeSubliminal.innerHTML = "Los digitos estan incompletos...<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
             
+        }else if(input_numeros.value.length != 11){
+
+            //console.log("Algo esta incompleto jajajja");
+            MensajeSubliminal.classList.remove("d-none");
+            MensajeSubliminal.innerHTML = "Debes agregar un numero telefónico";
         }else{
 
             //console.clear();
@@ -51,7 +60,8 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
             var data = {"tipos": 
                 jugadas_activas,
-                'digitos': formData.get('digitos')};
+                'digitos': formData.get('digitos'),
+                'numeros': formData.get('numeros')};
 
             //console.log("formulario: ",formData);
             //console.log("formulario digitos: ",formData.get('digitos'));
@@ -95,7 +105,8 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
                     
                     }else{
 
-                        console.log("Hay mensajes traidos de la api",Object.keys(data).length);
+                        console.log("Hay mensajes traidos de la api");
+                        //console.log(Object.keys(data).length);
                         MensajeSubliminal.classList.remove("d-none","alert-danger");
                         MensajeSubliminal.classList.add("alert-primary"); //alert alert-success
                         MensajeSubliminal.innerHTML = "Informacion:<br> ";
