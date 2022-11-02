@@ -7,6 +7,8 @@ from django.shortcuts import redirect, render
 #Clases para las plantillas
 from django.views.generic import TemplateView, CreateView, UpdateView, DetailView, ListView, DeleteView
 
+from aplicaciones.juegos.models import Jugadas_Numeros
+
     
 
 
@@ -24,9 +26,9 @@ class Index(TemplateView):
         else:
 
             print("Estas autenticado GENIAL",request.user)
-            print("usuario: ",request.user)
-            print("usuario permisos: ",request.user.get_all_permissions())
-            print(request.user.has_perm('src.ver_zulia'))
+            #print("usuario: ",request.user)
+            #print("usuario permisos: ",request.user.get_all_permissions())
+            #print(request.user.has_perm('src.ver_zulia'))
             
             
             #Aqui verificamos si el usuario esta activo para que ingrese
@@ -57,4 +59,5 @@ class Index(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['informacion'] = "Hola..."
+        context['poder'] = Jugadas_Numeros.objects.all()
 

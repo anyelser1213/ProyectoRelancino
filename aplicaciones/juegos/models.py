@@ -79,7 +79,7 @@ class Jugada(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True) 
 
     def __str__(self):
-         return "Digitos: "+str(self.digitos)+" Usuario: "+str(self.id_usuario)
+         return "Digitos: "+str(self.digitos)
 
     class Meta:
 
@@ -106,4 +106,4 @@ class Jugadas_Numeros(models.Model):
     id_usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE,blank=False, null=False)
 
     def __str__(self):
-        return str(self.id_jugada)+" "+str(self.id_telefono)
+        return str(self.id_jugada)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)

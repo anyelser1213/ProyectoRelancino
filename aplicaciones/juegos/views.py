@@ -33,7 +33,7 @@ class IniciarJugada(TemplateView):
                 telefono1 = Telefono.objects.first()
                 #Jugadas_Numeros.objects.create()
                 Prueba = Jugadas_Numeros(id_jugada=jugada1, id_telefono=telefono1,id_usuario=request.user)
-                Prueba.save()
+                #Prueba.save()
                 print(Prueba)
 
             else:

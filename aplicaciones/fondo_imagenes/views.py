@@ -10,14 +10,48 @@ def api_login(request):
 
     if request.method == 'GET':
 
-        xxx= Login.objects.first().fondo_login
-        xxx2= Login.objects.first().logo_login
-        print("Llegamos aqui FONDO...",xxx)
-        print("Llegamos aqui LOGO...",xxx2)
-        
-        data={'FondoLogin':xxx.url}
-        data.update({'ImagenLogin':str(xxx2.url)})
-        data.update({'IconPagWeb':str(xxx2.url)})
+
+        data ={}
+        try:
+            login = Login.objects.first()
+            #print("Jamon de pierna",login)
+
+            #En caso de que no exista el objeto
+            if login is None:
+                print("No hay ningun objeto para el login")
+                
+
+            #En caso de que haya objetos login
+            else:
+                print("Si hay imagenes del login")
+                print("--I--")
+                if login.fondo_login == "":
+                    print("Fondo en null")
+
+                else:
+                    print("El fondo login tiene imagen")
+                    data={'FondoLogin':login.fondo_login.url}
+                    #data.update({'ImagenLogin':str(xxx2.url)})
+                    #data.update({'IconPagWeb':str(xxx2.url)})
+
+                
+                if login.logo_login == "":
+                    print("Logo en null")
+
+                else:
+                    print("El fondo login tiene imagen")
+                    data.update({'ImagenLogin':str(login.logo_login.url)})
+                    data.update({'IconPagWeb':str(login.logo_login.url)})
+
+
+
+                print("Fondo del login: ",login.fondo_login)
+
+
+        except Login.DoesNotExist:
+            login = None
+            print("No existe nada")
+   
         return JsonResponse(data)
 """
 
