@@ -23,7 +23,7 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
         console.log("No hay tipo elegido");
         MensajeSubliminal.classList.remove("d-none");
-        MensajeSubliminal.innerHTML = "Debes seleccionar un tipo y agregar los digitos para la jugada";
+        MensajeSubliminal.innerHTML = "Debes seleccionar un tipo y agregar los digitos y el nº telefonico para la jugada";
 
     }else{
 

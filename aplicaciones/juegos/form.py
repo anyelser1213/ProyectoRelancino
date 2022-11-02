@@ -13,13 +13,18 @@ class JugadaForm(forms.Form):
     digitos = forms.CharField(
                      help_text = "Ingresa Numeros"
                      )
-    #texto = forms.CharField(max_length=500)
+    numeros = forms.CharField(
+        help_text = "Ingresa Numero Telefonico"
+        )
 
     def __init__(self, *args, **kwargs):
         super(JugadaForm, self).__init__(*args, **kwargs)
         print("entramos en formulario JugadaForm")
         self.fields['digitos'].widget.attrs.update({
             'class': 'form-control','placeholder':'Ingrese Digitos','maxlength':0,'pattern':'[0-9]+','onkeypress':'return valideKey(event);' })
+        self.fields['numeros'].widget.attrs.update({
+            'class': 'form-control','placeholder':'Ingrese Nº telefónico','maxlength':11,'pattern':'[0-9]+','onkeypress':'return valideKey(event);'})
+    
     #description = forms.CharField()
 
 

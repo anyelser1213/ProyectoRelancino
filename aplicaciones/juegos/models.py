@@ -42,6 +42,7 @@ class Jugada(models.Model):
     id_tipo_jugada = models.ForeignKey(TipoJugadas, on_delete=models.CASCADE)
     id_usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
     digitos = models.CharField(max_length=10,blank=False, null=False)
+    numero_telefono = models.CharField(max_length=11,default=0,blank=False, null=False) # 11 digitos tiene un numero telefonico
     repetidor = models.PositiveIntegerField(default=0)
     bloquear_repetidor = models.BooleanField(default=False)
     fecha_creacion = models.DateTimeField(auto_now_add=True) 

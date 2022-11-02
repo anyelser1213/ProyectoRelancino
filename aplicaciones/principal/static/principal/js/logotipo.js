@@ -4,7 +4,7 @@
 var img = document.getElementById("imagenLogin");
 var IconoWeb = document.getElementById("iconPagWeb");
 
-console.log(csrftoken);
+//console.log(csrftoken);
 
 
     var resultados = "Cargando...";
@@ -25,9 +25,9 @@ console.log(csrftoken);
     ).then(
         function(data){
 
-            console.log(data);
+            //console.log(data);
 
-            console.log(data.FondoLogin);
+            //console.log(data.FondoLogin);
             
 
             IconoWeb.setAttribute("href",data.ImagenLogin);
