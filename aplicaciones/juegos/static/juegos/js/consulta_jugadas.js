@@ -123,7 +123,7 @@ function ConsultarJugadas(tipo){
 
                     //00-99 |00|10|20|30|40|50|60|70|80|90| asi comienza en cada columna
 
-                    //no le hagas caso a elay
+                    
                     var inicio = 0;
                     var final = 10;
                     
@@ -162,10 +162,41 @@ function ConsultarJugadas(tipo){
                 
                     
                     
-                }else if(cantidad_de_digitos == 3){//En caso de que solo sea un digito
+                }else if(cantidad_de_digitos == 3){//En caso de que solo sean 3 digito
 
                     //000-999 |000|100|200|300|400|500|600|700|800|900| asi comienza en cada columna
 
+                    var inicio = 0;
+                    var final = 100;
+                    
+                    for (const element in data) {
+
+                        
+                        //Variables a enviar
+                        var aux = Number(element)+1;
+                         //Para incrementar #
+                        var nombre = "jugadas"+aux.toString(); //Nombre de la jugada para llamar al div
+                        var digitos = data[element].digitos;
+                        //var repetidor = data[element].repetidor;
+                        var monto_jugada= parseFloat(tipo.dataset.monto);//Esto es solo para hacer el calculo aqui
+                        //var monto = monto_jugada*repetidor;
+                        
+                        var nuevaData = data.splice(inicio,final);
+                        console.log("Data elegida: ",nuevaData,"inicio: ",inicio," final: ",final);
+                        
+                        
+                        
+
+
+
+
+
+                        CrearCuerpo3(aux,nombre,digitos,monto_jugada,nuevaData);
+                        //console.log(element);
+                        //console.log("Elemento: ",`${element}`, "Digito: ", `${data[element].digitos}`, "Repeticion: ", `${data[element].repetidor}`);
+                        //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
+                    
+                    }//fin del for
 
 
 
@@ -173,6 +204,38 @@ function ConsultarJugadas(tipo){
                 }else if(cantidad_de_digitos == 4){//En caso de que solo sea un digito
 
                     //0000-9999 |0000|1000|2000|3000|4000|5000|6000|7000|8000|9000| asi comienza en cada columna
+
+                    var inicio = 0;
+                    var final = 1000;
+                    
+                    for (const element in data) {
+
+                        
+                        //Variables a enviar
+                        var aux = Number(element)+1;
+                         //Para incrementar #
+                        var nombre = "jugadas"+aux.toString(); //Nombre de la jugada para llamar al div
+                        var digitos = data[element].digitos;
+                        //var repetidor = data[element].repetidor;
+                        var monto_jugada= parseFloat(tipo.dataset.monto);//Esto es solo para hacer el calculo aqui
+                        //var monto = monto_jugada*repetidor;
+                        
+                        var nuevaData = data.splice(inicio,final);
+                        console.log("Data elegida: ",nuevaData,"inicio: ",inicio," final: ",final);
+                        
+                        
+                        
+
+
+
+
+
+                        CrearCuerpo4(aux,nombre,digitos,monto_jugada,nuevaData);
+                        //console.log(element);
+                        //console.log("Elemento: ",`${element}`, "Digito: ", `${data[element].digitos}`, "Repeticion: ", `${data[element].repetidor}`);
+                        //MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
+                    
+                    }//fin del for
 
 
                 }else{

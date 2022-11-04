@@ -1,4 +1,3 @@
-import {csrftoken} from "./cookiesDjango.js";
 
 //Botones generales
 var BotonEnviarJugadas = document.getElementById("GuardarJugadas");
