@@ -48,7 +48,7 @@ class Telefono(models.Model):
     class Meta:
 
         verbose_name = "Numero Telefonico"
-        verbose_name_plural = "Numeros Telefonicos"
+        verbose_name_plural = "3.Numeros Telefonicos"
 
         permissions = [
             #(Lo que se guarda en bases de datos, lo que se ve al usuario)
