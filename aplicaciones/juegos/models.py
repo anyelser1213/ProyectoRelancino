@@ -68,7 +68,7 @@ class Jugada(models.Model):
 
     id_tipo_jugada = models.ForeignKey(TipoJugadas, on_delete=models.CASCADE)
     id_usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
-    digitos = models.CharField(max_length=10,blank=False, null=False)
+    digitos = models.CharField(default=0,max_length=20,blank=False, null=False)
 
     #Para la tabla de M a M
     tablarelacional = models.ManyToManyField(Telefono,through='Jugadas_Numeros')
