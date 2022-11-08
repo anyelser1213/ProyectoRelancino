@@ -169,15 +169,37 @@ def consultarJugada_api_view(request):
         #posicion_index +=1
         #print("Posicion : ",str(tipos[0]).find("_"))
         #print(tipos[0][posicion_index:])
+
+        print("usuario: ",request.user," SuperUsuario: ",request.user.is_superuser)
         tipo= TipoJugadas.objects.get(nombre=tipos)
+        if request.user.is_superuser:
+            
+            #SuperUsuario
+            QueryCompleto = Jugada.objects.all().values('digitos','repetidor')
+            print(QueryCompleto)
+            Elemento = Jugada.objects.all().values('digitos','repetidor').distinct()
+
+            for model in QueryCompleto:
+                print(model['digitos']) 
+                #model.save()
+            print("")
+            
+
+            print(Elemento)
+
+        else:
+            #Normal
+            Elemento = Jugada.objects.filter(id_tipo_jugada=tipo,id_usuario=request.user.id).order_by('digitos')
+
+
+
+        
 
         #print("Tipo de Jugada:",tipo, "Usuario: ",request.user)
 
-        #Pendiente validacion super usuario
-        Elemento = Jugada.objects.filter(id_tipo_jugada=tipo,id_usuario=request.user.id).order_by('digitos')
-
         
-        print("Jugadas: ",Elemento, Elemento.count())
+        
+        #print("Jugadas: ",Elemento, Elemento.count())
         #print("Tipo jugada: ",Elemento," Cantidad: ",Elemento.cantidad_digitos)
         
 
@@ -185,7 +207,7 @@ def consultarJugada_api_view(request):
 
         jugadas_serializer = JugadaSerializer(Elemento,many=True) #El many true es cuando son varios objetos
         
-        print(jugadas_serializer)
+        #print(jugadas_serializer)
         #print(jugadas_serializer.data)
 
         return JsonResponse(jugadas_serializer.data,safe = False)
