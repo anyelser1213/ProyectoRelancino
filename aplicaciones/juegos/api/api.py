@@ -175,21 +175,37 @@ def consultarJugada_api_view(request):
         if request.user.is_superuser:
             
             #SuperUsuario
-            QueryCompleto = Jugada.objects.all().values('digitos','repetidor')
-            print(QueryCompleto)
-            Elemento = Jugada.objects.all().values('digitos','repetidor').distinct()
+            #ElementosSinRepetir = Jugada.objects.distinct()
+            ElementosSinRepetir = Jugada.objects.values('digitos','repetidor').distinct('digitos')
+            print("\n-----")
+            #print("INICIANDO: ",ElementosSinRepetir)
 
-            for model in QueryCompleto:
-                print(model['digitos']) 
-                #model.save()
-            print("")
-            
+            for model in ElementosSinRepetir:
+                
+                #print(model)
+                #print(model['digitos']," ---- ",model['repetidor']) 
+                #print(Jugada.objects.filter(digitos=model['digitos']).values('digitos','repetidor')," Cantidad: ",Jugada.objects.filter(digitos=str(model['digitos'])).count())
+                
 
-            print(Elemento)
+                #Tenemos que entrar en otro for(para incrementar los repetidores)
+                aux = 0 #Variable para asignar las repeticiones
+                for jugadaIndividual in Jugada.objects.filter(digitos=model['digitos']).values('digitos','repetidor'):
+                    #print(jugadaIndividual['digitos']," ---- ",jugadaIndividual['repetidor']) 
+                    aux =aux+jugadaIndividual['repetidor']
+
+                model['repetidor'] = aux #Asignamos el valor aqui
+
+
+                
+
+            #Resultado final
+            print(ElementosSinRepetir)
+
+
 
         else:
             #Normal
-            Elemento = Jugada.objects.filter(id_tipo_jugada=tipo,id_usuario=request.user.id).order_by('digitos')
+            ElementosSinRepetir = Jugada.objects.filter(id_tipo_jugada=tipo,id_usuario=request.user.id).values('digitos','repetidor').order_by('digitos')
 
 
 
@@ -205,7 +221,7 @@ def consultarJugada_api_view(request):
 
         #print("El tipo de dato es: ",type(datos))
 
-        jugadas_serializer = JugadaSerializer(Elemento,many=True) #El many true es cuando son varios objetos
+        jugadas_serializer = JugadaSerializer(ElementosSinRepetir,many=True) #El many true es cuando son varios objetos
         
         #print(jugadas_serializer)
         #print(jugadas_serializer.data)
