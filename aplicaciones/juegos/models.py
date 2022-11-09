@@ -64,11 +64,10 @@ class Telefono(models.Model):
 
 class Comprobante(models.Model):
 
-    id_telefono = models.ForeignKey(Telefono,on_delete=models.CASCADE,blank=False, null=False)
-    numero_comprobante = models.CharField(default=0,max_length=20,blank=False, null=False)
+    numero_comprobante = models.CharField(default=0,max_length=11,blank=False, null=False)
 
     def __str__(self):
-         return "Telefono: "+str(self.numero_comprobante)
+         return "Comprobante: "+str(self.numero_comprobante)
 
     class Meta:
 
@@ -128,6 +127,7 @@ class Jugadas_Numeros(models.Model):
     id_jugada = models.ForeignKey(Jugada,on_delete=models.CASCADE,blank=False, null=False)
     id_telefono = models.ForeignKey(Telefono,on_delete=models.CASCADE,blank=False, null=False)
     id_usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE,blank=False, null=False)
+    id_comprobante = models.ForeignKey(Comprobante, on_delete=models.CASCADE,blank=False, null=False)
 
     def __str__(self):
-        return str(self.id_jugada)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)
+        return str(self.id_jugada)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)+" "+str(self.id_comprobante)
