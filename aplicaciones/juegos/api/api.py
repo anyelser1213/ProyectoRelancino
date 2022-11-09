@@ -47,6 +47,15 @@ def jugada_api_view(request):
             print("Elemento: ",Elemento," Cantidad: ",Elemento.cantidad_digitos, "monto_jugada: ", Elemento.monto_jugada," cantidad_maxima_repeticion: ",Elemento.cantidad_maxima_repeticion)
             print("Para este elemento usamos solo: ",str(jugada)[0:int(Elemento.cantidad_digitos)])
             
+            ###########################################################################################
+            #Aqui verificamos si el comprobante ya existe
+
+
+
+
+            ###########################################################################################
+ 
+
 
             ############################################################################################
             #Aqui verificamos si el numero ya existe

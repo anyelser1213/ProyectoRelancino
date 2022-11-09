@@ -39,7 +39,7 @@ class TipoJugadas(models.Model):
 
 class Telefono(models.Model):
 
-    numero_telefono = models.CharField(max_length=11,default=0,blank=False, null=False) # 11 digitos tiene un numero telefonico
+    numero_telefono = models.CharField(max_length=11,default=0,blank=False, null=False) # 11 digitos tiene un numero telefonico(Venezuela)
     
 
     def __str__(self):
