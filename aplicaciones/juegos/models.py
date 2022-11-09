@@ -62,6 +62,30 @@ class Telefono(models.Model):
 
         ]#Fin de los permisos
 
+class Comprobante(models.Model):
+
+    id_telefono = models.ForeignKey(Telefono,on_delete=models.CASCADE,blank=False, null=False)
+    numero_comprobante = models.CharField(default=0,max_length=20,blank=False, null=False)
+
+    def __str__(self):
+         return "Telefono: "+str(self.numero_comprobante)
+
+    class Meta:
+
+        verbose_name = "Numero comprobante"
+        verbose_name_plural = "4.Comprobante"
+
+        permissions = [
+            #(Lo que se guarda en bases de datos, lo que se ve al usuario)
+            
+            #Permisos para iniciar y consultar jugadas
+            #("iniciarjugada", "IniciarJugada"),
+            #("consultarjugada", "ConsultarJugada"),
+
+            #Para ver los informes
+            #("informejugada", "InformeJugada"),
+
+        ]#Fin de los permisos
 
 
 class Jugada(models.Model):

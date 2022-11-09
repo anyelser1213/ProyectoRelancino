@@ -23,6 +23,7 @@ def jugada_api_view(request):
         tipos = request.data.get('tipos')
         jugada = str(request.data.get('digitos'))
         numero_telefonico = str(request.data.get('numeros'))
+        comprobante = str(request.data.get('comprobante'))
 
         #Datos que enviaremos
         datos = {}
@@ -37,6 +38,7 @@ def jugada_api_view(request):
         print("Tipos Jugados: ",tipos)
         print("Jugada: ",jugada)
         print("Numero: ",numero_telefonico)
+        print("Comprobante: ",comprobante)
         #print("Tipo jugada: ",Elemento," Cantidad: ",Elemento.cantidad_digitos)
         for i in tipos:
             

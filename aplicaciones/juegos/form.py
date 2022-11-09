@@ -17,6 +17,10 @@ class JugadaForm(forms.Form):
         help_text = "Ingresa Numero Telefonico"
         )
 
+    comprobante = forms.CharField(
+        help_text = "Ingresa Numero de comprobante"
+        )
+
     def __init__(self, *args, **kwargs):
         super(JugadaForm, self).__init__(*args, **kwargs)
         print("entramos en formulario JugadaForm")
@@ -24,6 +28,8 @@ class JugadaForm(forms.Form):
             'class': 'form-control','placeholder':'Ingrese Digitos','maxlength':0,'pattern':'[0-9]+','onkeypress':'return valideKey(event);' })
         self.fields['numeros'].widget.attrs.update({
             'class': 'form-control','placeholder':'Ingrese Nº telefónico','maxlength':11,'pattern':'[0-9]+','onkeypress':'return valideKey(event);'})
+        self.fields['comprobante'].widget.attrs.update({
+            'class': 'form-control','placeholder':'Ingrese Nº comprobante','minlength':4,'maxlength':12,'pattern':'[0-9]+','onkeypress':'return valideKey(event);'})
     
     #description = forms.CharField()
 
