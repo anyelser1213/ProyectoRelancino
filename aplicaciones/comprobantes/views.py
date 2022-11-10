@@ -13,6 +13,7 @@ from aplicaciones.juegos.models import TipoJugadas, Jugada,Jugadas_Numeros, Tele
 
 class ConsultarComprobantes(TemplateView):
 
+
     template_name = "comprobantes/comprobantes.html"
 
     def dispatch(self, request, *args, **kwargs):

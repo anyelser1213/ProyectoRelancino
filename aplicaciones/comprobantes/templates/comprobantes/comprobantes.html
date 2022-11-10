@@ -40,8 +40,8 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4 abs-center">Jugadas Actuales</h1>
-                    
+                    <h1 class="mt-4 abs-center">Comprobantes</h1>
+                    <!--
                     <div class="row">
                         
                         <div class="col-xl-12">
@@ -59,7 +59,6 @@
                                         
                                         
                                         
-                                        <!--
                                         <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Primera Jugada</a>
                                         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Segunda Jugada</button>
                                         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Tercea Jugada</button>
@@ -67,7 +66,6 @@
                                         
                                         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
                                     
-                                        -->
                                     </p>
                                       
 
@@ -79,80 +77,43 @@
                             
                             </div>
                         </div>
-                        <!---
-                        -->
+                        
                     </div>
-
+                    --->
 
                     <div class=" container-fluid ">
 
-                        <div class="collapse multi-collapse" id="multiCollapseExample1">
-
-                            <div class="row filaGeneral "  >
-
-                            
-                            
-
-
-                                    
-
-                                    
-                                
-                                
-                                
-                                </div>
-    
-    
-    
-                                <div class="col  columnasGeneral " id="jugadas2" style="background-color:bslanchedalmond;">
-    
-                                    <div class="row abs-center ">
-                                
-                                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
-                                        <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
-                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
-                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
-                                    </div>
-    
-                                    {% for jugada in jugadas2 %} 
-    
-                                    
-                                    
-                                
-                                
-                                
-                                </div>
-    
-    
-    
-    
-    
-    
-                                
-    
-                                
-    
-    
-                                
-    
-                                
-    
-                                
-    
-                                
-    
-    
-    
-                                
-                               
-    
-                              
-                              
-                            </div>
-
-
-                        </div><!--Fin de collapse-->
-                        
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Comprobante</th>
+                                <th scope="col">N* telefonico</th>
+                                <th scope="col">Etatus</th>
+                                <th scope="col">Accion</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                              </tr>
+                            </tbody>
+                          </table>
 
                         
                         
@@ -162,6 +123,8 @@
 
                     <br><br>
 
+
+                    
 
 
                     
