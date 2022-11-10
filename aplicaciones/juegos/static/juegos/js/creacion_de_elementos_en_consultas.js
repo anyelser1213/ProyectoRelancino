@@ -115,7 +115,7 @@ function CrearCuerpo1(aux,nombre,digitos,repetidor,monto){
    Divcol3.appendChild(p3); 
    Divcol4.appendChild(p4);
 
-}//Fin de la funcion CrearEncabezado
+}//Fin de la funcion CrearCuerpo1
 
 
 
@@ -215,7 +215,7 @@ function CrearCuerpo2(aux,nombre,digitos,monto,data){
 
     
 
-}//Fin de la funcion CrearEncabezado
+}//Fin de la funcion CrearCuerpo2
 
 
 
@@ -307,7 +307,7 @@ function CrearCuerpo3(aux,nombre,digitos,monto,data){
 
     
 
-}//Fin de la funcion CrearEncabezado
+}//Fin de la funcion CrearCuerpo3
 
 
 
@@ -397,7 +397,7 @@ function CrearCuerpo4(aux,nombre,digitos,monto,data){
 
     
 
-}//Fin de la funcion CrearEncabezado
+}//Fin de la funcion CrearCuerpo4
 
 
 
