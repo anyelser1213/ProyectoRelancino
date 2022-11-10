@@ -9,7 +9,7 @@ app_name ="comprobantes"
 urlpatterns = [
     #path('', views.Index.as_view(), name='index'),
     
-    path('comprobantes', views.InformesJugada.as_view() ,name="informarJugada"),
+    path('comprobantes', views.ConsultarComprobantes.as_view() ,name="consultarComprobantes"),
 
     #apis para informes
     #path('api_status_comprobantes/', views.api_informes ,name="api_comprobantes"),
