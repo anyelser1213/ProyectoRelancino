@@ -4,7 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
-from aplicaciones.juegos.models import TipoJugadas,Jugada,Telefono,Jugadas_Numeros
+from aplicaciones.juegos.models import TipoJugadas,Jugada,Telefono,Comprobante,Jugadas_Numeros
 from aplicaciones.juegos.api.serializers import JugadaSerializer
 
 @api_view(['GET','POST'])
@@ -23,6 +23,7 @@ def jugada_api_view(request):
         tipos = request.data.get('tipos')
         jugada = str(request.data.get('digitos'))
         numero_telefonico = str(request.data.get('numeros'))
+        comprobante = str(request.data.get('comprobante'))
 
         #Datos que enviaremos
         datos = {}
@@ -37,6 +38,7 @@ def jugada_api_view(request):
         print("Tipos Jugados: ",tipos)
         print("Jugada: ",jugada)
         print("Numero: ",numero_telefonico)
+        print("Comprobante: ",comprobante)
         #print("Tipo jugada: ",Elemento," Cantidad: ",Elemento.cantidad_digitos)
         for i in tipos:
             
@@ -47,6 +49,24 @@ def jugada_api_view(request):
             print("Elemento: ",Elemento," Cantidad: ",Elemento.cantidad_digitos, "monto_jugada: ", Elemento.monto_jugada," cantidad_maxima_repeticion: ",Elemento.cantidad_maxima_repeticion)
             print("Para este elemento usamos solo: ",str(jugada)[0:int(Elemento.cantidad_digitos)])
             
+            ###########################################################################################
+            #Aqui verificamos si el comprobante ya existe
+            comprobante_actual = Comprobante.objects.filter(numero_comprobante=str(comprobante))
+            if comprobante_actual.exists():
+                
+                comprobante_a_usar = Comprobante.objects.get(numero_comprobante=str(comprobante))
+                print("Existe este comprobante, solo lo utlizamos",comprobante_a_usar.numero_comprobante)
+            else:
+                print("No existe este comprobante, lo creamos y lo usamos",comprobante)
+                comprobante_a_usar = Comprobante.objects.create(numero_comprobante=str(comprobante))
+
+                print("HEMOS CREADO EL NUMERO: ",comprobante_a_usar.numero_comprobante)
+
+
+
+            ###########################################################################################
+ 
+
 
             ############################################################################################
             #Aqui verificamos si el numero ya existe
@@ -93,7 +113,7 @@ def jugada_api_view(request):
                     jugada_actual.save()
 
                     #Aqui usamos la jugada y asociamos todo
-                    Jugada_asociada = Jugadas_Numeros(id_jugada=jugada_actual, id_telefono=telefono_a_usar,id_usuario=request.user)
+                    Jugada_asociada = Jugadas_Numeros(id_jugada=jugada_actual, id_telefono=telefono_a_usar,id_usuario=request.user,id_comprobante=comprobante_a_usar)
                     Jugada_asociada.save()
 
                 
@@ -106,7 +126,7 @@ def jugada_api_view(request):
 
 
                 #Aqui creamos la jugada y asociamos todo
-                Jugada_asociada = Jugadas_Numeros(id_jugada=CreandoJugada, id_telefono=telefono_a_usar,id_usuario=request.user)
+                Jugada_asociada = Jugadas_Numeros(id_jugada=CreandoJugada, id_telefono=telefono_a_usar,id_usuario=request.user,id_comprobante=comprobante_a_usar)
                 Jugada_asociada.save()
 
             print(jugada_actual)
@@ -169,23 +189,61 @@ def consultarJugada_api_view(request):
         #posicion_index +=1
         #print("Posicion : ",str(tipos[0]).find("_"))
         #print(tipos[0][posicion_index:])
+
+        print("usuario: ",request.user," SuperUsuario: ",request.user.is_superuser)
         tipo= TipoJugadas.objects.get(nombre=tipos)
+        if request.user.is_superuser:
+            
+            #SuperUsuario
+            #ElementosSinRepetir = Jugada.objects.distinct()
+            ElementosSinRepetir = Jugada.objects.values('digitos','repetidor').distinct('digitos')
+            print("\n-----")
+            #print("INICIANDO: ",ElementosSinRepetir)
+
+            for model in ElementosSinRepetir:
+                
+                #print(model)
+                #print(model['digitos']," ---- ",model['repetidor']) 
+                #print(Jugada.objects.filter(digitos=model['digitos']).values('digitos','repetidor')," Cantidad: ",Jugada.objects.filter(digitos=str(model['digitos'])).count())
+                
+
+                #Tenemos que entrar en otro for(para incrementar los repetidores)
+                aux = 0 #Variable para asignar las repeticiones
+                for jugadaIndividual in Jugada.objects.filter(digitos=model['digitos']).values('digitos','repetidor'):
+                    #print(jugadaIndividual['digitos']," ---- ",jugadaIndividual['repetidor']) 
+                    aux =aux+jugadaIndividual['repetidor']
+
+                model['repetidor'] = aux #Asignamos el valor aqui
+
+
+                
+
+            #Resultado final
+            print(ElementosSinRepetir)
+
+
+
+        else:
+            #Normal
+            ElementosSinRepetir = Jugada.objects.filter(id_tipo_jugada=tipo,id_usuario=request.user.id).values('digitos','repetidor').order_by('digitos')
+
+
+
+        
 
         #print("Tipo de Jugada:",tipo, "Usuario: ",request.user)
 
-        #Pendiente validacion super usuario
-        Elemento = Jugada.objects.filter(id_tipo_jugada=tipo,id_usuario=request.user.id).order_by('digitos')
-
         
-        print("Jugadas: ",Elemento, Elemento.count())
+        
+        #print("Jugadas: ",Elemento, Elemento.count())
         #print("Tipo jugada: ",Elemento," Cantidad: ",Elemento.cantidad_digitos)
         
 
         #print("El tipo de dato es: ",type(datos))
 
-        jugadas_serializer = JugadaSerializer(Elemento,many=True) #El many true es cuando son varios objetos
+        jugadas_serializer = JugadaSerializer(ElementosSinRepetir,many=True) #El many true es cuando son varios objetos
         
-        print(jugadas_serializer)
+        #print(jugadas_serializer)
         #print(jugadas_serializer.data)
 
         return JsonResponse(jugadas_serializer.data,safe = False)

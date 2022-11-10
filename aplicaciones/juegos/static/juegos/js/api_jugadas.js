@@ -46,7 +46,7 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
             //console.log("Algo esta incompleto jajajja");
             MensajeSubliminal.classList.remove("d-none");
-            MensajeSubliminal.innerHTML = "Debes agregar un numero telefónico";
+            MensajeSubliminal.innerHTML = "Debes agregar un numero telefónico correcto";
         }else{
 
             //console.clear();
@@ -60,7 +60,9 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
             var data = {"tipos": 
                 jugadas_activas,
                 'digitos': formData.get('digitos'),
-                'numeros': formData.get('numeros')};
+                'numeros': formData.get('numeros'),
+                'comprobante': formData.get('comprobante'),
+            };
 
             //console.log("formulario: ",formData);
             //console.log("formulario digitos: ",formData.get('digitos'));

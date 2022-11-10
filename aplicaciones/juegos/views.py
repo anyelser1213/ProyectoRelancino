@@ -217,9 +217,10 @@ class ConsultarJugada(TemplateView):
         #Por ahora pedimos 1000 datos
         
         
-        context['jugadas1'] = Jugada.objects.filter(id_usuario=self.request.user).order_by('id')[0:100]
+        
         
         """
+        context['jugadas1'] = Jugada.objects.filter(id_usuario=self.request.user).order_by('id')[0:100]
         context['jugadas2'] = Jugada.objects.filter(id_usuario=self.request.user).order_by('id')[101:200]
         context['jugadas3'] = Jugada.objects.filter(id_usuario=self.request.user).order_by('id')[201:300]
         context['jugadas4'] = Jugada.objects.filter(id_usuario=self.request.user).order_by('id')[301:400]
