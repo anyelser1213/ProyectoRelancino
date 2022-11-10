@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load tag_consultas_jugadas %}
+{% block EnlacesPlantillas %}
+
+<link rel="stylesheet" href="{% static 'juegos/css/estilos.css' %}">
+  
+
+    <script src="{% static 'juegos/js/creacion_de_elementos_en_consultas.js' %}"></script>
+    <script src="{% static 'juegos/js/cookiesDjango.js' %}"></script>
+    <script src="{% static 'juegos/js/consulta_jugadas.js' %}"></script>
+
+{% endblock %}
+
+
+
+
+
+{% block menu_superior %}
+      <!--Aqui se incluye el menu superior-->
+      {% include "menu_superior.html" %}
+    
+      {% endblock%}
+
+
+    
+    
+    
+
+    
+    {% block contenedor %} 
+
+    <div id="layoutSidenav">
+    
+        <!--Aqui se incluye el menu lateral-->
+        {% include "menu_dashboar.html" with tema="index" subtema=""   %}
+
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4 abs-center">Jugadas Actuales</h1>
+                    
+                    <div class="row">
+                        
+                        <div class="col-xl-12">
+                            <div class="card mb-4">
+                                
+                                    
+                                <div class="card-header">
+                                    <i class="fas fa-chart-area me-1"></i>
+                                </div>
+                                <div class="card-body">
+                                    <h3>Comprobantes:</h3>
+
+                                    <p>
+                                        
+                                        
+                                        
+                                        
+                                        <!--
+                                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Primera Jugada</a>
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Segunda Jugada</button>
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Tercea Jugada</button>
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">Cuarta Jugada</button>
+                                        
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+                                    
+                                        -->
+                                    </p>
+                                      
+
+                                    
+                                      
+                                </div>
+                            
+                                
+                            
+                            </div>
+                        </div>
+                        <!---
+                        -->
+                    </div>
+
+
+                    <div class=" container-fluid ">
+
+                        <div class="collapse multi-collapse" id="multiCollapseExample1">
+
+                            <div class="row filaGeneral "  >
+
+                            
+                            
+
+
+                                    
+
+                                    
+                                
+                                
+                                
+                                </div>
+    
+    
+    
+                                <div class="col  columnasGeneral " id="jugadas2" style="background-color:bslanchedalmond;">
+    
+                                    <div class="row abs-center ">
+                                
+                                        <div class="col-1 border" style="background-color:gresen;"><p class="consultaP letraPrincipal" >#</p></div>
+                                        <div class="col-2 border" style="background-color:bluse;"><p class="consultaP letraPrincipal">Num</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Rep</p></div>
+                                        <div class="col-2 border" style="background-color:yelslow;"><p class="consultaP letraPrincipal">Mon</p></div>
+                                    </div>
+    
+                                    {% for jugada in jugadas2 %} 
+    
+                                    
+                                    
+                                
+                                
+                                
+                                </div>
+    
+    
+    
+    
+    
+    
+                                
+    
+                                
+    
+    
+                                
+    
+                                
+    
+                                
+    
+                                
+    
+    
+    
+                                
+                               
+    
+                              
+                              
+                            </div>
+
+
+                        </div><!--Fin de collapse-->
+                        
+
+                        
+                        
+                        
+                    </div>
+
+
+                    <br><br>
+
+
+
+                    
+                </div>
+            </main>
+
+
+            
+        </div>
+
+
+    </div>
+            
+          
+    {% endblock %}
+
+
+    {% block EnlacesListado_js %}
+
+    
+
+    {% endblock %}

@@ -13,6 +13,8 @@ urlpatterns = [
 
     path('consultarJuegos', views.ConsultarJugada.as_view() ,name="consultarJugada"),
 
+    path('consultarComprobantes', views.ConsultarComprobantes.as_view() ,name="consultarComprobantes"),
+
 
 
     

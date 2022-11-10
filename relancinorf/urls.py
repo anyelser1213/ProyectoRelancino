@@ -20,6 +20,7 @@ urlpatterns = [
     path('', include('aplicaciones.login.urls')),
     path('', include('aplicaciones.fondo_imagenes.urls')),
     path('', include('aplicaciones.informes.urls')),
+    path('', include('aplicaciones.comprobantes.urls')),
     #path('login', include('login.urls')),
 
 
