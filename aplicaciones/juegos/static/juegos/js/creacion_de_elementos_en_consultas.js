@@ -119,16 +119,6 @@ function CrearCuerpo1(aux,nombre,digitos,repetidor,monto){
 
 
 
-
-
-
-
-
-
-
-
-
-
 function CrearCuerpo2(aux,nombre,digitos,monto,data){
 
     
@@ -216,8 +206,6 @@ function CrearCuerpo2(aux,nombre,digitos,monto,data){
     
 
 }//Fin de la funcion CrearCuerpo2
-
-
 
 
 
