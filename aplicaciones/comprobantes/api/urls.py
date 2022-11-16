@@ -1,12 +1,13 @@
 from django.urls import path
-from aplicaciones.juegos.api.api import jugada_api_view ,consultarJugada_api_view
+from aplicaciones.comprobantes.api.api import pagar_comprobante_api_view
 
 urlpatterns = [
 
     #Normal
 
     #Apis
-    path('jugada/',jugada_api_view,name='jugadaApi'),
-    path('consultarjugada/',consultarJugada_api_view,name='consultar_jugada'),
+    path('pagar_comprobante/',pagar_comprobante_api_view,name='pagar_comprobanteApi'),
+    
+    #path('consultarjugada/',consultarJugada_api_view,name='consultar_jugada'),
     #path('jugada/',JugadaApiView.as_view(),name='jugadaApi')
 ]

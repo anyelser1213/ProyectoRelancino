@@ -1,12 +1,12 @@
 from dataclasses import fields
 from rest_framework import serializers
-from aplicaciones.juegos.models import Jugada
+from aplicaciones.juegos.models import Jugadas_Numeros
 
 
 class JugadaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Jugada
+        model = Jugadas_Numeros
         #fields = '__all__'
-        fields = ['digitos','repetidor'] #cuando son campos especificos
+        fields = ['status'] #cuando son campos especificos
         
         #exclude
