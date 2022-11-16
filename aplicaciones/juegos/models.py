@@ -125,10 +125,20 @@ class Jugada(models.Model):
 
 class Jugadas_Numeros(models.Model):
 
+    tipo_plan = [
+        ('Por Pagar','Por Pagar'),
+        ('Pagado','Pagado'),
+    ]
     id_jugada = models.ForeignKey(Jugada,on_delete=models.CASCADE,blank=True, null=True)
     id_telefono = models.ForeignKey(Telefono,on_delete=models.CASCADE,blank=True, null=True)
     id_usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE,blank=True, null=True)
     id_comprobante = models.ForeignKey(Comprobante, on_delete=models.CASCADE,blank=True, null=True)
+
+    status = models.CharField("status",
+        max_length=150,
+        choices=tipo_plan,    
+        default='Por Pagar'
+    )
 
     def __str__(self):
         #return str(self.id_jugada)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)
