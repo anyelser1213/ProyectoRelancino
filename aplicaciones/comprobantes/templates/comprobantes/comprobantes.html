@@ -87,31 +87,25 @@
                             <thead>
                               <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Comprobante</th>
+                                <th scope="col">Digito</th>
                                 <th scope="col">N* telefonico</th>
+                                <th scope="col">Comprobante</th>
                                 <th scope="col">Estatus</th>
                                 <th scope="col">Accion</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                              </tr>
+                              {% for jugada in jugadasComprobantes %}
+                                  <tr>
+                                    <th> {{forloop.counter}} </th>
+                                    <td>{{ jugada.id_jugada.digitos }}</td>
+                                    <td>{{ jugada.id_telefono.numero_telefono }}</td>
+                                    <td>{{ jugada.id_comprobante.numero_comprobante }}</td>
+                                    <td>{{ jugada.name }}</td>
+                                  </tr>
+                              {% endfor %}
+                              </ul>
+                              
                             </tbody>
                           </table>
 

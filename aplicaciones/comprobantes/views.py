@@ -50,6 +50,7 @@ class ConsultarComprobantes(TemplateView):
         fecha_hoy = datetime.now().date() #Asi obtenemos la fecha actual
         hora_hoy = datetime.now().time() #Asi obtenemos la hora actual
 
+        context['jugadasComprobantes'] = Jugadas_Numeros.objects.all()
         
         
         

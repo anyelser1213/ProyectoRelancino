@@ -131,5 +131,5 @@ class Jugadas_Numeros(models.Model):
     id_comprobante = models.ForeignKey(Comprobante, on_delete=models.CASCADE,blank=True, null=True)
 
     def __str__(self):
-        return str(self.id_jugada)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)
-        return str(self.id_jugada)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)+" "+str(self.id_comprobante)
+        #return str(self.id_jugada)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)
+        return str(self.id_jugada)+" "+str(self.id_usuario)+" "+str(self.id_comprobante)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)
