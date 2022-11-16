@@ -20,10 +20,10 @@ def pagar_comprobante_api_view(request):
 
         print("datos",request.data, "Usuario: ",request.user.username,request.user.id)
         #print("datos tipos:  ",request.data.get('tipos'))
-        tipos = request.data.get('tipos')
-        jugada = str(request.data.get('digitos'))
-        numero_telefonico = str(request.data.get('numeros'))
-        comprobante = str(request.data.get('comprobante'))
+        #tipos = request.data.get('tipos')
+        #jugada = str(request.data.get('digitos'))
+        #numero_telefonico = str(request.data.get('numeros'))
+        #comprobante = str(request.data.get('comprobante'))
 
         #Datos que enviaremos
         datos = {}
@@ -35,10 +35,10 @@ def pagar_comprobante_api_view(request):
 
         #Elemento = TipoJugadas.objects.get(nombre=tipos[0][posicion_index:])
         
-        print("Tipos Jugados: ",tipos)
-        print("Jugada: ",jugada)
-        print("Numero: ",numero_telefonico)
-        print("Comprobante: ",comprobante)
+        #print("Tipos Jugados: ",tipos)
+        #print("Jugada: ",jugada)
+        #print("Numero: ",numero_telefonico)
+        #print("Comprobante: ",comprobante)
         #print("Tipo jugada: ",Elemento," Cantidad: ",Elemento.cantidad_digitos)
         
         
