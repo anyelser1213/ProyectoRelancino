@@ -62,14 +62,26 @@ function Pagar_Comprobante(tipo){
                 if(Object.keys(data).length == 0){
 
                     console.log("No hay mensajes traidos de la api");
+
                 
                 }else{
 
+                    elemento = document.getElementById("comprobante_"+tipo.id);
+                    console.log(elemento);
+                    console.log(elemento.childNodes[1]); //Numero incremental
+                    console.log(elemento.childNodes[3]); //Digito
+                    console.log(elemento.childNodes[5]); //Numero Telefonico
+                    console.log(elemento.childNodes[7]); //Comprobante
+                    console.log(elemento.childNodes[9]); //Status
+                    console.log(elemento.childNodes[11].childNodes[1]); //Donde esta el boton
+
+
+                    elemento.childNodes[9].innerHTML="Pagado";
+
+                    elemento.childNodes[11].childNodes[1].dataset.status="Pagado";
+
+
                     console.log("Hay mensajes traidos de la api");
-                    //console.log(Object.keys(data).length);
-                    MensajeSubliminal.classList.remove("d-none","alert-danger");
-                    MensajeSubliminal.classList.add("alert-primary"); //alert alert-success
-                    MensajeSubliminal.innerHTML = "Informacion:<br> ";
                     console.log("datos traidos desde la api: ",data);
                     console.log("tipo de dato: ",typeof data);
                     console.log("datos traidos desde la api: ",data['name']);

@@ -16,30 +16,24 @@ def pagar_comprobante_api_view(request):
         jugadas_serializer = JugadaSerializer(jugadas,many=True)
         return Response(jugadas_serializer.data)
     
+
     elif request.method == 'POST':
 
         print("datos",request.data, "Usuario: ",request.user.username,request.user.id)
-        #print("datos tipos:  ",request.data.get('tipos'))
-        #tipos = request.data.get('tipos')
-        #jugada = str(request.data.get('digitos'))
-        #numero_telefonico = str(request.data.get('numeros'))
-        #comprobante = str(request.data.get('comprobante'))
+        
+        id_comprobante = str(request.data.get('id_comprobante'))
+        comprobante = str(request.data.get('comprobante'))
 
         #Datos que enviaremos
-        datos = {}
+        datos = {"Mensaje":"Exitoso"}
 
-        #posicion_index = tipos[0].find("_")
-        #posicion_index +=1
-        #print("Posicion : ",str(tipos[0]).find("_"))
-        #print(tipos[0][posicion_index:])
-
-        #Elemento = TipoJugadas.objects.get(nombre=tipos[0][posicion_index:])
+        Elemento = Jugadas_Numeros.objects.get(id=id_comprobante)
+        Elemento.status="Pagado"
+        Elemento.save()
         
-        #print("Tipos Jugados: ",tipos)
-        #print("Jugada: ",jugada)
-        #print("Numero: ",numero_telefonico)
-        #print("Comprobante: ",comprobante)
-        #print("Tipo jugada: ",Elemento," Cantidad: ",Elemento.cantidad_digitos)
+        print("Elemento Jugada: ",Elemento)
+        print("id_comprobante: ",id_comprobante)
+        print("Comprobante: ",comprobante)
         
         
         #jugada_serializer = JugadaSerializer(data = request.data) #De json a objeto otra ves y guardamos
