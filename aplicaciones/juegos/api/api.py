@@ -196,11 +196,11 @@ def consultarJugada_api_view(request):
             
             #SuperUsuario
             #ElementosSinRepetir = Jugada.objects.distinct()
-            ElementosSinRepetir = Jugada.objects.values('digitos','repetidor').distinct('digitos')
+            ElementosSinRepetir = Jugada.objects.filter(id_tipo_jugada=tipo).values('digitos','repetidor').distinct('digitos')
             print("\n-----")
             #print("INICIANDO: ",ElementosSinRepetir)
 
-            for model in ElementosSinRepetir:
+            for elemento in ElementosSinRepetir:
                 
                 #print(model)
                 #print(model['digitos']," ---- ",model['repetidor']) 
@@ -209,11 +209,11 @@ def consultarJugada_api_view(request):
 
                 #Tenemos que entrar en otro for(para incrementar los repetidores)
                 aux = 0 #Variable para asignar las repeticiones
-                for jugadaIndividual in Jugada.objects.filter(digitos=model['digitos']).values('digitos','repetidor'):
-                    #print(jugadaIndividual['digitos']," ---- ",jugadaIndividual['repetidor']) 
+                for jugadaIndividual in Jugada.objects.filter(digitos=elemento['digitos']).values('digitos','repetidor'):
+                    print(jugadaIndividual['digitos']," ---- ",jugadaIndividual['repetidor']) 
                     aux =aux+jugadaIndividual['repetidor']
 
-                model['repetidor'] = aux #Asignamos el valor aqui
+                elemento['repetidor'] = aux #Asignamos el valor aqui
 
 
                 
