@@ -25,12 +25,12 @@ class ConsultarComprobantes(TemplateView):
         else:
 
             print("Probando")
-            #if request.user.has_perm('juegos.consultarjugada'):
-            #    print("Entramos en ConsultarJugada")
-            #else:
+            if request.user.has_perm('comprobantes.consultarcomprobantes'):
+                print("Entramos en ConsultarComprobantes")
+            else:
 
-            #    print("El usuario: ",request.user," no tiene acceso en ConsultarJugada")
-            #    return redirect("principal:index")
+                print("El usuario: ",request.user," no tiene acceso en ConsultarComprobantes")
+                return redirect("principal:index")
             
 
             

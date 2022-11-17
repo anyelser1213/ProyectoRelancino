@@ -80,7 +80,7 @@ class Comprobante(models.Model):
             
             #Permisos para iniciar y consultar jugadas
             #("iniciarjugada", "IniciarJugada"),
-            #("consultarjugada", "ConsultarJugada"),
+            ("consultarcomprobantes", "ConsultarComprobante"),
 
             #Para ver los informes
             #("informejugada", "InformeJugada"),
