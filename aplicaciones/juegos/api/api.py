@@ -122,7 +122,7 @@ def jugada_api_view(request):
                 print("No existe ninguna jugada asi")
                 datos.update({str(Elemento):"Ultima Jugada guardada, "+str(jugada)[0:int(Elemento.cantidad_digitos)]})
                 CreandoJugada = Jugada(id_tipo_jugada=Elemento, id_usuario=request.user,digitos=str(jugada)[0:int(Elemento.cantidad_digitos)],repetidor=1)
-                Jugada_nueva = CreandoJugada.save()
+                CreandoJugada.save()
 
 
                 #Aqui creamos la jugada y asociamos todo

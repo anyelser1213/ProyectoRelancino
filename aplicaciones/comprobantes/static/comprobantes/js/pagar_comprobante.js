@@ -79,6 +79,7 @@ function Pagar_Comprobante(tipo){
                     elemento.childNodes[9].innerHTML="Pagado";
 
                     elemento.childNodes[11].childNodes[1].dataset.status="Pagado";
+                    elemento.childNodes[11].childNodes[1].className = "btn btn-success";
 
 
                     console.log("Hay mensajes traidos de la api");

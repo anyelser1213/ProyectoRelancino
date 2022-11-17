@@ -50,7 +50,13 @@ class ConsultarComprobantes(TemplateView):
         fecha_hoy = datetime.now().date() #Asi obtenemos la fecha actual
         hora_hoy = datetime.now().time() #Asi obtenemos la hora actual
 
-        context['jugadasComprobantes'] = Jugadas_Numeros.objects.all()
+
+        print(self.request.user.is_superuser)
+        if self.request.user.is_superuser:
+            context['jugadasComprobantes'] = Jugadas_Numeros.objects.all()
+        else:
+            context['jugadasComprobantes'] = Jugadas_Numeros.objects.filter(id_usuario=self.request.user)
+
         
         
         
