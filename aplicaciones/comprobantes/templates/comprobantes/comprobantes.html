@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% load tag_consultas_jugadas %}
+{% load tag_consultas_comprobantes %}
 {% block EnlacesPlantillas %}
 
 <link rel="stylesheet" href="{% static 'vendor/animate/animate.min.css' %}">
@@ -42,45 +42,55 @@
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4 abs-center">Comprobantes</h1>
-                    <!--
+                    
+                    
+                    
                     <div class="row">
                         
-                        <div class="col-xl-12">
-                            <div class="card mb-4">
-                                
-                                    
-                                <div class="card-header">
-                                    <i class="fas fa-chart-area me-1"></i>
-                                </div>
-                                <div class="card-body">
-                                    <h3>Comprobantes:</h3>
+                      <div class="col-xl-12">
+                          <div class="card mb-4">
+                              
+                                  
+                              <div class="card-header">
+                                  <i class="fas fa-chart-area me-1"></i>
+                              </div>
+                              <div class="card-body">
+                                  <h3>Tipos de jugadas:</h3>
 
-                                    <p>
-                                        
-                                        
-                                        
-                                        
-                                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Primera Jugada</a>
-                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Segunda Jugada</button>
-                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Tercea Jugada</button>
-                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">Cuarta Jugada</button>
-                                        
-                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
-                                    
-                                    </p>
+                                  <p>
                                       
+                                      
+                                      
+                                      {% for tipo_jugada in tipos_de_jugadas %}
 
-                                    
+                                          {% crear_boton_tipos tipo_jugada  %}
+
+                                      {% endfor %}
                                       
-                                </div>
-                            
-                                
-                            
-                            </div>
-                        </div>
-                        
-                    </div>
-                    --->
+                                      <!--
+                                      <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Primera Jugada</a>
+                                      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Segunda Jugada</button>
+                                      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Tercea Jugada</button>
+                                      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">Cuarta Jugada</button>
+                                      
+                                      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+                                  
+                                      -->
+                                  </p>
+                                    
+
+                                  
+                                    
+                              </div>
+                          
+                              
+                          
+                          </div>
+                      </div>
+                      <!---
+                      -->
+                  </div>
+
 
                     <div class=" container-fluid ">
 

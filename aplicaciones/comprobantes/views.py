@@ -45,9 +45,6 @@ class ConsultarComprobantes(TemplateView):
         
         #Solo se mostraran en base a los permisos del usuario
         Q1 = TipoJugadas.objects.none()#Con esto concatenamos los tipos
-        numero = int(TipoJugadas.objects.all().count())
-        fecha_hoy = datetime.now().date() #Asi obtenemos la fecha actual
-        hora_hoy = datetime.now().time() #Asi obtenemos la hora actual
 
 
         print(self.request.user.is_superuser)
@@ -57,7 +54,7 @@ class ConsultarComprobantes(TemplateView):
             context['jugadasComprobantes'] = Jugadas_Numeros.objects.filter(id_usuario=self.request.user)
 
         
-        
+        context['tipos_de_jugadas'] = TipoJugadas.objects.all().order_by("cantidad_digitos")
         
         
         return context

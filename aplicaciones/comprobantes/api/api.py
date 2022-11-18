@@ -42,6 +42,43 @@ def pagar_comprobante_api_view(request):
         #print("El tipo de dato es: ",type(datos))
 
         return JsonResponse(datos,safe = False)
+
+
+@api_view(['GET','POST'])
+def obtener_comprobantes_api_view(request):
+
+
+    if request.method == 'GET':
+        jugadas = Jugada.objects.all()
+        jugadas_serializer = JugadaSerializer(jugadas,many=True)
+        return Response(jugadas_serializer.data)
+    
+
+    elif request.method == 'POST':
+
+        print("datos",request.data, "Usuario: ",request.user.username,request.user.id)
+        
+        id_comprobante = str(request.data.get('id_comprobante'))
+        comprobante = str(request.data.get('comprobante'))
+
+        #Datos que enviaremos
+        datos = {"Mensaje":"Exitoso"}
+
+        Elemento = Jugadas_Numeros.objects.get(id=id_comprobante)
+        Elemento.status="Pagado"
+        Elemento.save()
+        
+        print("Elemento Jugada: ",Elemento)
+        print("id_comprobante: ",id_comprobante)
+        print("Comprobante: ",comprobante)
+        
+        
+        #jugada_serializer = JugadaSerializer(data = request.data) #De json a objeto otra ves y guardamos
+        
+
+        #print("El tipo de dato es: ",type(datos))
+
+        return JsonResponse(datos,safe = False)
         
         
 
