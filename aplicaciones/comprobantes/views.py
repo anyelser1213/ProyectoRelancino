@@ -24,17 +24,16 @@ class ConsultarComprobantes(TemplateView):
 
         else:
 
+            #Para ver todos los permisos que tiene el usuario
+            #print(request.user.get_all_permissions())
+
             print("Probando")
-            if request.user.has_perm('comprobantes.consultarcomprobantes'):
+            if request.user.has_perm('juegos.consultarcomprobantes'):
                 print("Entramos en ConsultarComprobantes")
             else:
 
                 print("El usuario: ",request.user," no tiene acceso en ConsultarComprobantes")
                 return redirect("principal:index")
-            
-
-            
-            #empresa_creada = Empresa.objects.filter(creado_por_id=request.user.id)
 
 
         return super().dispatch(request, *args, **kwargs)

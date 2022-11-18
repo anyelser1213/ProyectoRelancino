@@ -91,8 +91,16 @@ def api_informes(request):
 
         system("cls")
 
+        jugadas= Jugada.objects.none()
+        if request.user.is_superuser:
+            print("Es un SUPER  ")
+            jugadas = Jugada.objects.filter(id_tipo_jugada=request.data.get('tipos'))
+        else:
+            print("ES UN NORMAL")
+            jugadas = Jugada.objects.filter(id_tipo_jugada=request.data.get('tipos'),id_usuario=request.user)
+
         print("Probando aqui...",request.data.get('tipos'))
-        jugadas = Jugada.objects.filter(id_tipo_jugada=request.data.get('tipos'))
+        
         TotalJugadas = 0
         MontoTotal = 0
         for element in jugadas:
