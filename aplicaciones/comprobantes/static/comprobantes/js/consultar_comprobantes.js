@@ -10,7 +10,7 @@ function ConsultarComprobantes(tipo){
 
     var data = {'tipos': tipo.id};
 
-    fetch("consultarjugada/",{
+    fetch("obtener_comprobantes_api_view/",{
     method:"POST",
     //body: formData,
     body:JSON.stringify(data),
@@ -61,9 +61,29 @@ function ConsultarComprobantes(tipo){
 
                 //////////////EN CASO DE QUE TRAIGAN DATOS DE LA API///////////////////////
                 console.log("Hay mensajes traidos de la api",Object.keys(data).length);
+                console.log("Lista",data);
                 
                 //Primero limpiamos
                 CuerpoTabla.innerHTML = "";
+
+
+                //Agregamos elementos de prueba
+                var fila = document.createElement("tr");
+                var col_1 = document.createElement("td");
+                col_1.innerHTML= "as";
+                var col_2 = document.createElement("td");
+                var col_3 = document.createElement("td");
+                var col_4 = document.createElement("td");
+                var col_5 = document.createElement("td");
+                var col_6 = document.createElement("td");
+                fila.appendChild(col_1);
+                fila.appendChild(col_2);
+                fila.appendChild(col_3);
+                fila.appendChild(col_4);
+                fila.appendChild(col_5);
+                fila.appendChild(col_6);
+
+                CuerpoTabla.appendChild(fila);
 
 
 
