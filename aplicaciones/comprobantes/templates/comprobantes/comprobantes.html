@@ -9,7 +9,7 @@
 
   
 
-    <script src="{% static 'juegos/js/creacion_de_elementos_en_consultas.js' %}"></script>
+    
     <script src="{% static 'juegos/js/cookiesDjango.js' %}"></script>
 
 {% endblock %}
@@ -63,7 +63,7 @@
                                       
                                       {% for tipo_jugada in tipos_de_jugadas %}
 
-                                          {% crear_boton_tipos tipo_jugada  %}
+                                          {% crear_boton_tipos_comprobantes tipo_jugada  %}
 
                                       {% endfor %}
                                       
@@ -181,8 +181,8 @@
           
 
     
-    <!-- JavaScript Bundle with Popper -->
     <script src="{% static 'comprobantes/js/pagar_comprobante.js' %}"></script>
+    <script src="{% static 'comprobantes/js/consultar_comprobantes.js' %}"></script>
 
     
 

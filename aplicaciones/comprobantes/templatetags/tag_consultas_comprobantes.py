@@ -21,10 +21,10 @@ def monto_total(repeticion,monto): # Only one argument.
 
 
 
-@register.inclusion_tag('juegos/botones_tipos_juegos.html')
-def crear_boton_tipos(elemento):
+@register.inclusion_tag('comprobantes/botones_tipos_comprobantes.html')
+def crear_boton_tipos_comprobantes(elemento):
 
-    print("Entramos en CREAR BOTON TIPOS")
+    print("Entramos en CREAR BOTON en comprobantes")
     
     Tipos = TipoJugadas.objects.filter(nombre=str(elemento))
     existen = False
