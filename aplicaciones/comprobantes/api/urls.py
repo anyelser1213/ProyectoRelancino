@@ -1,5 +1,5 @@
 from django.urls import path
-from aplicaciones.comprobantes.api.api import pagar_comprobante_api_view
+from aplicaciones.comprobantes.api.api import pagar_comprobante_api_view, obtener_comprobantes_api_view
 
 urlpatterns = [
 
@@ -7,7 +7,7 @@ urlpatterns = [
 
     #Apis
     path('pagar_comprobante/',pagar_comprobante_api_view,name='pagar_comprobanteApi'),
-    path('obtener_comprobantes_api_view/',pagar_comprobante_api_view,name='obtener_comprobanteApi'),
+    path('obtener_comprobantes_api_view/',obtener_comprobantes_api_view,name='obtener_comprobanteApi'),
     
     #path('consultarjugada/',consultarJugada_api_view,name='consultar_jugada'),
     #path('jugada/',JugadaApiView.as_view(),name='jugadaApi')

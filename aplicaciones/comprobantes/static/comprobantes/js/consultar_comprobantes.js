@@ -64,7 +64,7 @@ function ConsultarComprobantes(tipo){
                 console.log("Lista",data);
                 
                 //Primero limpiamos
-                CuerpoTabla.innerHTML = "";
+                //CuerpoTabla.innerHTML = "";
 
 
                 //Agregamos elementos de prueba
@@ -83,7 +83,7 @@ function ConsultarComprobantes(tipo){
                 fila.appendChild(col_5);
                 fila.appendChild(col_6);
 
-                CuerpoTabla.appendChild(fila);
+                //CuerpoTabla.appendChild(fila);
 
 
 

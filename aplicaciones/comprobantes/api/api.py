@@ -56,7 +56,7 @@ def obtener_comprobantes_api_view(request):
 
     elif request.method == 'POST':
 
-        print("datos",request.data, "Usuario: ",request.user.username,request.user.id)
+        print("datos",request.data, "Usuario: ",request.user.username)
         
         #id_comprobante = str(request.data.get('id_comprobante'))
         #comprobante = str(request.data.get('comprobante'))
@@ -64,11 +64,11 @@ def obtener_comprobantes_api_view(request):
         #Datos que enviaremos
         datos = {"Mensaje":"Exitoso"}
 
-        Elemento = Jugadas_Numeros.objects.get(id=id_comprobante)
-        Elemento.status="Pagado"
-        Elemento.save()
+        #Elemento = Jugadas_Numeros.objects.get(id=id_comprobante)
+        #Elemento.status="Pagado"
+        #Elemento.save()
         
-        print("Elemento Jugada: ",Elemento)
+        #print("Elemento Jugada: ",Elemento)
         #print("id_comprobante: ",id_comprobante)
         #print("Comprobante: ",comprobante)
         
