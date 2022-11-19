@@ -1,4 +1,5 @@
 
+var CuerpoTabla = document.getElementById("CuerpoTablaComprobantes");
 
 function ConsultarComprobantes(tipo){
 
@@ -61,7 +62,8 @@ function ConsultarComprobantes(tipo){
                 //////////////EN CASO DE QUE TRAIGAN DATOS DE LA API///////////////////////
                 console.log("Hay mensajes traidos de la api",Object.keys(data).length);
                 
-
+                //Primero limpiamos
+                CuerpoTabla.innerHTML = "";
 
 
 
