@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from aplicaciones.juegos.models import TipoJugadas,Jugada,Telefono,Comprobante,Jugadas_Numeros
-from aplicaciones.comprobantes.api.serializers import JugadaSerializer
+from aplicaciones.comprobantes.api.serializers import Jugada_NumerosSerializer
 
 @api_view(['GET','POST'])
 def pagar_comprobante_api_view(request):
@@ -56,30 +56,53 @@ def obtener_comprobantes_api_view(request):
 
     elif request.method == 'POST':
 
+        #Donde guardaremos los datos
+        data={}
+
         print("datos",request.data, "Usuario: ",request.user.username,"Es superUser: ",request.user.is_superuser)
         id_tipo = str(request.data.get('tipos'))
 
         if request.user.is_superuser:
 
-            Elementos = Jugadas_Numeros.objects.filter(id_jugada__id_tipo_jugada__nombre=str(id_tipo))
-            print(id_tipo)
-            print("")
-            print(Elementos.count())
-            print(Elementos)
+            Elementos = Jugadas_Numeros.objects.filter(id_jugada__id_tipo_jugada__nombre=str(id_tipo)).values("id_jugada__digitos","id_telefono__numero_telefono","id_comprobante__numero_comprobante","status")
+            #Elementos = Jugadas_Numeros.objects.filter(id_jugada__id_tipo_jugada__nombre=str(id_tipo)).values("status")
+            
+            #print(id_tipo)
+            #print("")
+            #print(Elementos.count())
+            #print(Elementos)
+
+            aux = 0
+            for elem in Elementos:
+                print("\n")
+                print(elem["id_jugada__digitos"])
+                data[aux] = ({'digitos':elem['id_jugada__digitos'],'telefono':elem['id_telefono__numero_telefono'],'comprobante':elem['id_comprobante__numero_comprobante'],'status':elem['status']})
+                #data.update(str(elem):"")
+                #data.update({str(aux):"Ultima Jugada guardada, "})
+                aux+=1
 
         else:
 
-            Elementos = Jugadas_Numeros.objects.filter(id_jugada__id_tipo_jugada__nombre=str(id_tipo),id_usuario=request.user.id)
-            print(id_tipo)
-            print("")
-            print(Elementos.count())
-            print(Elementos)
-        
+            Elementos = Jugadas_Numeros.objects.filter(id_jugada__id_tipo_jugada__nombre=str(id_tipo),id_usuario=request.user.id).values("id_jugada__digitos","id_telefono__numero_telefono","id_comprobante__numero_comprobante","status")
+            #print(id_tipo)
+            #print("")
+            #print(Elementos.count())
+            #print(Elementos)
+
+            aux = 0
+            for elem in Elementos:
+                print("\n")
+                #print(elem)
+                data[aux] = ({'digitos':elem['id_jugada__digitos'],'telefono':elem['id_telefono__numero_telefono'],'comprobante':elem['id_comprobante__numero_comprobante'],'status':elem['status']})
+                aux+=1
+                
         #id_comprobante = str(request.data.get('id_comprobante'))
         #comprobante = str(request.data.get('comprobante'))
 
+
+        print(data)
         #Datos que enviaremos
-        datos = {"Mensaje":"Exitoso"}
+        #datos = {"Mensaje":"Exitoso"}
 
         #Elemento = Jugadas_Numeros.objects.get(id=id_comprobante)
         #Elemento.status="Pagado"
@@ -90,12 +113,12 @@ def obtener_comprobantes_api_view(request):
         #print("Comprobante: ",comprobante)
         
         
-        #jugada_serializer = JugadaSerializer(data = request.data) #De json a objeto otra ves y guardamos
+        #comprobantes_serializer = Jugada_NumerosSerializer(data = request.data) #De json a objeto otra ves y guardamos
         
 
         #print("El tipo de dato es: ",type(datos))
 
-        return JsonResponse(datos,safe = False)
+        return JsonResponse(data,safe = False)
         
         
 
