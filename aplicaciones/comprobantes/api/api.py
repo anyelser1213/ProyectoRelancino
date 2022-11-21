@@ -81,6 +81,7 @@ def obtener_comprobantes_api_view(request):
                 #data.update({str(aux):"Ultima Jugada guardada, "})
                 aux+=1
 
+        #En caso de que es un usuario normal
         else:
 
             Elementos = Jugadas_Numeros.objects.filter(id_jugada__id_tipo_jugada__nombre=str(id_tipo),id_usuario=request.user.id).values("id_jugada__digitos","id_telefono__numero_telefono","id_comprobante__numero_comprobante","status")
@@ -95,7 +96,7 @@ def obtener_comprobantes_api_view(request):
                 #print(elem)
                 data[aux] = ({'digitos':elem['id_jugada__digitos'],'telefono':elem['id_telefono__numero_telefono'],'comprobante':elem['id_comprobante__numero_comprobante'],'status':elem['status']})
                 aux+=1
-                
+
         #id_comprobante = str(request.data.get('id_comprobante'))
         #comprobante = str(request.data.get('comprobante'))
 
