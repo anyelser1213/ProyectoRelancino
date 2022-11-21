@@ -3,9 +3,9 @@ var CuerpoTabla = document.getElementById("CuerpoTablaComprobantes");
 
 function ConsultarComprobantes(tipo){
 
-    console.log("Iniciando aqui...",tipo.id);
-    console.log("Monto: ",tipo.dataset.monto);
-    console.log("Cantidad digitos: ",tipo.dataset.cantidad_digitos);
+    console.log("Jugada seleccionada...",tipo.id);
+    //console.log("Monto: ",tipo.dataset.monto);
+    //console.log("Cantidad digitos: ",tipo.dataset.cantidad_digitos);
 
 
     var data = {'tipos': tipo.id};
@@ -61,7 +61,7 @@ function ConsultarComprobantes(tipo){
 
                 //////////////EN CASO DE QUE TRAIGAN DATOS DE LA API///////////////////////
                 console.log("Hay mensajes traidos de la api",Object.keys(data).length);
-                console.log("Lista",data);
+                console.log("Lista traida: ",data);
                 
                 //Primero limpiamos
                 //CuerpoTabla.innerHTML = "";

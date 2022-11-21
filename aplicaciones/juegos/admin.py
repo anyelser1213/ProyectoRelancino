@@ -42,6 +42,41 @@ class TipoJugadasAdmin(admin.ModelAdmin):
 
 
 
+#Esta es otra forma de registrar en el admin
+@admin.register(Jugada)
+class JugadasAdmin(admin.ModelAdmin):
+
+    #readonly_fields = ('fecha_cierre',)
+
+    #Para indicarle al admin que campos queremos mostrar
+    list_display = ('id','id_tipo_jugada','id_usuario','digitos')#,'fecha_cierre'
+
+    #Para indicar que se va a visualizar como vinculo
+    list_display_links = ('digitos',)
+
+    #Para indicar que campos seran editables
+    #list_editable = ('estado_jugada','hora_inicio','hora_cierre','fecha_cierre')#,'fecha_cierre'
+
+    #Con esto creamos los filtros
+    list_filter = ('id_tipo_jugada','id_usuario')
+
+    #Paginacion
+    list_per_page = 10
+
+
+    ordering = ('id_tipo_jugada',)
+
+
+    #Aqui es cuando se va a editar
+    #fieldsets = (
+    #    #Aqui es para editar
+    #    ("Informacion Esencial", {'fields': ('nombre','cantidad_digitos','cantidad_maxima_repeticion','monto_jugada')}),
+    #    ("Fecha", {
+    #        'classes': ('collapse','wide','extrapretty'),
+    #        'fields': ('estado_jugada','hora_inicio','hora_cierre','fecha_cierre'),
+    #    }),
+    #)
+
 """
 
     ordering = ('username',)
@@ -96,5 +131,5 @@ class TipoJugadasAdmin(admin.ModelAdmin):
 
 admin.site.register(Telefono)
 admin.site.register(Comprobante)
-admin.site.register(Jugada)
+#admin.site.register(Jugada)
 admin.site.register(Jugadas_Numeros)

@@ -56,7 +56,24 @@ def obtener_comprobantes_api_view(request):
 
     elif request.method == 'POST':
 
-        print("datos",request.data, "Usuario: ",request.user.username)
+        print("datos",request.data, "Usuario: ",request.user.username,"Es superUser: ",request.user.is_superuser)
+        id_tipo = str(request.data.get('tipos'))
+
+        if request.user.is_superuser:
+
+            Elementos = Jugadas_Numeros.objects.filter(id_jugada__id_tipo_jugada__nombre=str(id_tipo))
+            print(id_tipo)
+            print("")
+            print(Elementos.count())
+            print(Elementos)
+
+        else:
+
+            Elementos = Jugadas_Numeros.objects.filter(id_jugada__id_tipo_jugada__nombre=str(id_tipo),id_usuario=request.user.id)
+            print(id_tipo)
+            print("")
+            print(Elementos.count())
+            print(Elementos)
         
         #id_comprobante = str(request.data.get('id_comprobante'))
         #comprobante = str(request.data.get('comprobante'))
