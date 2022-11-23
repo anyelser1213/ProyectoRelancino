@@ -142,4 +142,4 @@ class Jugadas_Numeros(models.Model):
 
     def __str__(self):
         #return str(self.id_jugada)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)
-        return " Tipo Jugada: "+str(self.id_jugada.id_tipo_jugada)+", "+str(self.id_jugada)+" "+str(self.id_usuario)+" "+str(self.id_comprobante)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)+" Status: "+self.status
+        return "id: "+str(self.id)+", Tipo Jugada: "+str(self.id_jugada.id_tipo_jugada)+", "+str(self.id_jugada)+" "+str(self.id_usuario)+" "+str(self.id_comprobante)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)+" Status: "+self.status

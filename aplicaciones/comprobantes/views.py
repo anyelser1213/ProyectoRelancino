@@ -27,7 +27,7 @@ class ConsultarComprobantes(TemplateView):
             #Para ver todos los permisos que tiene el usuario
             #print(request.user.get_all_permissions())
 
-            print("Probando")
+            print("Probando",request.user.id)
             if request.user.has_perm('juegos.consultarcomprobantes'):
                 print("Entramos en ConsultarComprobantes")
             else:
@@ -52,6 +52,7 @@ class ConsultarComprobantes(TemplateView):
             context['jugadasComprobantes'] = Jugadas_Numeros.objects.all()
         else:
             context['jugadasComprobantes'] = Jugadas_Numeros.objects.filter(id_usuario=self.request.user)
+            print(self.request.user.id)
 
         
         context['tipos_de_jugadas'] = TipoJugadas.objects.all().order_by("cantidad_digitos")

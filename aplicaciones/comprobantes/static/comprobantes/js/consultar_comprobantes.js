@@ -1,9 +1,6 @@
 
 var CuerpoTabla = document.getElementById("CuerpoTablaComprobantes");
 
-//Probando la clonacion
-var svgPrueba = document.getElementById("Prueba1");
-var clon = svgPrueba.cloneNode(true);
 
 
 function ConsultarComprobantes(tipo){
@@ -98,45 +95,39 @@ function ConsultarComprobantes(tipo){
                     col_4.innerHTML= data[i].comprobante;
                     var col_5 = document.createElement("td");//Esto es para asignar el status
                     col_5.innerHTML= data[i].status;
+                    //col_5.appendChild(clon);
 
 
                     //Este condicional es para verificar si esta pagado o por pagar
-                    if(1 == 1){
+                    if(data[i].status == "Por Pagar"){
 
                         var col_6 = document.createElement("td");//Esto es para asignar el status
                         
                         //CREAMOS DE ADENTRO HACIA AFUERA
-                        /*
-                        var path1 = document.createElement("path");
-                        path1.setAttribute("d","M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514Z");
-                        var path2 = document.createElement("path");
-                        path2.setAttribute("d","M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7.256A4.493 4.493 0 0 0 12.5 8a4.493 4.493 0 0 0-3.59 1.787A.498.498 0 0 0 9 9.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .39-.187A4.476 4.476 0 0 0 8.027 12H6.5a.5.5 0 0 0-.5.5V16H3a1 1 0 0 1-1-1V1Zm2 1.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5Zm3 0v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1ZM4 5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5ZM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5ZM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z");
                         
-                        var svg = document.createElement("svg");
-                        svg.setAttribute("xmlns","http://www.w3.org/2000/svg");
-                        svg.setAttribute("width","16");
-                        svg.setAttribute("height","16");
-                        svg.setAttribute("fill","currentColor");
-                        svg.setAttribute("class","bi bi-building-fill-check");
-                        svg.setAttribute("viewBox","0 0 16 16");
+                        var imgEdificio = document.createElement("img");
+                        imgEdificio.setAttribute("src","static/comprobantes/svg/building-fill-check.svg");
+                        imgEdificio.setAttribute("width","16");
+                        imgEdificio.setAttribute("height","16");
+                        //imgEdificio.setAttribute("class","bg-light text-white");
+                        //imgEdificio.setAttribute("fill","currentColor");
                         
-                        
-                        //Introducimos los path en svg
-                        svg.append(path1);
-                        svg.append(path2);
-                        */
 
                         var boton = document.createElement("button");
                         boton.setAttribute("type","button");
                         //boton.setAttribute("id","button");
+                        boton.setAttribute("id",data[i].id);
                         boton.setAttribute("data-status",data[i].status);
+                        boton.setAttribute("data-comprobante",data[i].comprobante);
                         boton.setAttribute("onclick","Pagar_Comprobante(this);");
+                        boton.addEventListener("click",Pagar_Comprobante);
                         boton.className = "btn btn-success";
+                        boton.className = "btn btn-danger";
 
                         //Introducimos el svg en el boton
                         
-                        boton.append("Por Pagar");
-                        boton.append(clon);
+                        boton.append(imgEdificio);
+                        boton.append(" Por Pagar");
 
                         
                         //Aqui metemos el boton candela
@@ -144,6 +135,38 @@ function ConsultarComprobantes(tipo){
                         col_6.appendChild(boton);
                     
                     }else{
+
+                        var col_6 = document.createElement("td");//Esto es para asignar el status
+                        
+                        //CREAMOS DE ADENTRO HACIA AFUERA
+                        
+                        var imgEdificio = document.createElement("img");
+                        imgEdificio.setAttribute("src","static/comprobantes/svg/building-fill-check.svg");
+                        imgEdificio.setAttribute("width","16");
+                        imgEdificio.setAttribute("height","16");
+                        //imgEdificio.setAttribute("class","bg-light text-white");
+                        //imgEdificio.setAttribute("fill","currentColor");
+                        
+
+                        var boton = document.createElement("button");
+                        boton.setAttribute("type","button");
+                        //boton.setAttribute("id","button");
+                        boton.setAttribute("id",data[i].id);
+                        boton.setAttribute("data-status",data[i].status);
+                        boton.setAttribute("data-comprobante",data[i].comprobante);
+                        boton.addEventListener("click",Pagar_Comprobante);
+                        boton.className = "btn btn-success";
+                        //boton.className = "btn btn-danger";
+
+                        //Introducimos el svg en el boton
+                        
+                        boton.append(imgEdificio);
+                        boton.append(" Pagado");
+
+                        
+                        //Aqui metemos el boton candela
+                        
+                        col_6.appendChild(boton);
 
                     }
                     

@@ -6,7 +6,8 @@
 function Pagar_Comprobante(tipo){
 
 
-    //console.log(tipo.dataset.status);
+    //console.log(tipo['status']);
+    console.log(tipo.dataset.status);
     valor_status = tipo.dataset.status;
     if(valor_status == "Por Pagar"){
 
@@ -80,6 +81,7 @@ function Pagar_Comprobante(tipo){
 
                     elemento.childNodes[11].childNodes[1].dataset.status="Pagado";
                     elemento.childNodes[11].childNodes[1].className = "btn btn-success";
+                    elemento.childNodes[11].childNodes[1].innerHTML = "btn btn-success";
 
 
                     console.log("Hay mensajes traidos de la api");
