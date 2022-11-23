@@ -49,6 +49,15 @@ function ConsultarComprobantes(tipo){
 
                  
                  //Hacer limpieza aqui
+                 Swal.fire({
+                    title: 'Sin jugadas',
+                    showClass: {
+                      popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                      popup: 'animate__animated animate__fadeOutUp'
+                    }
+                  })
 
 
 
@@ -110,25 +119,21 @@ function ConsultarComprobantes(tipo){
                         imgEdificio.setAttribute("src","static/comprobantes/svg/building-fill-check.svg");
                         imgEdificio.setAttribute("width","16");
                         imgEdificio.setAttribute("height","16");
-                        //imgEdificio.setAttribute("class","bg-light text-white");
-                        //imgEdificio.setAttribute("fill","currentColor");
                         
 
-                        var parrafo = document.createElement("p");
-                        parrafo.innerHTML = "Pagar"
+                        var parrafo = document.createElement("span");
+                        parrafo.innerHTML = " Pagar"
                         var boton = document.createElement("button");
                         boton.setAttribute("type","button");
-                        //boton.setAttribute("id","button");
                         boton.setAttribute("id",data[i].id);
                         boton.setAttribute("data-status",data[i].status);
                         boton.setAttribute("data-comprobante",data[i].comprobante);
                         boton.addEventListener("click",Pagar_Comprobante);
                         boton.className = "btn btn-danger";
 
-                        //Introducimos el svg en el boton
                         
                         boton.append(imgEdificio);
-                        boton.append("parrafo");
+                        boton.append(parrafo);
 
                         
                         //Aqui metemos el boton candela
@@ -145,10 +150,9 @@ function ConsultarComprobantes(tipo){
                         imgEdificio.setAttribute("src","static/comprobantes/svg/building-fill-check.svg");
                         imgEdificio.setAttribute("width","16");
                         imgEdificio.setAttribute("height","16");
-                        //imgEdificio.setAttribute("class","bg-light text-white");
-                        //imgEdificio.setAttribute("fill","currentColor");
                         
-
+                        var parrafo = document.createElement("span");
+                        parrafo.innerHTML = " Pagado"
                         var boton = document.createElement("button");
                         boton.setAttribute("type","button");
                         //boton.setAttribute("id","button");
@@ -157,12 +161,10 @@ function ConsultarComprobantes(tipo){
                         boton.setAttribute("data-comprobante",data[i].comprobante);
                         boton.addEventListener("click",Pagar_Comprobante);
                         boton.className = "btn btn-success";
-                        //boton.className = "btn btn-danger";
 
-                        //Introducimos el svg en el boton
                         
                         boton.append(imgEdificio);
-                        boton.append(" Pagado");
+                        boton.append(parrafo);
 
                         
                         //Aqui metemos el boton candela
@@ -171,14 +173,14 @@ function ConsultarComprobantes(tipo){
 
                     }
                     
-                    console.log("-----------------------------------");
-                    console.log("Elemento "+data[i]);
-                    console.log("id "+data[i].id);
-                    console.log("Digitos "+data[i].digitos);
-                    console.log("Telefono "+data[i].telefono);
-                    console.log("comprobante "+data[i].comprobante);
-                    console.log("status "+data[i].status);
-                    console.log("-----------------------------------");
+                    //console.log("-----------------------------------");
+                    //console.log("Elemento "+data[i]);
+                    //console.log("id "+data[i].id);
+                    //console.log("Digitos "+data[i].digitos);
+                    //console.log("Telefono "+data[i].telefono);
+                    //console.log("comprobante "+data[i].comprobante);
+                    //console.log("status "+data[i].status);
+                    //console.log("-----------------------------------");
 
 
 

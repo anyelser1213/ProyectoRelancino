@@ -49,9 +49,10 @@ class ConsultarComprobantes(TemplateView):
 
         print(self.request.user.is_superuser)
         if self.request.user.is_superuser:
-            context['jugadasComprobantes'] = Jugadas_Numeros.objects.all()
+            context['jugadasComprobantes'] = Jugadas_Numeros.objects.none()
         else:
-            context['jugadasComprobantes'] = Jugadas_Numeros.objects.filter(id_usuario=self.request.user)
+            #context['jugadasComprobantes'] = Jugadas_Numeros.objects.filter(id_usuario=self.request.user)
+            context['jugadasComprobantes'] = Jugadas_Numeros.objects.none()
             print(self.request.user.id)
 
         
