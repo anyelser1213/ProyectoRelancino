@@ -5,15 +5,40 @@
 
 function Pagar_Comprobante(tipo){
 
+    //Variables a usar
+    var id;
+    var estatus;
+    var comprobantes;
 
-    //console.log(tipo['status']);
-    console.log(tipo.dataset.status);
-    valor_status = tipo.dataset.status;
-    if(valor_status == "Por Pagar"){
+    //Para evitar errores
+    try {
+        //Cuando es this
+        console.log(this.dataset.status,"\n Eviste this");
+        id = this.id;
+        estatus = this.dataset.status;
+        comprobantes = this.dataset.comprobante;
+
+        
+        
+      } catch {
+
+        //Cuando es tipo
+        console.log("\n Existe tipo");
+        id = tipo.id;
+        estatus = tipo.dataset.status;
+        comprobantes = tipo.dataset.comprobante;
+        
+      }
+      
+    
+    //console.log(this.dataset.status);
+    //console.log(tipo.dataset.status);
+    //valor_status = tipo.dataset.status;
+    if(estatus == "Por Pagar"){
 
         console.log("Esta en Por Pagar");
         Swal.fire({
-            title: 'Confirmar Pago de Comprobante: '+tipo.dataset.comprobante,
+            title: 'Confirmar Pago de Comprobante: '+comprobantes,
             showDenyButton: true,
             showCancelButton: false,
             confirmButtonText: 'Confirmar',
@@ -26,8 +51,8 @@ function Pagar_Comprobante(tipo){
     
     
     
-                var data = {"id_comprobante": tipo.id,
-                    'comprobante': tipo.dataset.comprobante,
+                var data = {"id_comprobante": id,
+                    'comprobante': comprobantes,
                 };
     
     
@@ -67,21 +92,26 @@ function Pagar_Comprobante(tipo){
                 
                 }else{
 
-                    elemento = document.getElementById("comprobante_"+tipo.id);
+                    //Aqui vamos a aplicar el try-catch-----PENDIENTE
+                    elemento = document.getElementById("comprobante_"+id);
                     console.log(elemento);
+                    
+                    console.log(elemento.childNodes[0]); //Numero incremental
                     console.log(elemento.childNodes[1]); //Numero incremental
                     console.log(elemento.childNodes[3]); //Digito
                     console.log(elemento.childNodes[5]); //Numero Telefonico
                     console.log(elemento.childNodes[7]); //Comprobante
                     console.log(elemento.childNodes[9]); //Status
-                    console.log(elemento.childNodes[11].childNodes[1]); //Donde esta el boton
+                    console.log("boton: ",elemento.childNodes[11].childNodes[1]); //Donde esta el boton
 
 
                     elemento.childNodes[9].innerHTML="Pagado";
 
                     elemento.childNodes[11].childNodes[1].dataset.status="Pagado";
                     elemento.childNodes[11].childNodes[1].className = "btn btn-success";
-                    elemento.childNodes[11].childNodes[1].innerHTML = "btn btn-success";
+
+                    console.log(elemento.childNodes[11].childNodes[3]);
+                    elemento.childNodes[11].childNodes[3].innerHTML="Probando";
 
 
                     console.log("Hay mensajes traidos de la api");
