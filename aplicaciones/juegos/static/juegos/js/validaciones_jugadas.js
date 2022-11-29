@@ -8,6 +8,7 @@ var input_numeros = document.getElementById("id_numeros");
 var input_comprobantes = document.getElementById("id_comprobante");
 
 //Variables a usar
+var aux_numero;
 var cantidad_maxima = 0;
 var cantidad_minima = 0;
 var jugadas_activas = [];

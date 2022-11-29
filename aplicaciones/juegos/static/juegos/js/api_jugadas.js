@@ -47,9 +47,18 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
             //console.log("Algo esta incompleto jajajja");
             MensajeSubliminal.classList.remove("d-none");
             MensajeSubliminal.innerHTML = "Debes agregar un numero telefónico correcto";
+        
+        }else if(input_comprobantes.value.length <4 ||  input_comprobantes.value.length >12){
+
+            //console.log("Algo esta incompleto jajajja");
+            MensajeSubliminal.classList.remove("d-none");
+            MensajeSubliminal.innerHTML = "Debes agregar un comprobante correcto...<br>Maximo: "+12+" Digitos<br>Minimo: "+4+" Digitos";
+            input_comprobantes.focus();
+
         }else{
 
             //console.clear();
+            aux_numero = input_numeros.value;
             
             var formData = new FormData(FormularioJugadas);
             MensajeSubliminal.classList.add("d-none"); //alert alert-success
@@ -130,6 +139,7 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
 
                       FormularioJugadas.reset();
+                      input_numeros.value = aux_numero;
 
 
                 }//fin de la funcion

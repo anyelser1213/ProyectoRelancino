@@ -6,6 +6,7 @@ document.addEventListener("keydown", (event) => {
     
     
     var codigo = event.key;
+    //console.log("Longitud: ",input_digito.value.length);
 
     console.log("Presionada: " + codigo);
      
@@ -96,6 +97,7 @@ document.addEventListener("keydown", (event) => {
             //AQUI ES CUANDO EL INPUT DE NUMEROS ESTA CORRECTO
             }else{
 
+                aux_numero = input_numeros.value;
                 console.log("El campo del telefono esta CORRECTO");
             }
 
@@ -132,9 +134,88 @@ document.addEventListener("keydown", (event) => {
             /////////////////////////////////////////////////////////////////////////////////////////
 
 
+            var formData = new FormData(FormularioJugadas);
+            MensajeSubliminal.classList.add("d-none"); //alert alert-success
+            MensajeSubliminal.innerHTML = "jajajtes<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
+    
+
+
+            var data = {"tipos": 
+                jugadas_activas,
+                'digitos': formData.get('digitos'),
+                'numeros': formData.get('numeros'),
+                'comprobante': formData.get('comprobante'),
+            };
+
+
+            //AQUI ES CUANDO ES POST
+            fetch("jugada/",{
+                method:"POST",
+                //body: formData,
+                body:JSON.stringify(data),
+                headers:{
+                    'Content-Type': 'application/json',
+                    "X-CSRFToken":csrftoken,
+                    "X-Requestd-With":"XMLGttpRequest"//Con esto indicamos que es una peticion ajax
+                }
+
+        //Promesa de javascript
+        }).then(
+            function(response){
+
+                return response.json();
+                
+                //console.log(response.data);
+            }//fin de la funcion
+
+        ).then(
+            function(data){
+
+                //Esto es para saber la longitud del Json
+                //Object.keys(data).length
+
+                //En caso de que no haya ningun mensaje
+
+                if(Object.keys(data).length == 0){
+
+                    console.log("No hay mensajes traidos de la api");
+                
+                }else{
+
+                    console.log("Hay mensajes traidos de la api");
+                    //console.log(Object.keys(data).length);
+                    MensajeSubliminal.classList.remove("d-none","alert-danger");
+                    MensajeSubliminal.classList.add("alert-primary"); //alert alert-success
+                    MensajeSubliminal.innerHTML = "Informacion:<br> ";
+                    console.log("datos traidos desde la api: ",data);
+                    console.log("tipo de dato: ",typeof data);
+                    console.log("datos traidos desde la api: ",data['name']);
+
+                }
+
+                
+
+
+                //For para agregar los mensaje respectivos
+                for (const element in data) {
+                    console.log(`${element}: ${data[element]}`);
+                    MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
+                  }
+
+
+
+
+                  FormularioJugadas.reset();
+
+                  input_numeros.value = aux_numero;
+
+            }//fin de la funcion
+
+        ) //fin de then
+
 
             
-            console.log("Longitud: ",input_digito.value.length);
+            
 
 
 

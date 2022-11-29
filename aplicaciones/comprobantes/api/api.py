@@ -64,7 +64,7 @@ def obtener_comprobantes_api_view(request):
 
         if request.user.is_superuser:
 
-            Elementos = Jugadas_Numeros.objects.filter(id_jugada__id_tipo_jugada__nombre=str(id_tipo)).values("id","id_jugada__digitos","id_telefono__numero_telefono","id_comprobante__numero_comprobante","status")
+            Elementos = Jugadas_Numeros.objects.filter(id_jugada__id_tipo_jugada__nombre=str(id_tipo)).order_by('-status').values("id","id_jugada__digitos","id_telefono__numero_telefono","id_comprobante__numero_comprobante","status")
             #Elementos = Jugadas_Numeros.objects.filter(id_jugada__id_tipo_jugada__nombre=str(id_tipo)).values("status")
             
             #print(id_tipo)
@@ -75,7 +75,7 @@ def obtener_comprobantes_api_view(request):
             aux = 0
             for elem in Elementos:
                 print("\n")
-                print(elem["id_jugada__digitos"])
+                #print(elem["id_jugada__digitos"])
                 data[aux] = ({'id':elem['id'],'digitos':elem['id_jugada__digitos'],'telefono':elem['id_telefono__numero_telefono'],'comprobante':elem['id_comprobante__numero_comprobante'],'status':elem['status']})
                 #data.update(str(elem):"")
                 #data.update({str(aux):"Ultima Jugada guardada, "})
@@ -84,7 +84,7 @@ def obtener_comprobantes_api_view(request):
         #En caso de que es un usuario normal
         else:
 
-            Elementos = Jugadas_Numeros.objects.filter(id_jugada__id_tipo_jugada__nombre=str(id_tipo),id_usuario=request.user.id).values("id","id_jugada__digitos","id_telefono__numero_telefono","id_comprobante__numero_comprobante","status")
+            Elementos = Jugadas_Numeros.objects.filter(id_jugada__id_tipo_jugada__nombre=str(id_tipo),id_usuario=request.user.id).order_by('-status').values("id","id_jugada__digitos","id_telefono__numero_telefono","id_comprobante__numero_comprobante","status")
             #print(id_tipo)
             #print("")
             #print(Elementos.count())

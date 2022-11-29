@@ -6,6 +6,14 @@
 
 <link rel="stylesheet" href="{% static 'juegos/css/estilos.css' %}">
 
+<style>
+
+    .clear {
+        clear: both;
+    visibility: hidden;
+    }
+</style>
+
 
     {% endblock %}
 
@@ -78,7 +86,7 @@
                                                         <div class="col-md-6 pad-adjust">
                                                             {{JugadaForm.numeros}}
                                                         </div>
-                                                        <hr><!-----Pendiente con esta loqueta-->
+                                                        <hr class="clear">
                                                         <div class="col-md-6 pad-adjust">
                                                             {{JugadaForm.comprobante}}
                                                         </div>
