@@ -64,6 +64,11 @@ document.addEventListener("keydown", (event) => {
                 
                 console.log("Los digitos estan completos");
 
+                if(document.activeElement === input_digito){
+                    console.log("FOCUS EN DIGITO");
+                    input_numeros.focus();
+                    return 0;
+                }
                 //return 0;
 
             }
@@ -99,6 +104,16 @@ document.addEventListener("keydown", (event) => {
 
                 aux_numero = input_numeros.value;
                 console.log("El campo del telefono esta CORRECTO");
+
+                if(document.activeElement === input_numeros){
+                    console.log("FOCUS EN NUMERO");
+                    input_comprobantes.focus();
+                    return 0;
+                }else if(document.activeElement === input_comprobantes){
+    
+                    console.log("FOCUS EN COMPROBANTE");
+    
+                }
             }
 
 
@@ -127,6 +142,11 @@ document.addEventListener("keydown", (event) => {
 
                 console.log("El campo del COMPROBANTE esta CORRECTO");
             }
+
+
+
+
+            
 
 
             /////////////////////////////////////////////////////////////////////////////////////////
@@ -208,6 +228,7 @@ document.addEventListener("keydown", (event) => {
                   FormularioJugadas.reset();
 
                   input_numeros.value = aux_numero;
+                  jugadas_activas = [];
 
             }//fin de la funcion
 
