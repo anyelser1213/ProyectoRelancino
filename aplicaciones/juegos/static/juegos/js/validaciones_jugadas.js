@@ -4,6 +4,8 @@
 var input_digito = document.getElementById("id_digitos");
 //Tomar input de numeros
 var input_numeros = document.getElementById("id_numeros");
+//Tomar input de numeros
+var input_comprobantes = document.getElementById("id_comprobante");
 
 //Variables a usar
 var cantidad_maxima = 0;
