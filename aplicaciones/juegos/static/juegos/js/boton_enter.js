@@ -139,6 +139,7 @@ document.addEventListener("keydown", (event) => {
 
             //AQUI ES CUANDO EL INPUT DE COMPROBANTES ESTA CORRECTO ESTA CORRECTO
             }else{
+                aux_comprobantes = input_comprobantes.value;
 
                 console.log("El campo del COMPROBANTE esta CORRECTO");
             }
@@ -228,6 +229,7 @@ document.addEventListener("keydown", (event) => {
                   FormularioJugadas.reset();
 
                   input_numeros.value = aux_numero;
+                  input_comprobantes.value = aux_comprobantes;
                   jugadas_activas = [];
 
             }//fin de la funcion

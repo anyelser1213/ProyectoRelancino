@@ -59,6 +59,7 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
             //console.clear();
             aux_numero = input_numeros.value;
+            aux_comprobantes =  input_comprobantes.value;
             
             var formData = new FormData(FormularioJugadas);
             MensajeSubliminal.classList.add("d-none"); //alert alert-success
@@ -140,6 +141,7 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
                       FormularioJugadas.reset();
                       input_numeros.value = aux_numero;
+                      input_comprobantes.value = aux_comprobantes;
 
 
                 }//fin de la funcion
