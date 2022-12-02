@@ -61,8 +61,8 @@ class TipoJugadas(models.Model):
             #Permisos
             content_type = ContentType.objects.get_for_model(TipoJugadas)
             permisos = Permission.objects.create(
-                codename='ver_'+self.nombre,
-                name='ver_'+self.nombre,
+                codename=self.nombre,
+                name=self.nombre,
                 content_type=content_type,
             )
             #permisos = Permission.objects.create(

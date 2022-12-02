@@ -1,7 +1,10 @@
 {% extends "base.html" %}
+
+{% block titulo %}Jugadas | Iniciar {% endblock %}
 {% load static %}
 
 {% load tag_tipos_jugadas %}
+{% load tag_permisos_tipos_jugadas %} <!---Para verificar que tenemos los permisos---->
 {% block EnlacesPlantillas %}
 
 <link rel="stylesheet" href="{% static 'juegos/css/estilos.css' %}">
@@ -60,6 +63,7 @@
                                             <div class="row  abs-center ">
                                                 <div class="col-md-12 pad-adjust">
                                                     <h1 class="abs-center">tipo de jugada</h1>
+                                                    
                                                 </div>
 
                                                 
@@ -70,7 +74,13 @@
 
                                                     {% for tipo_jugada in tipos_de_jugadas %}
 
+                                                    <h1 class="abs-center"></h1>
+                                                      
+                                                    {% tipos_permisos usuario tipo_jugada.nombre as respuestaTipo %}
+                                                    {% if respuestaTipo %}
                                                         {% visualizar_tipos2 tipo_jugada  %}
+                                                    {% endif %}
+                                                    
 
                                                         
                                                         
