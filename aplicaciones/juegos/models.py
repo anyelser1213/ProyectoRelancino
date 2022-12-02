@@ -4,6 +4,10 @@ from django.utils.timezone import now
 from django.db import models
 from aplicaciones.usuarios.models import Usuarios
 
+#Estos dos modelos son para crear permisos personalizados
+from django.contrib.auth.models import Permission
+from django.contrib.contenttypes.models import ContentType
+
 import datetime
 
 # Create your models here.
@@ -26,8 +30,8 @@ class TipoJugadas(models.Model):
 
     #fecha_cierre = models.CharField(max_length=50, default=formatedDay)
     #fecha_creacion2 = models.DateTimeField(default=now) # fecha y hora
-    monto_jugada = models.FloatField(default=0)
-    cantidad_maxima_repeticion = models.PositiveIntegerField(default=0)
+    monto_jugada = models.FloatField(default=10)
+    cantidad_maxima_repeticion = models.PositiveIntegerField(default=100)
 
     def __str__(self):
          return self.nombre
@@ -36,6 +40,40 @@ class TipoJugadas(models.Model):
 
         verbose_name = "Tipo Jugada"
         verbose_name_plural = "1.Tipos Jugadas"
+
+    
+    #Editando los metodos
+    def save(self, *args, **kwargs): 
+
+        
+        #existe = Categoria.objects.filter(nombre=self.nombre)
+        #if existe.count()>0:
+        #    print("Modificando: ",self.nombre) 
+        #    super(Categoria, self).save(*args, **kwargs)
+        #else:
+        #    print("Creando nueva categoria...",self.nombre)
+        #    if self.nombre == "descargas":
+        #        os.mkdir(os.path.join(settings.MEDIA_ROOT)+"/"+self.nombre)
+        #    else:
+        #
+        #        os.mkdir(os.path.join(settings.MEDIA_ROOT)+"/"+"videos/"+self.nombre)
+        #    
+            #Permisos
+            content_type = ContentType.objects.get_for_model(TipoJugadas)
+            permisos = Permission.objects.create(
+                codename='ver_'+self.nombre,
+                name='ver_'+self.nombre,
+                content_type=content_type,
+            )
+            #permisos = Permission.objects.create(
+            #    codename='add_'+self.nombre,
+            #    name='add_'+self.nombre,
+            #    content_type=content_type,
+            #)
+
+            print("Se agregaron los permisos: ", permisos)
+            
+            super(TipoJugadas, self).save(*args, **kwargs)
 
 class Telefono(models.Model):
 
