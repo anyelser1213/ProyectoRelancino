@@ -8,7 +8,25 @@ from aplicaciones.usuarios.models import Usuarios
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 
+
+
+from django.dispatch import receiver
+from django.db.models.signals import pre_save, post_save, pre_delete, post_delete
+
+
+
 import datetime
+import os
+import shutil #libreria para borrar carpetas esten o no llenas
+
+#Para las señales
+#Era una forma de hacerlo
+#from aplicaciones.juegos.borrar_permisos_de_jugadas import BorrarTipo_Jugada
+
+
+
+#Probando aqui
+
 
 # Create your models here.
 
@@ -23,7 +41,7 @@ class TipoJugadas(models.Model):
 
     nombre = models.CharField(max_length=30,unique=True)
     cantidad_digitos = models.CharField(max_length=30)
-    estado_jugada = models.BooleanField(default=False)
+    estado_jugada = models.BooleanField(default=True)
     hora_inicio = models.TimeField(default=now, blank=False,null=False)#Solo hora
     hora_cierre = models.TimeField(default=now, blank=True,null=True)#Solo hora
     fecha_cierre = models.DateField(auto_now_add=False,auto_now=False,blank=True) #Solo fecha
@@ -74,6 +92,25 @@ class TipoJugadas(models.Model):
             print("Se agregaron los permisos: ", permisos)
             
             super(TipoJugadas, self).save(*args, **kwargs)
+
+
+
+#pre_delete.connect(BorrarTipo_Jugada, sender=TipoJugadas) #<-- Sin decorador
+
+"""
+#Funcion de señales en Django
+@receiver(pre_delete,sender=TipoJugadas)
+def BorrarTipo_Jugada(sender,instance,**kwargs):
+
+    print(sender)
+    print(instance)
+    print("Tipo de jugada dentro de los modelos: ",instance.nombre)
+
+    print("Se acaba de Borrar una Categoria jajaja")
+
+"""
+
+
 
 class Telefono(models.Model):
 
