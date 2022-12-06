@@ -21,8 +21,10 @@ def jugada_api_view(request):
         print("datos",request.data, "Usuario: ",request.user.username,request.user.id)
         #print(request.data)
         #print("datos tipos:  ",request.data.get('tipos'))
+        #print(type(request.data.get('digitos')))
         tipos = request.data.get('tipos')
-        jugada = str(request.data.get('digitos'))
+        #jugada = str(request.data.get('digitos'))
+        listaJugadas = request.data.get('digitos')
         numero_telefonico = str(request.data.get('numeros'))
         comprobante = str(request.data.get('comprobante'))
 
@@ -37,7 +39,7 @@ def jugada_api_view(request):
         #Elemento = TipoJugadas.objects.get(nombre=tipos[0][posicion_index:])
         
         print("Tipos Jugados: ",tipos)
-        print("Jugada: ",jugada)
+        print("Lista de Jugadas: ",listaJugadas)
         print("Numero: ",numero_telefonico)
         print("Comprobante: ",comprobante)
         #print("Tipo jugada: ",Elemento," Cantidad: ",Elemento.cantidad_digitos)
@@ -45,93 +47,117 @@ def jugada_api_view(request):
             
             posicion_index = i.find("_")
             posicion_index +=1
+
+            #Elemento es el tipo de jugada actual
             Elemento = TipoJugadas.objects.get(nombre=i[posicion_index:])
             #print("Tipo: ",Elemento.nombre, " Cantidad", Elemento.cantidad_digitos)
             print("Elemento: ",Elemento," Cantidad: ",Elemento.cantidad_digitos, "monto_jugada: ", Elemento.monto_jugada," cantidad_maxima_repeticion: ",Elemento.cantidad_maxima_repeticion)
-            print("Para este elemento usamos solo: ",str(jugada)[0:int(Elemento.cantidad_digitos)])
             
-            ###########################################################################################
-            #Aqui verificamos si el comprobante ya existe
-            comprobante_actual = Comprobante.objects.filter(numero_comprobante=str(comprobante))
-            if comprobante_actual.exists():
+            for jugada in listaJugadas:
+
+                print(type(jugada)," ",jugada,"cantidad de string: ",len(jugada)," Cantidad Permitida: ",Elemento.cantidad_digitos)
+                print("Para este elemento usamos solo: ",str(jugada)[(-int(Elemento.cantidad_digitos)):])
+                #print("Para este elemento usamos solo: ",str(jugada)[0:int(Elemento.cantidad_digitos)])
+
+                if len(jugada) == 1:
+                    pass
+                elif len(jugada) == 2:
+                    pass
+                elif len(jugada) == 3:
+                    pass
+                elif len(jugada) == 4:
+                    pass
+                elif len(jugada) == 5:
+                    pass
+                elif len(jugada) == 6:
+                    pass
+                elif len(jugada) == 7:
+                    pass
                 
-                comprobante_a_usar = Comprobante.objects.get(numero_comprobante=str(comprobante))
-                print("Existe este comprobante, solo lo utlizamos",comprobante_a_usar.numero_comprobante)
-            else:
-                print("No existe este comprobante, lo creamos y lo usamos",comprobante)
-                comprobante_a_usar = Comprobante.objects.create(numero_comprobante=str(comprobante))
-
-                print("HEMOS CREADO EL NUMERO: ",comprobante_a_usar.numero_comprobante)
-
-
-
-            ###########################################################################################
- 
-
-
-            ############################################################################################
-            #Aqui verificamos si el numero ya existe
-            telefono_actual = Telefono.objects.filter(numero_telefono=str(numero_telefonico))
-            if telefono_actual.exists():
                 
-                telefono_a_usar = Telefono.objects.get(numero_telefono=str(numero_telefonico))
-                print("Existe este numero, solo lo utlizamos",telefono_a_usar.numero_telefono)
-            else:
-                print("No existe este numero, lo creamos y lo usamos",numero_telefonico)
-                telefono_a_usar = Telefono.objects.create(numero_telefono=str(numero_telefonico))
-
-                print("HEMOS CREADO EL NUMERO: ",telefono_a_usar.numero_telefono)
-            
-            ###########################################################################################
-
-            #Aqui verificamos si la jugada ya existe
-            jugada_actual = Jugada.objects.filter(id_tipo_jugada=Elemento.id,id_usuario=request.user.id,digitos=str(jugada)[0:int(Elemento.cantidad_digitos)])
-            if jugada_actual.exists():
-                
-                jugada_actual = Jugada.objects.get(id_tipo_jugada=Elemento.id,id_usuario=request.user.id,digitos=str(jugada)[0:int(Elemento.cantidad_digitos)])
-                print("Ya existe esta jugada",jugada_actual,"Bloquado",jugada_actual.bloquear_repetidor)
-                
-                #En caso de que tenga el bloqueador de repeticion
-                if jugada_actual.bloquear_repetidor == True:
+                ###########################################################################################
+                #Aqui verificamos si el comprobante ya existe
+                comprobante_actual = Comprobante.objects.filter(numero_comprobante=str(comprobante))
+                if comprobante_actual.exists():
                     
-                    print("No se puede ejecutar esta jugada porque tiene bloqueador de repeticiones")
-                    datos.update({str(Elemento):"No se ejecuto esta jugada porque tiene bloqueador de repeticiones"})
-                
-
-                #En caso de que no se pueda repetir
-                elif jugada_actual.repetidor == Elemento.cantidad_maxima_repeticion:
-
-                    print("No se puede ejecutar esta jugada porque alcanzo el limite de repeticiones")
-                    datos.update({str(Elemento):"No se ejecuto esta jugada porque se alcanzo el limite de repeticiones de esta jugada"})
-                
-                #En caso de que se pueda repetir
+                    comprobante_a_usar = Comprobante.objects.get(numero_comprobante=str(comprobante))
+                    #print("Existe este comprobante, solo lo utlizamos",comprobante_a_usar.numero_comprobante)
                 else:
-                    print("Ejecutando repeticion de la jugada")
-                    #datos.update({str(Elemento):"Esta jugada ya existe y se creo una repeticion"})
-                    datos.update({str(Elemento):"Ultima Jugada guardada, "+str(jugada)[0:int(Elemento.cantidad_digitos)]})
-                
-                    jugada_actual.repetidor +=1
-                    jugada_actual.save()
+                    #print("No existe este comprobante, lo creamos y lo usamos",comprobante)
+                    comprobante_a_usar = Comprobante.objects.create(numero_comprobante=str(comprobante))
 
-                    #Aqui usamos la jugada y asociamos todo
-                    Jugada_asociada = Jugadas_Numeros(id_jugada=jugada_actual, id_telefono=telefono_a_usar,id_usuario=request.user,id_comprobante=comprobante_a_usar)
+                    #print("HEMOS CREADO EL NUMERO: ",comprobante_a_usar.numero_comprobante)
+
+
+
+                ###########################################################################################
+    
+
+
+                ############################################################################################
+                #Aqui verificamos si el numero telefonico ya existe
+                telefono_actual = Telefono.objects.filter(numero_telefono=str(numero_telefonico))
+                if telefono_actual.exists():
+                    
+                    telefono_a_usar = Telefono.objects.get(numero_telefono=str(numero_telefonico))
+                    #print("Existe este numero, solo lo utlizamos",telefono_a_usar.numero_telefono)
+                else:
+                    #print("No existe este numero, lo creamos y lo usamos",numero_telefonico)
+                    telefono_a_usar = Telefono.objects.create(numero_telefono=str(numero_telefonico))
+
+                    #print("HEMOS CREADO EL NUMERO: ",telefono_a_usar.numero_telefono)
+                
+                ###########################################################################################
+            
+                #Aqui verificamos si la jugada ya existe
+                jugada_actual = Jugada.objects.filter(id_tipo_jugada=Elemento.id,id_usuario=request.user.id,digitos=str(jugada)[(-int(Elemento.cantidad_digitos)):])
+                if jugada_actual.exists():
+                    
+                    jugada_actual = Jugada.objects.get(id_tipo_jugada=Elemento.id,id_usuario=request.user.id,digitos=str(jugada)[(-int(Elemento.cantidad_digitos)):])
+                    #print("Ya existe esta jugada",jugada_actual,"Bloquado",jugada_actual.bloquear_repetidor)
+                    
+                    #En caso de que tenga el bloqueador de repeticion
+                    if jugada_actual.bloquear_repetidor == True:
+                        
+                        #print("No se puede ejecutar esta jugada porque tiene bloqueador de repeticiones")
+                        datos.update({str(Elemento):"No se ejecuto esta jugada porque tiene bloqueador de repeticiones"})
+                    
+
+                    #En caso de que no se pueda repetir
+                    elif jugada_actual.repetidor == Elemento.cantidad_maxima_repeticion:
+
+                        #print("No se puede ejecutar esta jugada porque alcanzo el limite de repeticiones")
+                        datos.update({str(Elemento):"No se ejecuto esta jugada porque se alcanzo el limite de repeticiones de esta jugada"})
+                    
+                    #En caso de que se pueda repetir
+                    else:
+                        #print("Ejecutando repeticion de la jugada")
+                        #datos.update({str(Elemento):"Esta jugada ya existe y se creo una repeticion"})
+                        datos.update({str(Elemento):"Ultima Jugada guardada, "+str(jugada)[(-int(Elemento.cantidad_digitos)):]})
+                    
+                        jugada_actual.repetidor +=1
+                        jugada_actual.save()
+
+                        #Aqui usamos la jugada y asociamos todo
+                        Jugada_asociada = Jugadas_Numeros(id_jugada=jugada_actual, id_telefono=telefono_a_usar,id_usuario=request.user,id_comprobante=comprobante_a_usar)
+                        Jugada_asociada.save()
+
+                    
+                else:#En caso de que no exista la jugada
+
+                    #print("No existe ninguna jugada asi")
+                    datos.update({str(Elemento):"Ultima Jugada guardada, "+str(jugada)[(-int(Elemento.cantidad_digitos)):]})
+                    CreandoJugada = Jugada(id_tipo_jugada=Elemento, id_usuario=request.user,digitos=str(jugada)[(-int(Elemento.cantidad_digitos)):],repetidor=1)
+                    CreandoJugada.save()
+
+
+                    #Aqui creamos la jugada y asociamos todo
+                    Jugada_asociada = Jugadas_Numeros(id_jugada=CreandoJugada, id_telefono=telefono_a_usar,id_usuario=request.user,id_comprobante=comprobante_a_usar)
                     Jugada_asociada.save()
-
-                
-            else:#En caso de que no exista la jugada
-
-                print("No existe ninguna jugada asi")
-                datos.update({str(Elemento):"Ultima Jugada guardada, "+str(jugada)[0:int(Elemento.cantidad_digitos)]})
-                CreandoJugada = Jugada(id_tipo_jugada=Elemento, id_usuario=request.user,digitos=str(jugada)[0:int(Elemento.cantidad_digitos)],repetidor=1)
-                CreandoJugada.save()
-
-
-                #Aqui creamos la jugada y asociamos todo
-                Jugada_asociada = Jugadas_Numeros(id_jugada=CreandoJugada, id_telefono=telefono_a_usar,id_usuario=request.user,id_comprobante=comprobante_a_usar)
-                Jugada_asociada.save()
-
-            print(jugada_actual)
-        
+            
+                #print(jugada_actual)
+            """
+            """
         #jugada_serializer = JugadaSerializer(data = request.data) #De json a objeto otra ves y guardamos
         
 
