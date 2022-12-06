@@ -11,7 +11,11 @@ from .models import *
 class JugadaForm(forms.Form):
     
     digitos = forms.CharField(
-                     help_text = "Ingresa Numeros"
+                     help_text = "Ingresa Numeros",
+                     widget=forms.TextInput(attrs={
+        'placeholder': 'Title',
+        'autofocus': 'autofocus',
+        'class': 'center', })
                      )
     numeros = forms.CharField(
         help_text = "Ingresa Numero Telefonico"
@@ -25,7 +29,7 @@ class JugadaForm(forms.Form):
         super(JugadaForm, self).__init__(*args, **kwargs)
         print("entramos en formulario JugadaForm")
         self.fields['digitos'].widget.attrs.update({
-            'class': 'form-control','placeholder':'Ingrese Digitos','maxlength':0,'pattern':'[0-9]+','onkeypress':'return valideKey(event);' })
+            'class': 'form-control','name':'dssigitos','placeholder':'Ingrese Digitos','maxlength':0,'pattern':'[0-9]+','onkeypress':'return valideKey(event);' })
         self.fields['numeros'].widget.attrs.update({
             'class': 'form-control','placeholder':'Ingrese Nº telefónico','maxlength':11,'pattern':'[0-9]+','onkeypress':'return valideKey(event);'})
         self.fields['comprobante'].widget.attrs.update({

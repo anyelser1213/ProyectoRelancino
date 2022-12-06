@@ -19,6 +19,7 @@ def jugada_api_view(request):
     elif request.method == 'POST':
 
         print("datos",request.data, "Usuario: ",request.user.username,request.user.id)
+        #print(request.data)
         #print("datos tipos:  ",request.data.get('tipos'))
         tipos = request.data.get('tipos')
         jugada = str(request.data.get('digitos'))

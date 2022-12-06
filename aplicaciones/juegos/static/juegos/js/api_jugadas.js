@@ -61,6 +61,22 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
             aux_numero = input_numeros.value;
             aux_comprobantes =  input_comprobantes.value;
             
+
+            var lista_digitos = [];
+            
+            var entrada = document.getElementsByName('digitos[]');
+            for (var i = 0; i < entrada.length; i++) {
+                var k ="";
+                //k = "array[" + i + "].value= "+ a.value + " ";
+                lista_digitos.push(entrada[i].value);
+                
+            }
+            //for (const itItem of entrada) {
+             //   console.log(itItem);
+            //  }
+            //console.log(entrada);
+            console.log(lista_digitos);
+
             var formData = new FormData(FormularioJugadas);
             MensajeSubliminal.classList.add("d-none"); //alert alert-success
             MensajeSubliminal.innerHTML = "jajajtes<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
@@ -69,7 +85,7 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
             var data = {"tipos": 
                 jugadas_activas,
-                'digitos': formData.get('digitos'),
+                'digitos': lista_digitos,
                 'numeros': formData.get('numeros'),
                 'comprobante': formData.get('comprobante'),
             };
