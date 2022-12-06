@@ -147,10 +147,19 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
 
                     //For para agregar los mensaje respectivos
-                    for (const element in data) {
-                        console.log(`${element}: ${data[element]}`);
-                        MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
-                      }
+                    //for (const element in data) {
+                    //    console.log(`${element}: ${data[element]}`);
+                    //    MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
+                    //  }
+
+                    //MensajeSubliminal.innerHTML += "[ ";
+                    for (const element in lista_digitos) {
+                        console.log(`${element}: ${lista_digitos[element]}`);
+                        MensajeSubliminal.innerHTML += "["+lista_digitos[element]+"]  ";
+                    }
+                    //MensajeSubliminal.innerHTML += " ]";
+
+                      //MensajeSubliminal.innerHTML = "[ "+lista_digitos{};
 
 
 

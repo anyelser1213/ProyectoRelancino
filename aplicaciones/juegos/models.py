@@ -78,11 +78,15 @@ class TipoJugadas(models.Model):
         #    
             #Permisos
             content_type = ContentType.objects.get_for_model(TipoJugadas)
-            permisos = Permission.objects.create(
+            if Permission.objects.filter(name=self.nombre).count()>0:
+                permisos =""
+            else:
+                permisos = Permission.objects.create(
                 codename=self.nombre,
                 name=self.nombre,
                 content_type=content_type,
             )
+            
             #permisos = Permission.objects.create(
             #    codename='add_'+self.nombre,
             #    name='add_'+self.nombre,

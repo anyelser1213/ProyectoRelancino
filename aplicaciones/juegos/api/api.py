@@ -21,9 +21,7 @@ def jugada_api_view(request):
         print("datos",request.data, "Usuario: ",request.user.username,request.user.id)
         #print(request.data)
         #print("datos tipos:  ",request.data.get('tipos'))
-        #print(type(request.data.get('digitos')))
         tipos = request.data.get('tipos')
-        #jugada = str(request.data.get('digitos'))
         listaJugadas = request.data.get('digitos')
         numero_telefonico = str(request.data.get('numeros'))
         comprobante = str(request.data.get('comprobante'))
@@ -34,7 +32,7 @@ def jugada_api_view(request):
         #posicion_index = tipos[0].find("_")
         #posicion_index +=1
         #print("Posicion : ",str(tipos[0]).find("_"))
-        #print(tipos[0][posicion_index:])
+        #print(tipos[0][posicion_index:posicion_final])
 
         #Elemento = TipoJugadas.objects.get(nombre=tipos[0][posicion_index:])
         
@@ -59,21 +57,6 @@ def jugada_api_view(request):
                 print("Para este elemento usamos solo: ",str(jugada)[(-int(Elemento.cantidad_digitos)):])
                 #print("Para este elemento usamos solo: ",str(jugada)[0:int(Elemento.cantidad_digitos)])
 
-                if len(jugada) == 1:
-                    pass
-                elif len(jugada) == 2:
-                    pass
-                elif len(jugada) == 3:
-                    pass
-                elif len(jugada) == 4:
-                    pass
-                elif len(jugada) == 5:
-                    pass
-                elif len(jugada) == 6:
-                    pass
-                elif len(jugada) == 7:
-                    pass
-                
                 
                 ###########################################################################################
                 #Aqui verificamos si el comprobante ya existe
@@ -120,20 +103,20 @@ def jugada_api_view(request):
                     if jugada_actual.bloquear_repetidor == True:
                         
                         #print("No se puede ejecutar esta jugada porque tiene bloqueador de repeticiones")
-                        datos.update({str(Elemento):"No se ejecuto esta jugada porque tiene bloqueador de repeticiones"})
+                        datos.update({str(Elemento)+"-"+str(jugada):"No se ejecuto esta jugada porque tiene bloqueador de repeticiones"})
                     
 
                     #En caso de que no se pueda repetir
                     elif jugada_actual.repetidor == Elemento.cantidad_maxima_repeticion:
 
                         #print("No se puede ejecutar esta jugada porque alcanzo el limite de repeticiones")
-                        datos.update({str(Elemento):"No se ejecuto esta jugada porque se alcanzo el limite de repeticiones de esta jugada"})
+                        datos.update({str(Elemento)+"-"+str(jugada):"No se ejecuto esta jugada porque se alcanzo el limite de repeticiones de esta jugada"})
                     
                     #En caso de que se pueda repetir
                     else:
                         #print("Ejecutando repeticion de la jugada")
                         #datos.update({str(Elemento):"Esta jugada ya existe y se creo una repeticion"})
-                        datos.update({str(Elemento):"Ultima Jugada guardada, "+str(jugada)[(-int(Elemento.cantidad_digitos)):]})
+                        datos.update({str(Elemento)+"-"+str(jugada):"Ultima Jugada guardada, "+str(jugada)[(-int(Elemento.cantidad_digitos)):]})
                     
                         jugada_actual.repetidor +=1
                         jugada_actual.save()
@@ -146,7 +129,7 @@ def jugada_api_view(request):
                 else:#En caso de que no exista la jugada
 
                     #print("No existe ninguna jugada asi")
-                    datos.update({str(Elemento):"Ultima Jugada guardada, "+str(jugada)[(-int(Elemento.cantidad_digitos)):]})
+                    datos.update({str(Elemento)+"-"+str(jugada):"Ultima Jugada guardada, "+str(jugada)[(-int(Elemento.cantidad_digitos)):]})
                     CreandoJugada = Jugada(id_tipo_jugada=Elemento, id_usuario=request.user,digitos=str(jugada)[(-int(Elemento.cantidad_digitos)):],repetidor=1)
                     CreandoJugada.save()
 
