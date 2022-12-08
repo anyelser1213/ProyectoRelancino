@@ -1,8 +1,40 @@
 
 
-function prueba(){
+function enfoque(){
 
     console.log("Enfocado",this);
+    this.setAttribute("maxlength",cantidad_maxima);
+    this.setAttribute("minlength",cantidad_maxima);
+}
+
+
+function desenfoque(){
+
+    console.log("Desenfocado",this);
+
+    console.log("Valor: ",this.value);
+    
+    if(this.value == ""){
+    
+        console.log("esta vacio");
+        if(this ===document.getElementsByClassName("digito_campo")[0]){
+        
+            console.log("Es el primer campo");
+        
+        }else{
+            console.log("No es el primer campo");
+            this.setAttribute("maxlength",0);
+            this.setAttribute("minlength",0);
+        }
+
+        //console.log(document.getElementsByClassName("digito_campo")[0]);
+        
+    
+    }else{
+
+    }
+    //this.setAttribute("maxlength",cantidad_maxima);
+    //this.setAttribute("minlength",cantidad_maxima);
 }
 
 
@@ -39,7 +71,12 @@ function Restablecer_Inputs_Digitos(){
 for (let index = 0; index < inputs_digitos_globales.length; index++) {
     
     console.log("Entramos");
-    inputs_digitos_globales[index].addEventListener('click',prueba);
+    //inputs_digitos_globales[index].addEventListener('focus', (event) => {
+    //    event.target.style.background = 'pink';
+    //  });
+
+    inputs_digitos_globales[index].addEventListener('focus',enfoque,false);
+    inputs_digitos_globales[index].addEventListener('blur',desenfoque,false);
     //inputs_digitos_globales[index].setAttribute("minlength",cantidad_maxima);
     
 }//Fin del for

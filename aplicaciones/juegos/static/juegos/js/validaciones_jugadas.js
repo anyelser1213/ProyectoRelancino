@@ -177,12 +177,12 @@ function valideKey(evt){
     var code = (evt.which) ? evt.which : evt.keyCode;
     console.log("Probando codigo: ",code)
     if(code==8) { // backspace.
-      return true;
+      return false;
     } else if(code>=48 && code<=57) { // is a number.
       return true;
-    } else if(code==44) { // is a number.
-        return true;
-      } else{ // other keys.
+    } else if(code==44) { // esto es una coma
+        return false;
+    } else{ // otras teclas
       return false;
     }
 }
