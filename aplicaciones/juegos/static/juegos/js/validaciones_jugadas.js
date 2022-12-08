@@ -26,26 +26,17 @@ function verificar_max_min_campo_digitos(tipo){
             
 
             cantidad_maxima = tipo.value;
-            //cantidad_minima = tipo.value;
 
-            //Aqui ajustamos los rangos limites
-            for (let index = 0; index < probando_botones_globales.length; index++) {
-    
-                //console.log(probando_botones_globales[index]);
-                //console.log(probando_botones_globales[index].value);
-                probando_botones_globales[index].setAttribute("maxlength",cantidad_maxima);
-                probando_botones_globales[index].setAttribute("minlength",cantidad_maxima);
-                
-            }
+            //Restablecemos al inicio
+            Restablecer_Inputs_Digitos()
             
-            console.log("Entramos aqui",cantidad_minima);
             
 
 
         }else{//En caso de que tengamos elementos en el arrays ejecutamos aqui
 
 
-            if(jugadas_activas.indexOf(tipo.id) == -1){//En caso de que no este el eLlemento en el arrays
+            if(jugadas_activas.indexOf(tipo.id) == -1){//En caso de que no este el elemento en el arrays
 
                 //console.log("Este elemento NO existe en el arrays");
                 jugadas_activas.push(tipo.id);
@@ -58,18 +49,15 @@ function verificar_max_min_campo_digitos(tipo){
                         probando_botones_globales[index].setAttribute("maxlength",cantidad_maxima);
                         probando_botones_globales[index].setAttribute("minlength",cantidad_maxima);
                         
-                    }
+                    }//Fin del for
 
 
-                }
-                /*
-                if(tipo.value < cantidad_minima){
-                    //En caso de que el elemento tenga un valor mayor a la cantidad maxima ejecutamos
-                    cantidad_minima = tipo.value;
-                    input_digito.setAttribute("minlength",cantidad_minima);
+                }//fin del if
 
-                }
-                */
+                
+
+
+
 
             }//Fin del if 
 
@@ -78,9 +66,9 @@ function verificar_max_min_campo_digitos(tipo){
         }
 
     
-    }else{//En caso de que sea false desactivamos y verificamos
+    }else{//En caso de que sea false(el checked) desactivamos y verificamos
 
-        console.log(jugadas_activas);
+        console.log("ENTRAMOS AQUI...",jugadas_activas);
         eliminar = jugadas_activas.indexOf(tipo.id);
         jugadas_activas.splice(eliminar, 1);
         console.log(jugadas_activas);
@@ -105,12 +93,7 @@ function verificar_max_min_campo_digitos(tipo){
                 
             }
 
-            //input_digito.setAttribute("maxlength",cantidad_maxima);
-            //input_digito.setAttribute("minlength",cantidad_maxima);
-
-            //var temporal = input_digito.value;
-            //console.log("Sin elementos");
-            //input_digito.value =temporal.substring(0,cantidad_maxima);
+            
             
             
 

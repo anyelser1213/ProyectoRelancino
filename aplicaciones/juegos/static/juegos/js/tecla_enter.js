@@ -23,7 +23,7 @@ document.addEventListener("keyup", (event) => {
             console.log("SIN Jugadas elegidas: ",jugadas_activas);
             var elementos = document.getElementsByName("tipos[]");
             elementos[0].focus()
-            console.log(elementos[0]);
+            //console.log(elementos[0]);
 
             //for(var i = 0, len = elementos.length; i < len; i++) {
             //    console.log(elementos[i]);
@@ -38,7 +38,7 @@ document.addEventListener("keyup", (event) => {
 
 
 
-            console.log("CON Jugadas elegidas: ",jugadas_activas);
+            console.log("Con Jugadas elegidas: ",jugadas_activas);
 
 
 
