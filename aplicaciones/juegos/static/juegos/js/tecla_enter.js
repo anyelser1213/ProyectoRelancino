@@ -42,28 +42,28 @@ document.addEventListener("keyup", (event) => {
 
 
 
-            for (let index = 0; index < probando_botones_globales.length; index++) {
+            for (let index = 0; index < inputs_digitos_globales.length; index++) {
 
 
-                console.log(probando_botones_globales[index].value," --- ",probando_botones_globales[index].value.length)
+                console.log(inputs_digitos_globales[index].value," --- ",inputs_digitos_globales[index].value.length)
                 //VERFICAMOS SI NO HAY ELEMENTOS EN EL INPUT DE DIGITOS(JUGADA)
-                if(probando_botones_globales[index].value.length == 0){
+                if(inputs_digitos_globales[index].value.length == 0){
 
                     MensajeSubliminal.classList.remove("d-none");
                     MensajeSubliminal.innerHTML = "Debes agregar los digitos correspondientes<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
-                    probando_botones_globales[index].focus();
+                    inputs_digitos_globales[index].focus();
                     
                     return 10;
 
 
 
                 //VERFICAMOS QUE HAY ELEMENTOS EN EL INPUT DE DIGITOS PERO INCOMPLETOS
-                }else if(probando_botones_globales[index].value.length < cantidad_maxima){
+                }else if(inputs_digitos_globales[index].value.length < cantidad_maxima){
 
                     console.log("Digitos incompletos");
                     MensajeSubliminal.classList.remove("d-none");
                     MensajeSubliminal.innerHTML = "Los digitos estan incompletos...<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
-                    probando_botones_globales[index].focus();
+                    inputs_digitos_globales[index].focus();
                     
                     return 10;
 
@@ -73,9 +73,9 @@ document.addEventListener("keyup", (event) => {
                     
                     console.log("Los digitos estan completos");
 
-                    if(document.activeElement === probando_botones_globales[index]){
+                    if(document.activeElement === inputs_digitos_globales[index]){
                         console.log("FOCUS EN DIGITO");
-                        probando_botones_globales[index].focus();
+                        inputs_digitos_globales[index].focus();
                         
                         return 10;
                     }
@@ -187,10 +187,10 @@ document.addEventListener("keyup", (event) => {
             var lista_digitos = [];
             
             var entrada = document.getElementsByName('digitos[]');
-            for (var i = 0; i < probando_botones_globales.length; i++) {
+            for (var i = 0; i < inputs_digitos_globales.length; i++) {
                 var k ="";
                 //k = "array[" + i + "].value= "+ a.value + " ";
-                lista_digitos.push(probando_botones_globales[i].value);
+                lista_digitos.push(inputs_digitos_globales[i].value);
                 
             }
             //for (const itItem of entrada) {

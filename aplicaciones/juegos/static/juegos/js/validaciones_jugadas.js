@@ -44,10 +44,10 @@ function verificar_max_min_campo_digitos(tipo){
                 if(tipo.value >= cantidad_maxima){
                     //En caso de que el elemento tenga un valor mayor a la cantidad maxima ejecutamos
                     cantidad_maxima = tipo.value;
-                    for (let index = 0; index < probando_botones_globales.length; index++) {
+                    for (let index = 0; index < inputs_digitos_globales.length; index++) {
     
-                        probando_botones_globales[index].setAttribute("maxlength",cantidad_maxima);
-                        probando_botones_globales[index].setAttribute("minlength",cantidad_maxima);
+                        inputs_digitos_globales[index].setAttribute("maxlength",cantidad_maxima);
+                        inputs_digitos_globales[index].setAttribute("minlength",cantidad_maxima);
                         
                     }//Fin del for
 
@@ -80,16 +80,16 @@ function verificar_max_min_campo_digitos(tipo){
             
 
 
-            for (let index = 0; index < probando_botones_globales.length; index++) {
+            for (let index = 0; index < inputs_digitos_globales.length; index++) {
     
-                probando_botones_globales[index].setAttribute("maxlength",cantidad_maxima);
-                probando_botones_globales[index].setAttribute("minlength",cantidad_maxima);
+                inputs_digitos_globales[index].setAttribute("maxlength",cantidad_maxima);
+                inputs_digitos_globales[index].setAttribute("minlength",cantidad_maxima);
 
 
                 //Prueba
-                var temporal = probando_botones_globales[index].value;
+                var temporal = inputs_digitos_globales[index].value;
                 console.log("Sin elementos");
-                probando_botones_globales[index].value =temporal.substring(0,cantidad_maxima);
+                inputs_digitos_globales[index].value =temporal.substring(0,cantidad_maxima);
                 
             }
 
@@ -128,15 +128,15 @@ function verificar_max_min_campo_digitos(tipo){
             cantidad_maxima = auxiliar2;
 
 
-            for (let index = 0; index < probando_botones_globales.length; index++) {
+            for (let index = 0; index < inputs_digitos_globales.length; index++) {
     
                 
 
                 //Prueba
-                var temporal = probando_botones_globales[index].value;
-                probando_botones_globales[index].value = temporal.substring(0,cantidad_maxima);
-                probando_botones_globales[index].setAttribute("maxlength",cantidad_maxima);
-                probando_botones_globales[index].setAttribute("minlength",cantidad_maxima);
+                var temporal = inputs_digitos_globales[index].value;
+                inputs_digitos_globales[index].value = temporal.substring(0,cantidad_maxima);
+                inputs_digitos_globales[index].setAttribute("maxlength",cantidad_maxima);
+                inputs_digitos_globales[index].setAttribute("minlength",cantidad_maxima);
 
                 
             }

@@ -3,7 +3,7 @@
 var input_digito = document.getElementById("id_digitos");
 
 //Ahora son 5 input de digitos
-var probando_botones_globales = document.getElementsByClassName("digito_campo");
+var inputs_digitos_globales = document.getElementsByClassName("digito_campo");
 
 
 
@@ -29,3 +29,5 @@ var aux_comprobantes;
 var cantidad_maxima = 0;
 var cantidad_minima = 0;
 var jugadas_activas = [];
+
+

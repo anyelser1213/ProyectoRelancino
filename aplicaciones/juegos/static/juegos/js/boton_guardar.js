@@ -177,11 +177,11 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
 
                       //FormularioJugadas.reset();
-                    for (let index = 0; index < probando_botones_globales.length; index++) {
+                    for (let index = 0; index < inputs_digitos_globales.length; index++) {
     
-                        //console.log(probando_botones_globales[index]);
-                        //console.log(probando_botones_globales[index].value);
-                        probando_botones_globales[index].value=null;
+                        //console.log(inputs_digitos_globales[index]);
+                        //console.log(inputs_digitos_globales[index].value);
+                        inputs_digitos_globales[index].value=null;
                         
                     }
                       input_numeros.value = aux_numero;
