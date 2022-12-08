@@ -1,8 +1,24 @@
 
+function valideKey(evt){
+    
+    // code is the decimal ASCII representation of the pressed key.
+    var code = (evt.which) ? evt.which : evt.keyCode;
+    console.log("Probando codigo: ",code)
+    if(code==8) { // backspace.
+      return false;
+    } else if(code>=48 && code<=57) { // is a number.
+      return true;
+    } else if(code==44) { // esto es una coma
+        return false;
+    } else{ // otras teclas
+      return false;
+    }
+}
+
 
 function enfoque(){
 
-    console.log("Enfocado",this);
+    //console.log("Enfocado",this);
     this.setAttribute("maxlength",cantidad_maxima);
     this.setAttribute("minlength",cantidad_maxima);
 }
@@ -10,13 +26,13 @@ function enfoque(){
 
 function desenfoque(){
 
-    console.log("Desenfocado",this);
+    //console.log("Desenfocado",this);
 
-    console.log("Valor: ",this.value);
+    //console.log("Valor: ",this.value);
     
     if(this.value == ""){
     
-        console.log("esta vacio");
+        //console.log("esta vacio");
         if(this === document.getElementsByClassName("digito_campo")[0]){
         
             console.log("Es el primer campo");//El primer campo es obligatorio
