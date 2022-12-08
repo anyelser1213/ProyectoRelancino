@@ -31,8 +31,8 @@ function verificar_max_min_campo_digitos(tipo){
             //Aqui ajustamos los rangos limites
             for (let index = 0; index < probando_botones_globales.length; index++) {
     
-                console.log(probando_botones_globales[index]);
-                console.log(probando_botones_globales[index].value);
+                //console.log(probando_botones_globales[index]);
+                //console.log(probando_botones_globales[index].value);
                 probando_botones_globales[index].setAttribute("maxlength",cantidad_maxima);
                 probando_botones_globales[index].setAttribute("minlength",cantidad_maxima);
                 
@@ -143,11 +143,27 @@ function verificar_max_min_campo_digitos(tipo){
             }//fin del for
 
             cantidad_maxima = auxiliar2;
+
+
+            for (let index = 0; index < probando_botones_globales.length; index++) {
+    
+                
+
+                //Prueba
+                var temporal = probando_botones_globales[index].value;
+                probando_botones_globales[index].value = temporal.substring(0,cantidad_maxima);
+                probando_botones_globales[index].setAttribute("maxlength",cantidad_maxima);
+                probando_botones_globales[index].setAttribute("minlength",cantidad_maxima);
+
+                
+            }
+
+            /*
             var temporal = input_digito.value;
             input_digito.value =temporal.substring(0,cantidad_maxima);
             input_digito.setAttribute("maxlength",cantidad_maxima);
             input_digito.setAttribute("minlength",cantidad_maxima);
-
+            */
 
             
             

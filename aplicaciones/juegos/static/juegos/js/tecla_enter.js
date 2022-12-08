@@ -2,7 +2,7 @@
 
 
 
-document.addEventListener("keydown", (event) => {
+document.addEventListener("keyup", (event) => {
     
     
     var codigo = event.key;
@@ -13,6 +13,8 @@ document.addEventListener("keydown", (event) => {
     //Aqui vamos a comenzar las validaciones(Se comienza presionando el ENTER)
     if(codigo === "Enter"){
       console.log("Tecla ENTER");
+
+
 
 
 
@@ -28,8 +30,9 @@ document.addEventListener("keydown", (event) => {
             //}
 
 
-        //EN CASO DE QUE TENGA JUGADAS ELEGIDAS PROCEDEMOS A LA SIGUIENTE VALIDACION(INPUT DE DIGITO)
-        }else{
+        
+        
+        }else{//EN CASO DE QUE TENGA JUGADAS ELEGIDAS PROCEDEMOS A LA SIGUIENTE VALIDACION(INPUT DE DIGITO)
 
 
 
@@ -39,39 +42,59 @@ document.addEventListener("keydown", (event) => {
 
 
 
-            //VERFICAMOS SI NO HAY ELEMENTOS EN EL INPUT DE DIGITOS(JUGADA)
-            if(input_digito.value.length == 0){
-
-                MensajeSubliminal.classList.remove("d-none");
-                MensajeSubliminal.innerHTML = "Debes agregar los digitos correspondientes<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
-                input_digito.focus();
-                return 0;
+            for (let index = 0; index < probando_botones_globales.length; index++) {
 
 
+                console.log(probando_botones_globales[index].value," --- ",probando_botones_globales[index].value.length)
+                //VERFICAMOS SI NO HAY ELEMENTOS EN EL INPUT DE DIGITOS(JUGADA)
+                if(probando_botones_globales[index].value.length == 0){
 
-            //VERFICAMOS QUE HAY ELEMENTOS EN EL INPUT DE DIGITOS PERO INCOMPLETOS
-            }else if(input_digito.value.length < cantidad_maxima){
-
-                //console.log("Digitos incompletos");
-                MensajeSubliminal.classList.remove("d-none");
-                MensajeSubliminal.innerHTML = "Los digitos estan incompletos...<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
-                input_digito.focus();
-                return 0;
+                    MensajeSubliminal.classList.remove("d-none");
+                    MensajeSubliminal.innerHTML = "Debes agregar los digitos correspondientes<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
+                    probando_botones_globales[index].focus();
+                    
+                    return 10;
 
 
-            //VERFICAMOS QUE TODOS LOS ELEMENTOS EN EL INPUT DE DIGITOS ESTEN COMPLETOS
-            }else{
-                
-                console.log("Los digitos estan completos");
 
-                if(document.activeElement === input_digito){
-                    console.log("FOCUS EN DIGITO");
-                    input_numeros.focus();
-                    return 0;
+                //VERFICAMOS QUE HAY ELEMENTOS EN EL INPUT DE DIGITOS PERO INCOMPLETOS
+                }else if(probando_botones_globales[index].value.length < cantidad_maxima){
+
+                    console.log("Digitos incompletos");
+                    MensajeSubliminal.classList.remove("d-none");
+                    MensajeSubliminal.innerHTML = "Los digitos estan incompletos...<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
+                    probando_botones_globales[index].focus();
+                    
+                    return 10;
+
+
+                //VERFICAMOS QUE TODOS LOS ELEMENTOS EN EL INPUT DE DIGITOS ESTEN COMPLETOS
+                }else{
+                    
+                    console.log("Los digitos estan completos");
+
+                    if(document.activeElement === probando_botones_globales[index]){
+                        console.log("FOCUS EN DIGITO");
+                        probando_botones_globales[index].focus();
+                        
+                        return 10;
+                    }
+                    //return 0;
+
                 }
-                //return 0;
 
-            }
+
+
+
+
+
+                
+            }//Fin del for de digitos
+
+            
+
+
+
 
 
             ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -121,7 +144,7 @@ document.addEventListener("keydown", (event) => {
             //////////////AQUI COMENZAMOS VALIDACION DEL COMPROBANTE/////////////////////////////////
             /////////////////////////////////////////////////////////////////////////////////////////
 
-            //VERFICAMOS SI EL INPUT DE NUMEROS ESTA VACIO
+            //VERFICAMOS SI EL INPUT DE COMPROBANTES ESTA VACIO
             if(input_comprobantes.value.length == 0){
 
                 //console.log("El campo del telefono esta vacio");
@@ -130,7 +153,7 @@ document.addEventListener("keydown", (event) => {
                 input_comprobantes.focus();
                 return 0;
             
-            //VERFICAMOS SI EL INPUT DE NUMEROS ESTA INCORRECTO
+            //VERFICAMOS SI EL INPUT DE COMPROBANTES ESTA INCORRECTO
             }else if(input_comprobantes.value.length <4 ||  input_comprobantes.value.length >12){
                 MensajeSubliminal.classList.remove("d-none");
                 MensajeSubliminal.innerHTML = "Debes agregar un comprobante correcto...<br>Maximo: "+12+" Digitos<br>Minimo: "+4+" Digitos";
@@ -161,9 +184,25 @@ document.addEventListener("keydown", (event) => {
     
 
 
+            var lista_digitos = [];
+            
+            var entrada = document.getElementsByName('digitos[]');
+            for (var i = 0; i < probando_botones_globales.length; i++) {
+                var k ="";
+                //k = "array[" + i + "].value= "+ a.value + " ";
+                lista_digitos.push(probando_botones_globales[i].value);
+                
+            }
+            //for (const itItem of entrada) {
+             //   console.log(itItem);
+            //  }
+            //console.log(entrada);
+            console.log(lista_digitos);
+
+
             var data = {"tipos": 
                 jugadas_activas,
-                'digitos': formData.get('digitos'),
+                'digitos': lista_digitos,
                 'numeros': formData.get('numeros'),
                 'comprobante': formData.get('comprobante'),
             };

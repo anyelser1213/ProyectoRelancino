@@ -1,10 +1,5 @@
 
-//Botones generales
-var BotonEnviarJugadas = document.getElementById("GuardarJugadas");
-var MensajeSubliminal = document.getElementById("MensajeAdvertencia");
 
-//Aqui lo primero es tomar el formulario
-var FormularioJugadas = document.getElementById("FormJugadas");
 
 
 
@@ -13,7 +8,22 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
     event.preventDefault();
 
-    console.log(FormularioJugadas);
+    console.log("Entramos aquii....");
+
+    //var codigo = event.key;
+    var codigo = event.which || event.keyCode;
+    //console.log("Longitud: ",input_digito.value.length);
+
+    //console.log(event);
+    //console.log(event.keyCode);
+    //console.log(event.key);
+    //console.log("Presionada: " + codigo);
+     
+    //Aqui vamos a comenzar las validaciones(Se comienza presionando el ENTER)
+    if(codigo === "Enter"){
+      console.log("Tecla ENTER en botonjuardar jajaj");
+    //console.log(FormularioJugadas);
+    }
     
 
 
@@ -48,6 +58,7 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
             //console.log("Algo esta incompleto jajajja");
             MensajeSubliminal.classList.remove("d-none");
             MensajeSubliminal.innerHTML = "Debes agregar un numero telefónico correcto";
+            input_numeros.focus();
         
         }else if(input_comprobantes.value.length <4 ||  input_comprobantes.value.length >12){
 
@@ -165,7 +176,14 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
 
 
-                      FormularioJugadas.reset();
+                      //FormularioJugadas.reset();
+                    for (let index = 0; index < probando_botones_globales.length; index++) {
+    
+                        //console.log(probando_botones_globales[index]);
+                        //console.log(probando_botones_globales[index].value);
+                        probando_botones_globales[index].value=null;
+                        
+                    }
                       input_numeros.value = aux_numero;
                       input_comprobantes.value = aux_comprobantes;
 
