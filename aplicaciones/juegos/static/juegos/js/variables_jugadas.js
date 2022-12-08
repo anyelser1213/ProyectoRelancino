@@ -4,16 +4,9 @@ var input_digito = document.getElementById("id_digitos");
 
 var probando_botones_globales = document.getElementsByClassName("digito_campo");
 
-for (let index = 0; index < probando_botones_globales.length; index++) {
-    
-    console.log(probando_botones_globales[index]);
-    console.log(probando_botones_globales[index].value);
-    
-}
 
 
-
-//Tomar input de numeros
+//Tomar input de numeros(telefono numerico)
 var input_numeros = document.getElementById("id_numeros");
 
 console.log(input_numeros);
