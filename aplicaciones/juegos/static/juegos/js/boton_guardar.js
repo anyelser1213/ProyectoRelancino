@@ -26,6 +26,7 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
 
 
 
+    
     }else{//En caso de que se seleccione algun elemento
 
 

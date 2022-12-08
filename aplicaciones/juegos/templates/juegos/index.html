@@ -94,7 +94,7 @@
                                                     <div class="col-1">
                                                         <!-- FILTROS-->
                                                         <!-- Tus elementos del formulario {{JugadaForm.digitos}} -->
-                                                        <input type="text" id="id_digitos" name="digitos[]" value="01" required minlength="4" maxlength="8" size="10">
+                                                        <input type="text" id="id_digitos" name="digitos[]" class="digito_campo" value="01" required minlength="4" maxlength="8" size="10">
                                                         
                                                         
                                                        
@@ -102,22 +102,22 @@
                                                     <div class="col-1">
                                                         <!-- FILTROS-->
                                                         <!-- Tus elementos del formulario -->
-                                                        <input type="text" id="id_digitos" name="digitos[]" value="02" required minlength="4" maxlength="8" size="10">
+                                                        <input type="text" id="id_digitos" name="digitos[]" class="digito_campo" value="02" required minlength="4" maxlength="8" size="10">
                                                     </div>
                                                     <div class="col-1">
                                                         <!-- FILTROS-->
                                                         <!-- Tus elementos del formulario -->
-                                                        <input type="text" id="id_digitos" name="digitos[]" value="03" required minlength="4" maxlength="8" size="10">
+                                                        <input type="text" id="id_digitos" name="digitos[]" class="digito_campo" value="03" required minlength="4" maxlength="8" size="10">
                                                     </div>
                                                     <div class="col-1">
                                                         <!-- FILTROS-->
                                                         <!-- Tus elementos del formulario -->
-                                                        <input type="text" id="id_digitos" name="digitos[]" value="04" required minlength="4" maxlength="8" size="10">
+                                                        <input type="text" id="id_digitos" name="digitos[]" class="digito_campo" value="04" required minlength="4" maxlength="8" size="10">
                                                     </div>
                                                     <div class="col-1">
                                                         <!-- FILTROS-->
                                                         <!-- Tus elementos del formulario -->
-                                                        <input type="text" id="id_digitos" name="digitos[]" value="05" required minlength="4" maxlength="8" size="10">
+                                                        <input type="text" id="id_digitos" name="digitos[]" class="digito_campo" value="05" required minlength="4" maxlength="8" size="10">
                                                     </div>
                                                         <div class="col-md-4 pad-adjust">
                                                             {{JugadaForm.numeros}}
@@ -163,11 +163,10 @@
 
     {% block EnlacesListado_js %}
 
-        <script src="{% static 'juegos/js/cookiesDjango.js' %}"></script>
+       <script src="{% static 'juegos/js/variables_jugadas.js' %}"></script>
+       <script src="{% static 'juegos/js/cookiesDjango.js' %}"></script>
        <script src="{% static 'juegos/js/validaciones_jugadas.js' %}"></script>
-       <script src="{% static 'juegos/js/api_jugadas.js' %}"></script>
-
-
-       <script src="{% static 'juegos/js/boton_enter.js' %}"></script>
+       <script src="{% static 'juegos/js/boton_guardar.js' %}"></script>
+       <script src="{% static 'juegos/js/tecla_enter.js' %}"></script>
 
     {% endblock %}
