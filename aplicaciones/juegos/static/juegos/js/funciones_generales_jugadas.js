@@ -17,11 +17,12 @@ function desenfoque(){
     if(this.value == ""){
     
         console.log("esta vacio");
-        if(this ===document.getElementsByClassName("digito_campo")[0]){
+        if(this === document.getElementsByClassName("digito_campo")[0]){
         
-            console.log("Es el primer campo");
+            console.log("Es el primer campo");//El primer campo es obligatorio
         
         }else{
+
             console.log("No es el primer campo");
             this.setAttribute("maxlength",0);
             this.setAttribute("minlength",0);
