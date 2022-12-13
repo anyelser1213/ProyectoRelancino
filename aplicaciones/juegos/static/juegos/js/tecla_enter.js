@@ -42,7 +42,7 @@ document.addEventListener("keyup", (event) => {
 
 
 
-            for (let index = 4;  index > 0 ; index--) {
+            for (let index = 4;  index >= 0 ; index--) {
 
 
                 //Unico campo obligatorio
