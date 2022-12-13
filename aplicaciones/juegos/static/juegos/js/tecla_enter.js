@@ -72,16 +72,11 @@ document.addEventListener("keyup", (event) => {
                 }else{
                     
                     console.log("Los digitos estan completos");
-
-                    if(document.activeElement === inputs_digitos_globales[index]){
-                        console.log("FOCUS EN DIGITO");
-                        inputs_digitos_globales[index].focus();
-                        
-                        return 10;
-                    }
+                    console.log("FOCUS EN DIGITO ["+index+"]");
+                    
                     //return 0;
 
-                }
+                }//fin de else principal
 
 
 
@@ -260,16 +255,23 @@ document.addEventListener("keyup", (event) => {
                 for (const element in data) {
                     console.log(`${element}: ${data[element]}`);
                     MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
-                  }
+                }
 
 
 
 
-                  FormularioJugadas.reset();
+                  //FormularioJugadas.reset();
+
+                //For para limpiar los inputs de las jugadas
+                for (const element in inputs_digitos_globales) {
+
+                    console.log(`${element}: ${data[element]}`);
+                    inputs_digitos_globales[element].value ="";
+                }
 
                   input_numeros.value = aux_numero;
                   input_comprobantes.value = aux_comprobantes;
-                  jugadas_activas = [];
+                  //jugadas_activas = [];
 
             }//fin de la funcion
 

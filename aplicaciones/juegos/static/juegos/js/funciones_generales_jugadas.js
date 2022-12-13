@@ -9,7 +9,7 @@ function valideKey(evt){
     } else if(code>=48 && code<=57) { // is a number.
         
         //Aqui aplicamos para que se direccione al siguiente inputs
-        
+        console.log(evt);
         return true;
     } else if(code==44) { // esto es una coma
         return false;
@@ -203,7 +203,47 @@ function Restablecer_Inputs_Digitos(){
 }//Fin de la funcion Restablecer_Inputs_Digitos
 
 
+function avanzarInputs(){
 
+    //console.log("Desenfocado",this);
+
+    console.log("Valor: ",this.value);
+    //console.log("esta vacio");
+    if(this === document.getElementsByClassName("digito_campo")[5]){
+
+        console.log("AQUI YA NO PODEMOS AVANZAR AUTOMATICAMENTE");
+
+    }else if(this === document.getElementsByClassName("digito_campo")[0]){
+        
+        if(this.value.length == cantidad_maxima){
+            inputs_digitos_globales[1].focus();
+        }
+        console.log("");//El primer campo es obligatorio
+    
+    }else if(this === document.getElementsByClassName("digito_campo")[1]){
+        
+        if(this.value.length == cantidad_maxima){
+            inputs_digitos_globales[2].focus();
+        }
+        console.log("");//El primer campo es obligatorio
+    
+    }else if(this === document.getElementsByClassName("digito_campo")[2]){
+        
+        if(this.value.length == cantidad_maxima){
+            inputs_digitos_globales[3].focus();
+        }
+        console.log("");//El primer campo es obligatorio
+    
+    }else if(this === document.getElementsByClassName("digito_campo")[3]){
+        
+        if(this.value.length == cantidad_maxima){
+            inputs_digitos_globales[4].focus();
+        }
+        console.log("");//El primer campo es obligatorio
+    }
+    
+    
+}//Fin de la funcion AVANZARINPUTS
 
 //Asignamos el elemento FOCUS
 for (let index = 0; index < inputs_digitos_globales.length; index++) {
@@ -215,6 +255,9 @@ for (let index = 0; index < inputs_digitos_globales.length; index++) {
 
     inputs_digitos_globales[index].addEventListener('focus',enfoque,false);
     inputs_digitos_globales[index].addEventListener('blur',desenfoque,false);
+
+    //Para validar texto
+    inputs_digitos_globales[index].addEventListener('keyup',avanzarInputs);
     //inputs_digitos_globales[index].setAttribute("minlength",cantidad_maxima);
     
 }//Fin del for
