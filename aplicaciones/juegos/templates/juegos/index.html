@@ -8,6 +8,7 @@
 {% block EnlacesPlantillas %}
 
 <link rel="stylesheet" href="{% static 'juegos/css/estilos.css' %}">
+<link rel="stylesheet" href="{% static 'juegos/css/inputs_personalizados.css' %}">
 
 <style>
 
@@ -91,40 +92,45 @@
                                                 <br>
 
                                                 <div class="row abs-center ">
+
+                                                    <div class="col-md-6">
+                                                        <input type="text" id="id_digitos" name="digitos[]" class="digito_campo digito_primero" pattern="[0-9]+" onkeypress="return valideKey(event);"  required minlength="0" maxlength="0" size="4">
+                                                        <input type="text" id="id_digitos" name="digitos[]" class="digito_campo" pattern="[0-9]+" onkeypress="return valideKey(event);"  required minlength="0" maxlength="0" size="4">
+                                                        <input type="text" id="id_digitos" name="digitos[]" class="digito_campo" pattern="[0-9]+" onkeypress="return valideKey(event);"  required minlength="0" maxlength="0" size="4">
+                                                        <input type="text" id="id_digitos" name="digitos[]" class="digito_campo" pattern="[0-9]+" onkeypress="return valideKey(event);"  required minlength="0" maxlength="0" size="4">
+                                                        <input type="text" id="id_digitos" name="digitos[]" class="digito_campo digito_ultimo" pattern="[0-9]+" onkeypress="return valideKey(event);"  required minlength="0" maxlength="0" size="4">
+                                                    </div>
                                                     
-                                                    <div class="col-1">
+                                                   <!---
+                                                
+                                                     <div class="col-1">
                                                         
                                                         <input type="text" id="id_digitos" name="digitos[]" class="digito_campo" pattern="[0-9]+" onkeypress="return valideKey(event);"  required minlength="0" maxlength="0" size="10">
                                                         
                                                        
                                                     </div>
                                                     <div class="col-1">
-                                                        <!-- FILTROS-->
-                                                        <!-- Tus elementos del formulario -->
                                                         <input type="text" id="id_digitos" name="digitos[]" class="digito_campo" pattern="[0-9]+" onkeypress="return valideKey(event);" required minlength="0" maxlength="0" size="10">
                                                     </div>
                                                     <div class="col-1">
-                                                        <!-- FILTROS-->
-                                                        <!-- Tus elementos del formulario -->
                                                         <input type="text" id="id_digitos" name="digitos[]" class="digito_campo" pattern="[0-9]+" onkeypress="return valideKey(event);" required minlength="0" maxlength="0" size="10">
                                                     </div>
                                                     <div class="col-1">
-                                                        <!-- FILTROS-->
-                                                        <!-- Tus elementos del formulario -->
                                                         <input type="text" id="id_digitos" name="digitos[]" class="digito_campo" pattern="[0-9]+" onkeypress="return valideKey(event);" required minlength="0" maxlength="0" size="10">
                                                     </div>
                                                     <div class="col-1">
-                                                        <!-- FILTROS-->
-                                                        <!-- Tus elementos del formulario -->
                                                         <input type="text" id="id_digitos" name="digitos[]" class="digito_campo" pattern="[0-9]+" onkeypress="return valideKey(event);" required minlength="0" maxlength="0" size="10">
                                                     </div>
-                                                        <div class="col-md-4 pad-adjust">
-                                                            {{JugadaForm.numeros}}
-                                                        </div>
-                                                        <hr class="clear">
-                                                        <div class="col-md-6 pad-adjust">
-                                                            {{JugadaForm.comprobante}}
-                                                        </div>
+                                                
+                                                -->
+
+                                                    <div class="col-md-4 pad-adjust">
+                                                        {{JugadaForm.numeros}}
+                                                    </div>
+                                                    <hr class="clear">
+                                                    <div class="col-md-6 pad-adjust">
+                                                        {{JugadaForm.comprobante}}
+                                                    </div>
                                                 </div>
                                                     <br>
                                                     <div class="d-none alert alert-danger" id="MensajeAdvertencia" role="alert">
@@ -168,6 +174,7 @@
        <script src="{% static 'juegos/js/validaciones_jugadas.js' %}"></script>
        <script src="{% static 'juegos/js/tecla_enter.js' %}"></script>
        <script src="{% static 'juegos/js/boton_guardar.js' %}"></script>
+       <script src="{% static 'juegos/js/inputs_focus.js' %}"></script>
        
 
     {% endblock %}

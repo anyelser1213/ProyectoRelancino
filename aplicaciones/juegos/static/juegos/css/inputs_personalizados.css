@@ -1,0 +1,66 @@
+
+.digito_campo{
+
+    /*Para agregarle un color de fondo*/
+    /*background-color: black;*/
+
+    /*Para quitarle los bordes*/
+    /*border: 0;*/
+    padding: 0 0 0 0;
+    margin: 0 -10px 0 0;
+    width: 19%;
+    /*border: 1px 2px 3px 40px solid*/;
+
+    border-top: 1px solid black;/*arriba*/
+    border-bottom: 1px solid black;/*abajo*/
+    border-right: 0px solid red;
+    border-left: 0px solid red;
+
+    /*Quitamos el efecto de foco*/
+    outline: none;
+}
+
+
+.digito_primero{
+
+    /*Para agregarle un color de fondo*/
+    /*background-color: black;*/
+
+    /*Para quitarle los bordes*/
+    /*border: 0;*/
+    padding: 0 0 0 0;
+    margin: 0 -10px 0 0;
+    width: 19%;
+    /*border: 1px 2px 3px 40px solid*/;
+
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+
+    /*Quitamos el efecto de foco*/
+    outline: none;
+}
+
+
+.digito_ultimo{
+
+    /*Para agregarle un color de fondo*/
+    /*background-color: black;*/
+
+    /*Para quitarle los bordes*/
+    /*border: 0;*/
+    padding: 0 0 0 0;
+    margin: 0 -10px 0 0;
+    width: 19%;
+    /*border: 1px 2px 3px 40px solid*/;
+
+    border-right: 1px solid black;/**/
+    border-left: 0px solid red;
+
+    /*Quitamos el efecto de foco*/
+    outline: none;
+
+
+
+
+    
+}

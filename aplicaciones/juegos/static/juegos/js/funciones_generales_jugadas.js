@@ -21,6 +21,12 @@ function enfoque(){
     //console.log("Enfocado",this);
     this.setAttribute("maxlength",cantidad_maxima);
     this.setAttribute("minlength",cantidad_maxima);
+
+    //Magia con los focus
+
+    
+
+
 }
 
 
