@@ -7,6 +7,7 @@
     /*Para quitarle los bordes*/
     /*border: 0;*/
     padding: 0 0 0 0;
+    padding: .375rem .75rem;
     margin: 0 -10px 0 0;
     width: 19%;
     /*border: 1px 2px 3px 40px solid*/;
@@ -28,7 +29,7 @@
 
     /*Para quitarle los bordes*/
     /*border: 0;*/
-    padding: 0 0 0 0;
+    padding: .375rem .75rem;
     margin: 0 -10px 0 0;
     width: 19%;
     /*border: 1px 2px 3px 40px solid*/;
@@ -48,7 +49,7 @@
 
     /*Para quitarle los bordes*/
     /*border: 0;*/
-    padding: 0 0 0 0;
+    padding: .375rem .75rem;
     margin: 0 -10px 0 0;
     width: 19%;
     /*border: 1px 2px 3px 40px solid*/;
@@ -64,3 +65,75 @@
 
     
 }
+
+
+/*CON ENFOQUE*/
+
+
+
+.digito_campo_enfoque{
+
+    /*Para agregarle un color de fondo*/
+    /*background-color: black;*/
+
+    /*Para quitarle los bordes*/
+    /*border: 0;*/
+    padding: .375rem .75rem;
+    margin: 0 -10px 0 0;
+    width: 19%;
+    /*border: 1px 2px 3px 40px solid*/;
+
+    border-top: 3px solid rgb(78, 214, 238);/*arriba*/
+    border-bottom: 3px solid rgb(78, 214, 238);/*abajo*/
+    border-right: 0px solid red;
+    border-left: 0px solid red;
+
+    /*Quitamos el efecto de foco*/
+    outline: none;
+}
+
+
+.digito_primero_enfoque{
+
+    /*Para agregarle un color de fondo*/
+    /*background-color: black;*/
+
+    /*Para quitarle los bordes*/
+    /*border: 0;*/
+    padding: .375rem .75rem;
+    margin: 0 -10px 0 0;
+    width: 19%;
+    /*border: 1px 2px 3px 40px solid*/;
+
+    border-right: 3px solid rgb(78, 214, 238);
+    border-left: 3px solid rgb(78, 214, 238);
+
+    /*Quitamos el efecto de foco*/
+    outline: none;
+}
+
+
+.digito_ultimo_enfoque{
+
+    /*Para agregarle un color de fondo*/
+    /*background-color: black;*/
+
+    /*Para quitarle los bordes*/
+    /*border: 0;*/
+    padding: .375rem .75rem;
+    margin: 0 -10px 0 0;
+    width: 19%;
+    /*border: 1px 2px 3px 40px solid*/;
+
+    border-right: 3px solid rgb(78, 214, 238); /*derecha*/
+    border-left: 0px solid rgb(78, 214, 238); /*izquierda*/
+
+    /*Quitamos el efecto de foco*/
+    outline: none;
+
+
+
+
+    
+}
+

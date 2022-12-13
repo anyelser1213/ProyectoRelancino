@@ -7,7 +7,10 @@ function valideKey(evt){
     if(code==8) { // backspace.
       return false;
     } else if(code>=48 && code<=57) { // is a number.
-      return true;
+        
+        //Aqui aplicamos para que se direccione al siguiente inputs
+        
+        return true;
     } else if(code==44) { // esto es una coma
         return false;
     } else{ // otras teclas
@@ -23,6 +26,109 @@ function enfoque(){
     this.setAttribute("minlength",cantidad_maxima);
 
     //Magia con los focus
+
+    inputs_digitos_globales[0].className = "digito_campo  digito_campo_enfoque digito_primero_enfoque";
+    inputs_digitos_globales[1].className = "digito_campo  digito_campo_enfoque ";
+    inputs_digitos_globales[2].className = "digito_campo  digito_campo_enfoque ";
+    inputs_digitos_globales[3].className = "digito_campo  digito_campo_enfoque ";
+    inputs_digitos_globales[4].className = "digito_campo  digito_campo_enfoque digito_ultimo_enfoque";
+
+    console.log(inputs_digitos_globales[0].value.length);
+    //console.log("maximo",inputs_digitos_globales[0].getAttribute("maxlength"));
+    console.log("maximo:",this.value.length);
+
+
+    //HACEMOS LAS VALIDACIONES DE MANERA MANUAL
+    //HACEMOS LAS VALIDACIONES DE MANERA MANUAL[0,1,2,3,4]
+    //AQUI ES EL INPUT[0]  
+    if(this === inputs_digitos_globales[0]){
+
+        console.log("inputs[0]");
+
+
+    //AQUI ES EL INPUT[1]  
+    }else if(this === inputs_digitos_globales[1]){
+
+        console.log("inputs[1]");
+        if(inputs_digitos_globales[0].value.length == 0){
+
+            console.log("el input["+0+"] esta vacio");
+            inputs_digitos_globales[0].focus();
+            
+            return 10;
+
+        }//fin de if
+
+    //AQUI ES EL INPUT[2]    
+    }else if(this === inputs_digitos_globales[2]){
+
+
+        for (let index = 0; index < 2; index++) {
+        
+            //Aqui es cuando entramos en los inputs [0,1,2,3]
+            if(inputs_digitos_globales[index].value.length == 0){
+
+                console.log("el input["+index+"] esta vacio");
+                inputs_digitos_globales[index].focus();
+                
+                return 10;
+    
+            }//fin de if
+            
+            
+            
+        }//Fin del for
+        
+
+    //AQUI ES EL INPUT[3]    
+    }else if(this === inputs_digitos_globales[3]){
+
+
+        for (let index = 0; index < 3; index++) {
+        
+            //Aqui es cuando entramos en los inputs [0,1,2,3]
+            if(inputs_digitos_globales[index].value.length == 0){
+
+                console.log("el input["+index+"] esta vacio");
+                inputs_digitos_globales[index].focus();
+                
+                return 10;
+    
+            }//fin de if
+            
+            
+            
+        }//Fin del for
+
+
+    //AQUI ES EL INPUT[4]    
+    }else if(this === inputs_digitos_globales[4]){
+
+
+        for (let index = 0; index < 4; index++) {
+        
+            //Aqui es cuando entramos en los inputs [0,1,2,3]
+            if(inputs_digitos_globales[index].value.length == 0){
+
+                console.log("el input["+index+"] esta vacio");
+                inputs_digitos_globales[index].focus();
+                
+                return 10;
+
+            }//fin de if
+            
+            
+            
+        }//Fin del for
+    }
+
+
+
+       
+
+    
+
+
 
     
 
@@ -49,6 +155,15 @@ function desenfoque(){
             this.setAttribute("maxlength",0);
             this.setAttribute("minlength",0);
         }
+
+
+        //Magia con los focus
+
+        inputs_digitos_globales[0].className = "digito_campo  digito_campo digito_primero";
+        inputs_digitos_globales[1].className = "digito_campo  digito_campo ";
+        inputs_digitos_globales[2].className = "digito_campo  digito_campo ";
+        inputs_digitos_globales[3].className = "digito_campo  digito_campo ";
+        inputs_digitos_globales[4].className = "digito_campo  digito_campo digito_ultimo";
 
         //console.log(document.getElementsByClassName("digito_campo")[0]);
         
