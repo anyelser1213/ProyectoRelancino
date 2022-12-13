@@ -33,9 +33,9 @@ function enfoque(){
     inputs_digitos_globales[3].className = "digito_campo  digito_campo_enfoque ";
     inputs_digitos_globales[4].className = "digito_campo  digito_campo_enfoque digito_ultimo_enfoque";
 
-    console.log(inputs_digitos_globales[0].value.length);
+    //console.log(inputs_digitos_globales[0].value.length);
     //console.log("maximo",inputs_digitos_globales[0].getAttribute("maxlength"));
-    console.log("maximo:",this.value.length);
+    //console.log("maximo:",this.value.length);
 
 
     //HACEMOS LAS VALIDACIONES DE MANERA MANUAL
@@ -147,11 +147,11 @@ function desenfoque(){
         //console.log("esta vacio");
         if(this === document.getElementsByClassName("digito_campo")[0]){
         
-            console.log("Es el primer campo");//El primer campo es obligatorio
+            //console.log("Es el primer campo");//El primer campo es obligatorio
         
         }else{
 
-            console.log("No es el primer campo");
+            //console.log("No es el primer campo");
             this.setAttribute("maxlength",0);
             this.setAttribute("minlength",0);
         }
@@ -180,7 +180,7 @@ function desenfoque(){
 //Restablecer a inicio
 function Restablecer_Inputs_Digitos(){
 
-    console.log("Entramos en RESTABLECER INPUTS DIGITOS LINEA----5");
+    //console.log("Entramos en RESTABLECER INPUTS DIGITOS LINEA----5");
     //Aqui ajustamos los rangos limites(Solo al primero)
     for (let index = 0; index < 1; index++) {
         //for (let index = 0; index < inputs_digitos_globales.length; index++) {
@@ -205,41 +205,40 @@ function Restablecer_Inputs_Digitos(){
 
 function avanzarInputs(){
 
-    //console.log("Desenfocado",this);
+    //console.log("avanzarInputs",this);
 
-    console.log("Valor: ",this.value);
-    //console.log("esta vacio");
+    //console.log("Valor: ",this.value);
     if(this === document.getElementsByClassName("digito_campo")[5]){
 
-        console.log("AQUI YA NO PODEMOS AVANZAR AUTOMATICAMENTE");
+        //console.log("AQUI YA NO PODEMOS AVANZAR AUTOMATICAMENTE");
 
     }else if(this === document.getElementsByClassName("digito_campo")[0]){
         
         if(this.value.length == cantidad_maxima){
             inputs_digitos_globales[1].focus();
         }
-        console.log("");//El primer campo es obligatorio
+        //console.log("");//El primer campo es obligatorio
     
     }else if(this === document.getElementsByClassName("digito_campo")[1]){
         
         if(this.value.length == cantidad_maxima){
             inputs_digitos_globales[2].focus();
         }
-        console.log("");//El primer campo es obligatorio
+        //console.log("");//El primer campo es obligatorio
     
     }else if(this === document.getElementsByClassName("digito_campo")[2]){
         
         if(this.value.length == cantidad_maxima){
             inputs_digitos_globales[3].focus();
         }
-        console.log("");//El primer campo es obligatorio
+        //console.log("");//El primer campo es obligatorio
     
     }else if(this === document.getElementsByClassName("digito_campo")[3]){
         
         if(this.value.length == cantidad_maxima){
             inputs_digitos_globales[4].focus();
         }
-        console.log("");//El primer campo es obligatorio
+        //console.log("");//El primer campo es obligatorio
     }
     
     
@@ -248,7 +247,7 @@ function avanzarInputs(){
 //Asignamos el elemento FOCUS
 for (let index = 0; index < inputs_digitos_globales.length; index++) {
     
-    console.log("Entramos");
+    //console.log("Entramos");
     //inputs_digitos_globales[index].addEventListener('focus', (event) => {
     //    event.target.style.background = 'pink';
     //  });

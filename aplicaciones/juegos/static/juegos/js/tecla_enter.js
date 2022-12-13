@@ -42,41 +42,53 @@ document.addEventListener("keyup", (event) => {
 
 
 
-            for (let index = 0; index < inputs_digitos_globales.length; index++) {
+            for (let index = 4;  index > 0 ; index--) {
 
 
-                console.log(inputs_digitos_globales[index].value," --- ",inputs_digitos_globales[index].value.length)
-                //VERFICAMOS SI NO HAY ELEMENTOS EN EL INPUT DE DIGITOS(JUGADA)
-                if(inputs_digitos_globales[index].value.length == 0){
+                //Unico campo obligatorio
+                if(index == 0){
+                
+                    console.log("Entramos en el principal");
+                
 
-                    MensajeSubliminal.classList.remove("d-none");
-                    MensajeSubliminal.innerHTML = "Debes agregar los digitos correspondientes<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
-                    inputs_digitos_globales[index].focus();
-                    
-                    return 10;
-
-
-
-                //VERFICAMOS QUE HAY ELEMENTOS EN EL INPUT DE DIGITOS PERO INCOMPLETOS
-                }else if(inputs_digitos_globales[index].value.length < cantidad_maxima){
-
-                    console.log("Digitos incompletos");
-                    MensajeSubliminal.classList.remove("d-none");
-                    MensajeSubliminal.innerHTML = "Los digitos estan incompletos...<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
-                    inputs_digitos_globales[index].focus();
-                    
-                    return 10;
-
-
-                //VERFICAMOS QUE TODOS LOS ELEMENTOS EN EL INPUT DE DIGITOS ESTEN COMPLETOS
                 }else{
-                    
-                    console.log("Los digitos estan completos");
-                    console.log("FOCUS EN DIGITO ["+index+"]");
-                    
-                    //return 0;
 
-                }//fin de else principal
+                    console.log("ESTAMOS CON EL INDEX "+index);
+
+                    //VERFICAMOS SI NO HAY ELEMENTOS EN EL INPUT DE DIGITOS(JUGADA)
+                    if(inputs_digitos_globales[index].value.length == 0){
+
+                        //MensajeSubliminal.classList.remove("d-none");
+                        //MensajeSubliminal.innerHTML = "Debes agregar los digitos correspondientes<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
+                        //inputs_digitos_globales[index].focus();
+                        
+                        //return 10;
+
+
+
+                    //VERFICAMOS QUE HAY ELEMENTOS EN EL INPUT DE DIGITOS PERO INCOMPLETOS
+                    }else if(inputs_digitos_globales[index].value.length < cantidad_maxima){
+
+                        console.log("Digitos incompletos");
+                        MensajeSubliminal.classList.remove("d-none");
+                        MensajeSubliminal.innerHTML = "Los digitos estan incompletos...<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
+                        inputs_digitos_globales[index].focus();
+                        
+                        return 10;
+
+
+                    //VERFICAMOS QUE TODOS LOS ELEMENTOS EN EL INPUT DE DIGITOS ESTEN COMPLETOS
+                    }else{
+                        
+                        console.log("Los digitos estan completos");
+                        console.log("FOCUS EN DIGITO ["+index+"]");
+                        
+                        //return 0;
+
+                    }//fin de else principal
+                }
+                //console.log(inputs_digitos_globales[index].value," --- ",inputs_digitos_globales[index].value.length)
+                
 
 
 
@@ -87,6 +99,35 @@ document.addEventListener("keyup", (event) => {
             }//Fin del for de digitos
 
             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
