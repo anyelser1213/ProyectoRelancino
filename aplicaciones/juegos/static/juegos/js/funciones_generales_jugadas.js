@@ -215,34 +215,52 @@ function avanzarInputs(){
     }else if(this === document.getElementsByClassName("digito_campo")[0]){
         
         if(this.value.length == cantidad_maxima){
-            inputs_digitos_globales[1].focus();
+            //inputs_digitos_globales[1].focus();
         }
         //console.log("");//El primer campo es obligatorio
     
     }else if(this === document.getElementsByClassName("digito_campo")[1]){
         
         if(this.value.length == cantidad_maxima){
-            inputs_digitos_globales[2].focus();
+            //inputs_digitos_globales[2].focus();
         }
         //console.log("");//El primer campo es obligatorio
     
     }else if(this === document.getElementsByClassName("digito_campo")[2]){
         
         if(this.value.length == cantidad_maxima){
-            inputs_digitos_globales[3].focus();
+            //inputs_digitos_globales[3].focus();
         }
         //console.log("");//El primer campo es obligatorio
     
     }else if(this === document.getElementsByClassName("digito_campo")[3]){
         
         if(this.value.length == cantidad_maxima){
-            inputs_digitos_globales[4].focus();
+            //inputs_digitos_globales[4].focus();
         }
         //console.log("");//El primer campo es obligatorio
     }
     
     
 }//Fin de la funcion AVANZARINPUTS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Asignamos el elemento FOCUS
 for (let index = 0; index < inputs_digitos_globales.length; index++) {

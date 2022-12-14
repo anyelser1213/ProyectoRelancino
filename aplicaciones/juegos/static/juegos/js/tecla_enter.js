@@ -59,10 +59,11 @@ document.addEventListener("keyup", (event) => {
                     if(inputs_digitos_globales[index].value.length == 0){
 
                         //MensajeSubliminal.classList.remove("d-none");
-                        //MensajeSubliminal.innerHTML = "Debes agregar los digitos correspondientes<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
-                        //inputs_digitos_globales[index].focus();
+                        MensajeSubliminal.innerHTML = "Debes agregar los digitos correspondientes<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
+                        inputs_digitos_globales[index].focus();
                         
-                        //return 10;
+                        //Si quitamos este return se va al telefono
+                        return 10;
 
 
 
