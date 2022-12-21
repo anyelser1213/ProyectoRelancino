@@ -223,7 +223,7 @@ document.addEventListener("keyup", (event) => {
             
             var entrada = document.getElementsByName('digitos[]');
             for (var i = 0; i < inputs_digitos_globales.length; i++) {
-                var k ="";
+                //var k ="";
                 //k = "array[" + i + "].value= "+ a.value + " ";
                 lista_digitos.push(inputs_digitos_globales[i].value);
                 
@@ -307,10 +307,15 @@ document.addEventListener("keyup", (event) => {
 
                     console.log(`${element}: ${data[element]}`);
                     inputs_digitos_globales[element].value ="";
+                    inputs_digitos_globales[element].dataset.marcado = "false";
                 }
 
-                  input_numeros.value = aux_numero;
-                  input_comprobantes.value = aux_comprobantes;
+
+
+                //Comenzamos con la limpieza 
+                input_numeros.value = aux_numero;
+                input_numeros.dataset.marcado = "false";
+                input_comprobantes.value = aux_comprobantes;
                   //jugadas_activas = [];
 
             }//fin de la funcion
