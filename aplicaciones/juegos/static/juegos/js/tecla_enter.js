@@ -42,83 +42,90 @@ document.addEventListener("keyup", (event) => {
 
 
 
-            if(input_numeros.dataset.marcado=="true"){
+            if(input_numeros.dataset.marcado== "true"){
 
                 console.log("Ya pasamos los inputs de los digitos");
             
             }else{
 
                 console.log("Aun estamos en los digitos...");
-            }
-
-            /*VERIFICAMOS MANUALMENTE (INPUTS 1)*/
-
-            if(inputs_digitos_globales[0].value.length == 0 || inputs_digitos_globales[0].value.length != cantidad_maxima){
-
-                console.log("Entramos en el input[0] obligatorio: ",inputs_digitos_globales[0].dataset.marcado);
-                inputs_digitos_globales[0].dataset.marcado = "true";
-                inputs_digitos_globales[0].focus();
-                return 10;
 
 
-            //VERIFICAMOS LOS OTROS CAMPOS
-            }else{
+                /*VERIFICAMOS MANUALMENTE (INPUTS 1)*/
+                if(inputs_digitos_globales[0].value.length == 0 || inputs_digitos_globales[0].value.length != cantidad_maxima){
+
+                    console.log("Entramos en el input[0] obligatorio: ",inputs_digitos_globales[0].dataset.marcado);
+                    inputs_digitos_globales[0].dataset.marcado = "true";
+                    inputs_digitos_globales[0].focus();
+                    return 10;
 
 
-                
-                for (let index = 1;  index < 5 ; index++) {
-
-                    console.log("Entramos en el inputs[",index,"]");
+                //VERIFICAMOS LOS OTROS CAMPOS
+                }else{
 
 
-                    if(inputs_digitos_globales[index].dataset.marcado == "false"){
+                    
+                    for (let index = 1;  index < 5 ; index++) {
 
-                        console.log("El marcado es false, inputs[",index,"]");
-                        inputs_digitos_globales[index].focus();
-                        inputs_digitos_globales[index].dataset.marcado="true";
-                        return 10;
+                        console.log("Entramos en el inputs[",index,"]");
 
 
-                    }else if(inputs_digitos_globales[index].dataset.marcado == "true" && inputs_digitos_globales[index].value.length == 0){
+                        if(inputs_digitos_globales[index].dataset.marcado == "false"){
 
-
-                        console.log("Sin valor, inputs[",index,"]");
-                        //En caso de que sea 4 pasa al input de numeros
-                        if(index==4){
-
+                            console.log("El marcado es false, inputs[",index,"]");
+                            inputs_digitos_globales[index].focus();
                             inputs_digitos_globales[index].dataset.marcado="true";
-                            input_numeros.focus();
-                            //return 10;
-                        }else{
+                            return 10;
+
+
+                        }else if(inputs_digitos_globales[index].dataset.marcado == "true" && inputs_digitos_globales[index].value.length == 0){
+
 
                             
-                            inputs_digitos_globales[index].dataset.marcado="true";
-                            //inputs_digitos_globales[index+1].dataset.marcado="true";
-                            inputs_digitos_globales[index+1].focus();
-                            //return 10;
+                            //En caso de que sea 4 pasa al input de numeros
+                            if(index==4){
 
-                        }
+                                inputs_digitos_globales[index].dataset.marcado="true";
+                                input_numeros.dataset.marcado="true";
+                                input_numeros.focus();
+                                //return 10;
+                            }else{
+
+                                console.log("Sin valor, inputs[",index,"]");
+                                inputs_digitos_globales[index].dataset.marcado="true";
+                                //inputs_digitos_globales[index+1].dataset.marcado="true";
+                                inputs_digitos_globales[index+1].focus();
+                                //return 10;
+
+                            }
+                            
+
+                        }else if(inputs_digitos_globales[index].dataset.marcado == "true" && inputs_digitos_globales[index].value.length != 0 && inputs_digitos_globales[index].value.length!=cantidad_maxima){
+
                         
-
-                    }else if(inputs_digitos_globales[index].dataset.marcado == "true" && inputs_digitos_globales[index].value.length != 0 && inputs_digitos_globales[index].value.length!=cantidad_maxima){
-
-                    
-                        inputs_digitos_globales[index].focus();
-                        inputs_digitos_globales[index].dataset.marcado="true";
-                        return 10;
-                    
-                    }
+                            inputs_digitos_globales[index].focus();
+                            inputs_digitos_globales[index].dataset.marcado="true";
+                            return 10;
+                        
+                        }
 
 
 
-                }//Fin del for
+                    }//Fin del for
+                
+
+
+
+
+
+                }//fin del else
             
+            
+            
+            
+            }
 
-
-
-
-
-            }//fin del else
+            
 
 
 

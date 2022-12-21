@@ -31,7 +31,7 @@ class JugadaForm(forms.Form):
         self.fields['digitos'].widget.attrs.update({
             'class': 'form-control','name':'dssigitos','placeholder':'Ingrese Digitos','maxlength':0,'pattern':'[0-9]+','onkeypress':'return valideKey(event);' })
         self.fields['numeros'].widget.attrs.update({
-            'class': 'form-control','placeholder':'Ingrese Nº telefónico','maxlength':11,'pattern':'[0-9]+','onkeypress':'return valideKey(event);'})
+            'class': 'form-control','placeholder':'Ingrese Nº telefónico','maxlength':11,'pattern':'[0-9]+','onkeypress':'return valideKey(event);','data-marcado':'false'})
         self.fields['comprobante'].widget.attrs.update({
             'class': 'form-control','placeholder':'Ingrese Nº comprobante','minlength':4,'maxlength':12,'pattern':'[0-9]+','onkeypress':'return valideKey(event);'})
     
