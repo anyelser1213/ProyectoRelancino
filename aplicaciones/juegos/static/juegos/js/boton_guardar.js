@@ -186,6 +186,8 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
                     }
                       input_numeros.value = aux_numero;
                       input_comprobantes.value = aux_comprobantes;
+                      //Posicionamiento en el primer input
+                      inputs_digitos_globales[0].focus();
 
 
                 }//fin de la funcion
@@ -206,43 +208,7 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
     }//Fin del else de las condiciones
 
 
-    //Aqui reseteamos el formulario
-    var formulario = document.getElementById("FormJugadas");
-    //formulario.reset();
-    //cantidad_maxima =0;
-    //jugadas_activas = [];
-            
-
-
-    
-
-   // AQUI ES CUANDO ES GET
-   /* 
-   fetch("/jugada",{
-            method:"GET",
-            headers:{
-                "X-CSRFToken":csrftoken,
-                "X-Requestd-With":"XMLGttpRequest"//Con esto indicamos que es una peticion ajax
-            }
-
-    //Promesa de javascript
-    }).then(
-        function(response){
-
-            return response.json();
-            //console.log(response.data);
-        }
-    ).then(
-        function(data){
-
-            console.log("datos traidos desde la api: ",data);
-
-        }//fin de la funcion
-    ) //fin de then
-    */
-    //document.getElementById("inputImagenModalTeam").click(); 
-    
-    
+   
 
 
 });

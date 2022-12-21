@@ -297,18 +297,28 @@ document.addEventListener("keyup", (event) => {
                     MensajeSubliminal.innerHTML += "<br> "+element+": "+data[element]+" <br>";
                 }
 
+                console.log("longitud: ",inputs_digitos_globales.length);
 
-
-
-                  //FormularioJugadas.reset();
 
                 //For para limpiar los inputs de las jugadas
+                for (let index = 0; index < inputs_digitos_globales.length; index++) {
+                    
+                    console.log("inputs["+index+"]: ",inputs_digitos_globales[index]);
+                    inputs_digitos_globales[index].value ="";
+                    inputs_digitos_globales[index].dataset.marcado = "false";
+                    
+                }
+                  //FormularioJugadas.reset();
+
+                
+                /*
                 for (const element in inputs_digitos_globales) {
 
-                    console.log(`${element}: ${data[element]}`);
+                    console.log(`${element} prueba: ${data[element]}`);
                     inputs_digitos_globales[element].value ="";
                     inputs_digitos_globales[element].dataset.marcado = "false";
                 }
+                */
 
 
 
@@ -316,9 +326,13 @@ document.addEventListener("keyup", (event) => {
                 input_numeros.value = aux_numero;
                 input_numeros.dataset.marcado = "false";
                 input_comprobantes.value = aux_comprobantes;
+
+                //Posicionamiento en el primer input
+                inputs_digitos_globales[0].focus();
+
                   //jugadas_activas = [];
 
-            }//fin de la funcion
+            }//fin de la funcion(data)
 
         ) //fin de then
 
