@@ -53,9 +53,13 @@ def jugada_api_view(request):
             
             for jugada in listaJugadas:
 
-                print(type(jugada)," ",jugada,"cantidad de string: ",len(jugada)," Cantidad Permitida: ",Elemento.cantidad_digitos)
-                print("Para este elemento usamos solo: ",str(jugada)[(-int(Elemento.cantidad_digitos)):])
+                #print(type(jugada)," ",jugada,"cantidad de string: ",len(jugada)," Cantidad Permitida: ",Elemento.cantidad_digitos)
+                #print("Para este elemento usamos solo: ",str(jugada)[(-int(Elemento.cantidad_digitos)):])
                 #print("Para este elemento usamos solo: ",str(jugada)[0:int(Elemento.cantidad_digitos)])
+
+                #Esto es en caso de que las jugadas esten vacias
+                if jugada =="":
+                    continue
 
                 
                 ###########################################################################################
