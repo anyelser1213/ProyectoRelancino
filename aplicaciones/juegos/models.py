@@ -14,8 +14,10 @@ from django.dispatch import receiver
 from django.db.models.signals import pre_save, post_save, pre_delete, post_delete
 
 
-
-import datetime
+#Es necesario importar las depencendias necesarias
+from datetime import date
+from datetime import datetime
+import calendar
 import os
 import shutil #libreria para borrar carpetas esten o no llenas
 
@@ -25,7 +27,21 @@ import shutil #libreria para borrar carpetas esten o no llenas
 
 
 
-#Probando aqui
+#Funciones para las fechas
+def ultimo_dia_mes_actual(): 
+
+    #Día actual
+    fecha = date.today()
+    #Date
+    #print("El día actual es {}".format(fecha.day))
+    #print("El mes actual es {}".format(fecha.month))
+    #print("El año actual es {}".format(fecha.year))
+    #print("PROBAMOS AQUI", fecha)
+
+    ultimo_dia = calendar.monthrange(fecha.year,fecha.month)[1]
+    #print(f'{ultimo_dia}/{fecha.month}/{fecha.year}')
+    #next_month = any_day.replace(day=28) + datetime.timedelta(days=4) # this will never fail return next_month - datetime.timedelta(days=next_month.day)
+    return f'{ultimo_dia}/{fecha.month}/{fecha.year}'
 
 
 # Create your models here.
@@ -44,7 +60,9 @@ class TipoJugadas(models.Model):
     estado_jugada = models.BooleanField(default=True)
     hora_inicio = models.TimeField(default=now, blank=False,null=False)#Solo hora
     hora_cierre = models.TimeField(default=now, blank=True,null=True)#Solo hora
-    fecha_cierre = models.DateField(auto_now_add=False,auto_now=False,blank=True) #Solo fecha
+
+
+    fecha_cierre = models.DateField(auto_now_add=False,auto_now=False,blank=True,default=ultimo_dia_mes_actual) #Solo fecha
 
     #fecha_cierre = models.CharField(max_length=50, default=formatedDay)
     #fecha_creacion2 = models.DateTimeField(default=now) # fecha y hora
@@ -53,6 +71,9 @@ class TipoJugadas(models.Model):
 
     def __str__(self):
          return self.nombre
+
+    
+
 
     class Meta:
 

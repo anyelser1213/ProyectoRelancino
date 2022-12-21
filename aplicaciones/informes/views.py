@@ -1,5 +1,9 @@
-import datetime
+#Es necesario importar las depencendias necesarias
+from datetime import date
 from datetime import datetime
+import calendar
+
+
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import redirect, render
 from django.http import HttpResponseRedirect, JsonResponse
@@ -14,6 +18,8 @@ from django.views.generic import TemplateView, CreateView, UpdateView, DetailVie
 from aplicaciones.juegos.models import TipoJugadas, Jugada
 
 # Create your views here.
+
+
 
 class InformesJugada(TemplateView):
 
@@ -55,7 +61,7 @@ class InformesJugada(TemplateView):
         if numero>0:
             for tipo in TipoJugadas.objects.all():
 
-                print(" ")
+                #print(" ")
                 #print(Nombre_Categoria[Nombre_Categoria.index('_')+1:])
 
                 if fecha_hoy <= tipo.fecha_cierre:
@@ -65,11 +71,12 @@ class InformesJugada(TemplateView):
                         Q1 |= TipoJugadas.objects.filter(nombre=str(tipo.nombre),estado_jugada =True)
                         
                     else:#Fin de horas
-                        print("Se cerro la jugada el dia de hoy")
+                        pass
+                        #print("Se cerro la jugada el dia de hoy")
 
                 else:#Else de FECHAS
-
-                    print(tipo," ","(Hora de hoy:",hora_hoy,")", tipo.hora_inicio," ",tipo.hora_cierre, " ","(Fecha de hoy:",fecha_hoy,")","---", tipo.fecha_cierre )
+                    pass
+                    #print(tipo," ","(Hora de hoy:",hora_hoy,")", tipo.hora_inicio," ",tipo.hora_cierre, " ","(Fecha de hoy:",fecha_hoy,")","---", tipo.fecha_cierre )
                     
 
         else:
@@ -77,6 +84,8 @@ class InformesJugada(TemplateView):
             print("Ya no se permite la jugada")
                         
 
+        #Con esto mostramos todos
+        Q1 = TipoJugadas.objects.all()#Con esto concatenamos los tipos
         context['tipos_de_jugadas'] = Q1.order_by("cantidad_digitos")
 
         return context
