@@ -8,11 +8,11 @@ document.addEventListener("keyup", (event) => {
     var codigo = event.key;
     //console.log("Longitud: ",input_digito.value.length);
 
-    console.log("Presionada: " + codigo);
+    //console.log("Presionada: " + codigo);
      
     //Aqui vamos a comenzar las validaciones(Se comienza presionando el ENTER)
     if(codigo === "Enter"){
-      console.log("Tecla ENTER");
+      //console.log("Tecla ENTER");
 
 
 
@@ -42,92 +42,83 @@ document.addEventListener("keyup", (event) => {
 
 
 
-            for (let index = 4;  index >= 0 ; index--) {
+            if(input_numeros.dataset.marcado=="true"){
+
+                console.log("Ya pasamos los inputs de los digitos");
+            
+            }else{
+
+                console.log("Aun estamos en los digitos...");
+            }
+
+            /*VERIFICAMOS MANUALMENTE (INPUTS 1)*/
+
+            if(inputs_digitos_globales[0].value.length == 0 || inputs_digitos_globales[0].value.length != cantidad_maxima){
+
+                console.log("Entramos en el input[0] obligatorio: ",inputs_digitos_globales[0].dataset.marcado);
+                inputs_digitos_globales[0].dataset.marcado = "true";
+                inputs_digitos_globales[0].focus();
+                return 10;
 
 
-                //Unico campo obligatorio
-                if(index == 0){
+            //VERIFICAMOS LOS OTROS CAMPOS
+            }else{
+
+
                 
-                    console.log("Entramos en el principal");
-                
+                for (let index = 1;  index < 5 ; index++) {
 
-                }else{
+                    console.log("Entramos en el inputs[",index,"]");
 
-                    console.log("ESTAMOS CON EL INDEX "+index);
 
-                    //VERFICAMOS SI NO HAY ELEMENTOS EN EL INPUT DE DIGITOS(JUGADA)
-                    if(inputs_digitos_globales[index].value.length == 0){
+                    if(inputs_digitos_globales[index].dataset.marcado == "false"){
 
-                        //MensajeSubliminal.classList.remove("d-none");
-                        MensajeSubliminal.innerHTML = "Debes agregar los digitos correspondientes<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
+                        console.log("El marcado es false, inputs[",index,"]");
                         inputs_digitos_globales[index].focus();
-                        
-                        //Si quitamos este return se va al telefono
+                        inputs_digitos_globales[index].dataset.marcado="true";
                         return 10;
 
 
+                    }else if(inputs_digitos_globales[index].dataset.marcado == "true" && inputs_digitos_globales[index].value.length == 0){
 
-                    //VERFICAMOS QUE HAY ELEMENTOS EN EL INPUT DE DIGITOS PERO INCOMPLETOS
-                    }else if(inputs_digitos_globales[index].value.length < cantidad_maxima){
 
-                        console.log("Digitos incompletos");
-                        MensajeSubliminal.classList.remove("d-none");
-                        MensajeSubliminal.innerHTML = "Los digitos estan incompletos...<br>Maximo: "+cantidad_maxima+" Digitos<br>Minimo: "+cantidad_maxima+" Digitos";
+                        console.log("Sin valor, inputs[",index,"]");
+                        //En caso de que sea 4 pasa al input de numeros
+                        if(index==4){
+
+                            inputs_digitos_globales[index].dataset.marcado="true";
+                            input_numeros.focus();
+                            //return 10;
+                        }else{
+
+                            
+                            inputs_digitos_globales[index].dataset.marcado="true";
+                            //inputs_digitos_globales[index+1].dataset.marcado="true";
+                            inputs_digitos_globales[index+1].focus();
+                            //return 10;
+
+                        }
+                        
+
+                    }else if(inputs_digitos_globales[index].dataset.marcado == "true" && inputs_digitos_globales[index].value.length != 0 && inputs_digitos_globales[index].value.length!=cantidad_maxima){
+
+                    
                         inputs_digitos_globales[index].focus();
-                        
+                        inputs_digitos_globales[index].dataset.marcado="true";
                         return 10;
-
-
-                    //VERFICAMOS QUE TODOS LOS ELEMENTOS EN EL INPUT DE DIGITOS ESTEN COMPLETOS
-                    }else{
-                        
-                        console.log("Los digitos estan completos");
-                        console.log("FOCUS EN DIGITO ["+index+"]");
-                        
-                        //return 0;
-
-                    }//fin de else principal
-                }
-                //console.log(inputs_digitos_globales[index].value," --- ",inputs_digitos_globales[index].value.length)
-                
+                    
+                    }
 
 
 
-
-
-
-                
-            }//Fin del for de digitos
-
+                }//Fin del for
             
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            }//fin del else
 
 
 

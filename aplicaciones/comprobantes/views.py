@@ -30,6 +30,7 @@ class ConsultarComprobantes(TemplateView):
             print("Probando",request.user.id)
             if request.user.has_perm('juegos.consultarcomprobantes'):
                 print("Entramos en ConsultarComprobantes")
+                
             else:
 
                 print("El usuario: ",request.user," no tiene acceso en ConsultarComprobantes")

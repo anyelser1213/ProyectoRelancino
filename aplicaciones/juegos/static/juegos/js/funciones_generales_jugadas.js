@@ -16,6 +16,15 @@ function valideKey(evt){
     } else{ // otras teclas
       return false;
     }
+
+
+
+    /**
+     * else if(code==13) { // esto es enter
+        
+        //return true;
+    } 
+     */
 }
 
 
@@ -41,86 +50,7 @@ function enfoque(){
     //HACEMOS LAS VALIDACIONES DE MANERA MANUAL
     //HACEMOS LAS VALIDACIONES DE MANERA MANUAL[0,1,2,3,4]
     //AQUI ES EL INPUT[0]  
-    if(this === inputs_digitos_globales[0]){
-
-        console.log("inputs[0]");
-
-
-    //AQUI ES EL INPUT[1]  
-    }else if(this === inputs_digitos_globales[1]){
-
-        console.log("inputs[1]");
-        if(inputs_digitos_globales[0].value.length == 0){
-
-            console.log("el input["+0+"] esta vacio");
-            inputs_digitos_globales[0].focus();
-            
-            return 10;
-
-        }//fin de if
-
-    //AQUI ES EL INPUT[2]    
-    }else if(this === inputs_digitos_globales[2]){
-
-
-        for (let index = 0; index < 2; index++) {
-        
-            //Aqui es cuando entramos en los inputs [0,1,2,3]
-            if(inputs_digitos_globales[index].value.length == 0){
-
-                console.log("el input["+index+"] esta vacio");
-                inputs_digitos_globales[index].focus();
-                
-                return 10;
     
-            }//fin de if
-            
-            
-            
-        }//Fin del for
-        
-
-    //AQUI ES EL INPUT[3]    
-    }else if(this === inputs_digitos_globales[3]){
-
-
-        for (let index = 0; index < 3; index++) {
-        
-            //Aqui es cuando entramos en los inputs [0,1,2,3]
-            if(inputs_digitos_globales[index].value.length == 0){
-
-                console.log("el input["+index+"] esta vacio");
-                inputs_digitos_globales[index].focus();
-                
-                return 10;
-    
-            }//fin de if
-            
-            
-            
-        }//Fin del for
-
-
-    //AQUI ES EL INPUT[4]    
-    }else if(this === inputs_digitos_globales[4]){
-
-
-        for (let index = 0; index < 4; index++) {
-        
-            //Aqui es cuando entramos en los inputs [0,1,2,3]
-            if(inputs_digitos_globales[index].value.length == 0){
-
-                console.log("el input["+index+"] esta vacio");
-                inputs_digitos_globales[index].focus();
-                
-                return 10;
-
-            }//fin de if
-            
-            
-            
-        }//Fin del for
-    }
 
 
 

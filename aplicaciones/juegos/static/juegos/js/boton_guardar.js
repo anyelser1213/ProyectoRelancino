@@ -17,7 +17,7 @@ BotonEnviarJugadas.addEventListener('click',function(event) {
     //console.log(event);
     //console.log(event.keyCode);
     //console.log(event.key);
-    //console.log("Presionada: " + codigo);
+    console.log("Presionada: " + codigo);
      
     //Aqui vamos a comenzar las validaciones(Se comienza presionando el ENTER)
     if(codigo === "Enter"){
